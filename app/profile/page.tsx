@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { logout } from "../(auth)/auth.actions";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProfilePage() {
     const cart = useCart();
@@ -206,7 +207,13 @@ export default function ProfilePage() {
 
                 {/* ── Footer Branding ── */}
                 <div className="text-center pt-8 opacity-20 grayscale scale-75">
-                    <img src="/logo.svg" alt="DV27" className="h-8 mx-auto mb-2" />
+                    <Image 
+                        src="/logo.svg" 
+                        alt="Shri Jalaram Jwellers" 
+                        width={100}
+                        height={25}
+                        className="h-8 mx-auto mb-2 object-contain" 
+                    />
                     <p className="text-[10px] font-bold tracking-widest uppercase">Version 1.0.4</p>
                 </div>
             </div>

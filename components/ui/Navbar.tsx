@@ -126,15 +126,15 @@ export default function Navbar() {
                                 >
                                     <Menu size={24} />
                                 </button>
-                                <Link href="/" className="flex flex-col items-start transition-all hover:scale-105">
-                                    <div className="flex flex-col">
-                                        <span className="text-lg sm:text-2xl font-serif font-bold text-[#8B1D3D] tracking-tight leading-tight">
-                                            {settings.site_name || "Shri Jalaram"}
-                                        </span>
-                                        <span className="text-[8px] sm:text-[10px] font-sans font-bold tracking-[0.4em] text-gray-400 uppercase -mt-0.5">
-                                            JEWELLERS
-                                        </span>
-                                    </div>
+                                <Link href="/" className="flex items-center transition-all hover:scale-105">
+                                    <Image 
+                                        src="/logo.svg" 
+                                        alt={settings.site_name || "Shri Jalaram Jwellers"} 
+                                        width={200}
+                                        height={50}
+                                        className="h-11 sm:h-16 w-auto object-contain"
+                                        priority
+                                    />
                                 </Link>
                             </div>
 
@@ -253,14 +253,15 @@ export default function Navbar() {
                     <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
                     <div className="absolute inset-y-0 left-0 w-[280px] bg-white shadow-2xl animate-in slide-in-from-left duration-500 flex flex-col">
                         <div className="p-6 border-b border-gray-50 flex items-center justify-between">
-                             <div className="flex flex-col">
-                                <span className="text-lg font-serif font-bold text-[#8B1D3D] tracking-tight leading-tight">
-                                    {settings.site_name || "Shri Jalaram"}
-                                </span>
-                                <span className="text-[8px] font-sans font-bold tracking-[0.4em] text-gray-400 uppercase -mt-0.5">
-                                    JEWELLERS
-                                </span>
-                             </div>
+                             <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+                                <Image 
+                                    src="/logo.svg" 
+                                    alt={settings.site_name || "Shri Jalaram Jwellers"} 
+                                    width={160}
+                                    height={40}
+                                    className="h-10 w-auto object-contain"
+                                />
+                             </Link>
                              <button onClick={() => setMobileMenuOpen(false)} className="p-2 text-gray-400 hover:text-gray-600 transition-colors"><X size={24} /></button>
                         </div>
                         

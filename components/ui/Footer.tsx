@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import Image from "next/image";
 import { useSettings } from "@/components/SettingsContext";
 
 export default function Footer() {
@@ -15,9 +16,15 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="space-y-8">
-             <h2 className="text-4xl font-serif font-bold tracking-tighter text-foreground">
-               {settings.site_name || "SHRI JALARAM"}
-             </h2>
+             <Link href="/" className="inline-block transition-all hover:scale-105">
+                <Image 
+                    src="/logo.svg" 
+                    alt={settings.site_name || "Shri Jalaram Jwellers"} 
+                    width={300}
+                    height={80}
+                    className="h-16 md:h-24 w-auto object-contain"
+                />
+             </Link>
              <p className="text-xs font-medium text-foreground/40 leading-relaxed uppercase tracking-widest max-w-[280px]">
                  Exquisite artificial and traditional jewellery crafted for the modern woman who celebrates heritage and elegance.
              </p>
