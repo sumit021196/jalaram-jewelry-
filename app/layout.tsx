@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import SignupPrompt from "@/components/SignupPrompt";
 import { CartProvider } from "@/components/cart/CartContext";
 import { WishlistProvider } from "@/components/wishlist/WishlistContext";
 import Navbar from "@/components/ui/Navbar";
@@ -72,7 +71,6 @@ export default function RootLayout({
               <Suspense fallback={null}>
                 <AuthFeedback />
               </Suspense>
-              <SignupPrompt />
               <FloatingChat />
             </CartProvider>
           </WishlistProvider>

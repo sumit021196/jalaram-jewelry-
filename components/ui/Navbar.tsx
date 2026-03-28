@@ -301,7 +301,7 @@ export default function Navbar() {
             )}
 
             {/* Spacer for fixed header (Ticker + Navbar) */}
-            <div className={`transition-all duration-300 ${isScrolled ? "h-[105px] md:h-[135px]" : "h-[115px] md:h-[145px]"}`} />
+            <div className={`transition-all duration-300 ${isScrolled ? "h-[145px] md:h-[135px]" : "h-[160px] md:h-[145px]"}`} />
         </>
     );
 }
