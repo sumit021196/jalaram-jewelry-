@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { useState } from "react";
+import { logout } from "@/app/(auth)/auth.actions";
+import { useRouter } from "next/navigation";
 
 const navItems = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -35,6 +37,7 @@ const navItems = [
 
 export function AdminSidebar() {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -55,17 +58,18 @@ export function AdminSidebar() {
                 )}
             >
                 <div className="flex flex-col h-full">
-                    <div className="h-16 flex items-center px-6 border-b border-gray-200">
-                        <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                            DV27 Admin
-                        </h1>
+                    <div className="h-20 flex items-center px-6 border-b border-gray-100 bg-[#fdf2f4]/50">
+                        <Link href="/" className="flex items-center gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center text-white font-black text-xl shadow-lg">J</div>
+                            <h1 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-900">
+                                Jalaram <span className="text-brand-red">Admin</span>
+                            </h1>
+                        </Link>
                     </div>
 
-                    <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                    <nav className="flex-1 px-4 py-8 space-y-1.5 overflow-y-auto">
                         {navItems.map((item) => {
                             const Icon = item.icon;
-                            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
-
                             // Exact match for dashboard home, startsWith for others
                             const active = item.href === '/admin' ? pathname === item.href : pathname.startsWith(item.href);
 
@@ -75,20 +79,20 @@ export function AdminSidebar() {
                                     href={item.href}
                                     onClick={() => setIsOpen(false)}
                                     className={cn(
-                                        "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group",
+                                        "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group",
                                         active
-                                            ? "bg-blue-50 text-blue-700"
-                                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                                            ? "bg-brand-red text-white shadow-xl shadow-brand-red/20 translate-x-1"
+                                            : "text-gray-500 hover:bg-[#fdf2f4] hover:text-brand-red"
                                     )}
                                 >
                                     <Icon
                                         size={20}
                                         className={cn(
-                                            "transition-colors",
-                                            active ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"
+                                            "transition-transform group-hover:scale-110",
+                                            active ? "text-white" : "text-gray-400 group-hover:text-brand-red"
                                         )}
                                     />
-                                    <span className={cn("font-medium", active && "font-semibold")}>
+                                    <span className={cn("text-xs font-bold uppercase tracking-widest", active ? "opacity-100" : "opacity-80")}>
                                         {item.name}
                                     </span>
                                 </Link>
@@ -96,10 +100,16 @@ export function AdminSidebar() {
                         })}
                     </nav>
 
-                    <div className="p-4 border-t border-gray-200">
-                        <button className="flex items-center gap-3 px-3 py-2.5 w-full rounded-lg text-gray-600 hover:bg-red-50 hover:text-red-600 transition-colors group">
-                            <LogOut size={20} className="text-gray-400 group-hover:text-red-500 transition-colors" />
-                            <span className="font-medium">Logout</span>
+                    <div className="p-4 border-t border-gray-100">
+                        <button 
+                            onClick={async () => {
+                                await logout();
+                                router.push("/");
+                            }}
+                            className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-gray-400 hover:bg-brand-red/5 hover:text-brand-red transition-all group"
+                        >
+                            <LogOut size={20} className="transition-transform group-hover:rotate-12" />
+                            <span className="text-xs font-bold uppercase tracking-widest">Logout</span>
                         </button>
                     </div>
                 </div>

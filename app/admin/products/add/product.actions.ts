@@ -11,15 +11,19 @@ export async function createProductAction(formData: {
     category_id?: string | null;
     images?: File[];
     video?: File | null;
-    variants?: string | null; // JSON string of { size, color, stock, sku }
+    variants?: string | null; 
+    mrp?: number | null;
+    badges?: string[];
+    is_bestseller?: boolean;
+    rating?: number;
+    review_count?: number;
 }) {
     try {
-        const supabase = await createClient(true); // Create admin client
+        const supabase = await createClient(true);
 
         let finalVideoUrl = null;
         let finalImageUrls: string[] = [];
 
-        // 1. Upload Video if provided
         if (formData.video && formData.video.size > 0) {
             const file = formData.video;
             const fileExt = file.name.split('.').pop();
@@ -33,7 +37,6 @@ export async function createProductAction(formData: {
             finalVideoUrl = urlData.publicUrl;
         }
 
-        // 2. Upload Images if provided
         if (formData.images && formData.images.length > 0) {
             for (const file of formData.images) {
                 if (file.size > 0) {
@@ -50,7 +53,6 @@ export async function createProductAction(formData: {
             }
         }
 
-        // 3. Insert into Database
         const mainMediaUrl = finalImageUrls.length > 0 ? finalImageUrls[0] : null;
 
         const { data: productData, error: dbError } = await supabase
@@ -59,13 +61,17 @@ export async function createProductAction(formData: {
                 name: formData.name,
                 slug: formData.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Math.random().toString(36).substring(7),
                 price: formData.price,
+                mrp: formData.mrp || null,
                 description: formData.description || null,
                 category_id: formData.category_id || null,
                 media_url: mainMediaUrl,
                 video_url: finalVideoUrl,
-                stock: 10, // Fallback default stock
+                stock: 100, // Default for now
                 is_active: true,
-                rating: 4.5
+                rating: formData.rating || 4.5,
+                review_count: formData.review_count || 10,
+                badges: formData.badges || [],
+                is_bestseller: formData.is_bestseller || false
             }])
             .select()
             .single();
@@ -73,7 +79,6 @@ export async function createProductAction(formData: {
         if (dbError) throw dbError;
         const productId = productData.id;
 
-        // 4. Insert extra images into product_images
         if (finalImageUrls.length > 0) {
             const imageInserts = finalImageUrls.map((url, idx) => ({
                 product_id: productId,
@@ -84,7 +89,6 @@ export async function createProductAction(formData: {
             if (imgError) console.error("Error inserting multiple images:", imgError);
         }
 
-        // 5. Insert Variants
         if (formData.variants) {
             try {
                 const parsedVariants = JSON.parse(formData.variants);
@@ -99,20 +103,72 @@ export async function createProductAction(formData: {
                     const { error: varError } = await supabase.from('product_variants').insert(variantInserts);
                     if (varError) console.error("Error inserting variants:", varError);
                 }
-            } catch (jsonErr) {
-                console.error("Failed to parse variants JSON", jsonErr);
-            }
+            } catch (jsonErr) {}
         }
 
         revalidatePath("/admin/products");
         revalidatePath("/");
+        revalidatePath("/products");
 
         return { success: true };
     } catch (error: any) {
         console.error("Error creating product:", error);
-        return {
-            success: false,
-            error: error.message || "An unexpected error occurred while creating the product."
-        };
+        return { success: false, error: error.message };
+    }
+}
+
+export async function updateProductAction(id: string | number, formData: {
+    name: string;
+    price: number;
+    mrp?: number | null;
+    description?: string | null;
+    category_id?: string | null;
+    badges?: string[];
+    is_bestseller?: boolean;
+    rating?: number;
+    review_count?: number;
+    stock?: number;
+}) {
+    try {
+        const supabase = await createClient(true);
+        const { error } = await supabase
+            .from('products')
+            .update({
+                name: formData.name,
+                price: formData.price,
+                mrp: formData.mrp || null,
+                description: formData.description || null,
+                category_id: formData.category_id || null,
+                badges: formData.badges || [],
+                is_bestseller: formData.is_bestseller || false,
+                rating: formData.rating || 4.5,
+                review_count: formData.review_count || 10,
+                stock: formData.stock ?? 10
+            })
+            .eq('id', id);
+
+        if (error) throw error;
+
+        revalidatePath("/admin/products");
+        revalidatePath(`/product/${id}`);
+        revalidatePath("/");
+
+        return { success: true };
+    } catch (error: any) {
+        return { success: false, error: error.message };
+    }
+}
+
+export async function deleteProductAction(id: string | number) {
+    try {
+        const supabase = await createClient(true);
+        const { error } = await supabase.from('products').delete().eq('id', id);
+        if (error) throw error;
+
+        revalidatePath("/admin/products");
+        revalidatePath("/");
+        return { success: true };
+    } catch (error: any) {
+        return { success: false, error: error.message };
     }
 }

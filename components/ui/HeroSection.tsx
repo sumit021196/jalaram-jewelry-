@@ -48,39 +48,24 @@ export default function HeroSection({ banners = [] }: { banners?: any[] }) {
                     />
 
                     {/* Content Overlay */}
-                    <div className="absolute inset-0 z-20 flex items-center justify-center px-6 lg:px-12">
-                        <div className={`max-w-[1440px] w-full ${b.style_type === 'split' ? 'grid grid-cols-1 lg:grid-cols-2' : 'text-center'}`}>
-                            <div className="space-y-4 md:space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
-                                {b.style_type === 'wtflex_bold' || b.style_type === 'luxury_bold' ? (
-                                    <>
-                                        <h1 className="text-3xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight filter drop-shadow-xl">
-                                            {b.title}
-                                        </h1>
-                                        <p className="text-xs md:text-base font-serif font-bold tracking-[0.2em] text-brand-accent uppercase mt-2">
-                                            {b.subtitle}
-                                        </p>
-                                    </>
-                                ) : (
-                                    <>
-                                        <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight">
-                                            {b.title}
-                                        </h1>
-                                        <p className="text-xs md:text-base text-white/90 font-medium max-w-xl mx-auto mt-4 px-4 line-clamp-2 md:line-clamp-none">
-                                            {b.subtitle}
-                                        </p>
-                                    </>
-                                )}
+                    <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
+                        <div className="max-w-4xl w-full space-y-4 md:space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                             <h1 className="text-4xl md:text-7xl lg:text-8xl font-heading font-normal text-white drop-shadow-lg leading-[1.1]">
+                                 {b.title}
+                             </h1>
+                             <p className="text-sm md:text-xl text-white/90 font-light max-w-2xl mx-auto tracking-wide">
+                                 {b.subtitle}
+                             </p>
 
-                                <div className={`flex flex-col sm:flex-row gap-4 pt-4 md:pt-6 ${b.style_type === 'split' ? 'justify-start' : 'justify-center'}`}>
-                                    <Link
-                                        href={b.link_url || '/products'}
-                                        className="inline-flex items-center justify-center gap-3 px-8 md:px-12 py-3 md:py-4 bg-[#8B1D3D] text-white font-serif font-bold uppercase tracking-widest text-[10px] md:text-xs hover:bg-[#A32348] transition-all transform hover:-translate-y-1 active:scale-95 shadow-xl rounded-full"
-                                    >
-                                        <ShoppingBag size={16} />
-                                        {b.cta_text || 'Shop Now'}
-                                    </Link>
-                                </div>
-                            </div>
+                             <div className="flex justify-center pt-4 md:pt-8">
+                                 <Link
+                                     href={b.link_url || '/products'}
+                                     className="inline-flex items-center justify-center gap-2 px-10 md:px-14 py-3 md:py-4 bg-brand-red text-white font-sans font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs hover:bg-brand-red/90 transition-all transform hover:-translate-y-1 active:scale-95 shadow-2xl rounded-full"
+                                 >
+                                     {b.button_text || 'Shop Now'}
+                                     <ArrowRight size={16} />
+                                 </Link>
+                             </div>
                         </div>
                     </div>
                 </div>

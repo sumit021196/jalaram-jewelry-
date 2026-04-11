@@ -19,9 +19,13 @@ export interface Product {
     name: string;
     price: number;
     media_url?: string;
+    mrp?: number;
     created_at?: string;
     size?: string;
     rating?: number;
+    review_count?: number;
+    badges?: string[];
+    is_bestseller?: boolean;
     category_id?: string;
     category_name?: string;
     description?: string;

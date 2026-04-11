@@ -34,11 +34,11 @@ export default function FeaturedCollections() {
     <section className="py-16 px-4 bg-white">
       <div className="max-w-[1440px] mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-foreground tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-heading font-medium text-foreground tracking-tight">
             Our Signature Collections
           </h2>
-          <div className="w-24 h-1 bg-brand-accent mx-auto rounded-full" />
-          <p className="text-muted-foreground max-w-xl mx-auto font-medium">
+          <div className="w-16 h-[2px] bg-brand-accent mx-auto" />
+          <p className="text-muted-foreground max-w-xl mx-auto font-sans font-light">
             Explore our curated collections, each telling a unique story of beauty and tradition.
           </p>
         </div>

@@ -59,10 +59,10 @@ export default function CategoryCircleNav({ categories = [] }: { categories?: Ca
               <Link
                 key={category.id}
                 href={`/products?category=${category.slug}`}
-                className="flex-shrink-0 flex flex-col items-center gap-3 group"
+                className="flex-shrink-0 flex flex-col items-center gap-2 group"
               >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-gray-100 p-1 flex items-center justify-center bg-white group-hover:border-[#8B1D3D] shadow-sm transition-all duration-300">
-                  <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-gray-50">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-[#ece1e3] p-[2px] flex items-center justify-center bg-white group-hover:border-brand-red shadow-sm transition-all duration-300">
+                  <div className="w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#fdf7f8]">
                     {category.image_url ? (
                       <img
                         src={category.image_url}
@@ -70,11 +70,11 @@ export default function CategoryCircleNav({ categories = [] }: { categories?: Ca
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     ) : (
-                      <Icon size={24} className="text-[#8B1D3D] group-hover:scale-110 transition-transform" />
+                      <Icon size={24} className="text-brand-red group-hover:scale-110 transition-transform" />
                     )}
                   </div>
                 </div>
-                <span className="text-[10px] sm:text-xs font-bold text-gray-600 uppercase tracking-wider text-center group-hover:text-[#8B1D3D] max-w-[80px]">
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-tighter text-center group-hover:text-brand-red max-w-[80px] leading-tight">
                   {category.name}
                 </span>
               </Link>

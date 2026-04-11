@@ -9,6 +9,8 @@ import FeaturedCollections from "@/components/ui/FeaturedCollections";
 import InstagramReels from "@/components/ui/InstagramReels";
 import { Product } from "@/types/product";
 
+import TrustBadges from "@/components/ui/TrustBadges";
+
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
@@ -24,13 +26,16 @@ export default async function Page() {
   return (
     <main className="bg-white min-h-screen text-foreground transition-colors duration-500 overflow-x-hidden">
       
-      {/* 1. Category Circle Nav (Tanishq Style) */}
+      {/* 1. Category Circle Nav */}
       <CategoryCircleNav categories={categories || []} />
 
       {/* 2. Hero Section */}
       <HeroSection banners={banners || []} />
 
-      {/* 3. New Arrivals */}
+      {/* 3. Trust Badges (Service Promises) */}
+      <TrustBadges />
+
+      {/* 4. New Arrivals */}
       <Section
         title="New Discoveries"
         subtitle="The latest treasures added to our vault"
@@ -39,15 +44,15 @@ export default async function Page() {
       >
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {newArrivals.slice(0, 4).map((p: Product) => (
-            <ProductCard key={p.id} product={{ id: p.id, name: p.name, price: p.price, mediaUrl: p.media_url }} />
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </Section>
 
-      {/* 4. Featured Collections (Tanishq Style Grid) */}
+      {/* 5. Featured Collections */}
       <FeaturedCollections />
 
-      {/* 5. Trending Section */}
+      {/* 6. Trending Section */}
       <Section
         title="Most Loved"
         subtitle="Pieces that resonate with our community"
@@ -56,18 +61,18 @@ export default async function Page() {
       >
         <div id="trending" className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {trending.slice(0, 4).map((p: Product) => (
-            <ProductCard key={p.id} product={{ id: p.id, name: p.name, price: p.price, mediaUrl: p.media_url }} />
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </Section>
 
-      {/* 6. Social Feed */}
+      {/* 7. Social Feed */}
       <InstagramReels />
 
-      {/* 7. Bottom Ticker */}
+      {/* 8. Bottom Ticker */}
       <Ticker className="my-16" />
 
-      {/* 8. Full Inventory Snapshot */}
+      {/* 9. Full Inventory Snapshot */}
       <Section
         title="The Eternal Gallery"
         subtitle="Explore our complete range of artificial excellence"
@@ -76,7 +81,7 @@ export default async function Page() {
       >
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {allProducts.slice(0, 8).map((p: Product) => (
-            <ProductCard key={p.id} product={{ id: p.id, name: p.name, price: p.price, mediaUrl: p.media_url }} />
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </Section>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { Bodoni_Moda, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/components/cart/CartContext";
 import { WishlistProvider } from "@/components/wishlist/WishlistContext";
@@ -7,8 +7,8 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
 });
 
@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${bodoni.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         <SettingsProvider>
           <WishlistProvider>

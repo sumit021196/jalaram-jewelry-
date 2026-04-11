@@ -124,25 +124,32 @@ export default function Navbar() {
                                     type="button"
                                     className="md:hidden p-1.5 text-gray-600"
                                 >
-                                    <Menu size={24} />
+                                    <Menu size={22} />
                                 </button>
-                                <Link href="/" className="flex items-center transition-all hover:scale-105">
+                                <Link href="/" className="flex items-center transition-all hover:scale-105 ml-1">
                                     <Image 
                                         src="/logo.svg" 
-                                        alt={settings.site_name || "Shri Jalaram Jwellers"} 
-                                        width={200}
-                                        height={50}
-                                        className="h-11 sm:h-16 w-auto object-contain"
+                                        alt={settings.site_name || "Shri Jalaram Jewellers"} 
+                                        width={180}
+                                        height={45}
+                                        className="h-10 sm:h-14 w-auto object-contain"
                                         priority
                                     />
                                 </Link>
                             </div>
 
-                            {/* Desktop/Wide Search (Centered) */}
-                            <div className="hidden md:flex flex-1 items-center justify-center max-w-2xl px-4">
+                            {/* Pincode Selector (Desktop Only) */}
+                            <button className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-gray-400 hover:text-brand-red transition-colors uppercase tracking-tight">
+                                <MapPin size={12} />
+                                <span>Deliver to 380001</span>
+                                <ChevronDown size={12} />
+                            </button>
+
+                            {/* Desktop Search (Centered) */}
+                            <div className="hidden md:flex flex-1 items-center justify-center max-w-xl px-4">
                                 <div className="relative w-full group">
                                     <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                                        <Search size={18} className="text-gray-400 group-focus-within:text-[#8B1D3D] transition-colors" />
+                                        <Search size={18} className="text-gray-400 group-focus-within:text-brand-red transition-colors" />
                                     </div>
                                     <input
                                         type="text"
@@ -153,50 +160,40 @@ export default function Navbar() {
                                                 router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
                                             }
                                         }}
-                                        placeholder="Search for ornaments, rings & more..."
-                                        className="w-full bg-gray-50 border border-gray-200 rounded-full py-3 pl-12 pr-16 text-sm outline-none focus:border-[#8B1D3D] focus:bg-white transition-all shadow-sm group-hover:shadow-md"
+                                        placeholder="Search for Rings, Earrings & more..."
+                                        className="w-full bg-[#fdf2f4] border border-transparent rounded-full py-2.5 pl-12 pr-16 text-sm outline-none focus:border-brand-red focus:bg-white transition-all shadow-sm group-hover:shadow-md"
                                     />
                                     <div className="absolute inset-y-0 right-4 flex items-center gap-3">
-                                        <button className="text-gray-400 hover:text-[#8B1D3D] transition-colors"><Camera size={16} /></button>
-                                        <button className="text-gray-400 hover:text-[#8B1D3D] transition-colors"><Mic size={16} /></button>
+                                        <button className="text-gray-400 hover:text-brand-red transition-colors"><Mic size={16} /></button>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Icons (Right) */}
-                            <div className="flex items-center gap-0.5 sm:gap-4 flex-shrink-0">
-                                {/* Store Locator */}
-                                <button className="flex flex-col items-center p-2 text-gray-600 hover:text-[#8B1D3D] transition-colors group">
-                                    <MapPin size={22} className="group-hover:scale-110 transition-transform" />
-                                    <span className="text-[8px] font-bold uppercase mt-1 hidden lg:block">Stores</span>
-                                </button>
-
+                            <div className="flex items-center gap-0.5 sm:gap-2 flex-shrink-0">
                                 {/* Wishlist */}
-                                <Link href="/wishlist" className="flex flex-col items-center p-2 text-gray-600 hover:text-[#8B1D3D] transition-colors group">
-                                    <Heart size={22} className="group-hover:scale-110 transition-transform" />
-                                    <span className="text-[8px] font-bold uppercase mt-1 hidden lg:block">Wishlist</span>
+                                <Link href="/wishlist" className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group">
+                                    <Heart size={20} className="group-hover:scale-110 transition-transform" />
+                                    <span className="text-[9px] font-medium mt-1 hidden lg:block">Wishlist</span>
                                 </Link>
 
                                 {/* Account */}
                                 <div className="relative profile-container">
                                     {user ? (
-                                        <>
-                                            <button
-                                                onClick={() => setProfileOpen(!profileOpen)}
-                                                className="flex flex-col items-center p-2 text-gray-600 hover:text-[#8B1D3D] transition-colors group"
-                                            >
-                                                <User size={22} className="group-hover:scale-110 transition-transform" />
-                                                <span className="text-[8px] font-bold uppercase mt-1 hidden lg:block">Account</span>
-                                            </button>
-                                            {/* Profile Dropdown logic remains same */}
-                                        </>
+                                        <button
+                                            onClick={() => setProfileOpen(!profileOpen)}
+                                            className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
+                                        >
+                                            <User size={20} className="group-hover:scale-110 transition-transform" />
+                                            <span className="text-[9px] font-medium mt-1 hidden lg:block">Profile</span>
+                                        </button>
                                     ) : (
                                         <Link
                                             href="/login"
-                                            className="flex flex-col items-center p-2 text-gray-600 hover:text-[#8B1D3D] transition-colors group"
+                                            className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
                                         >
-                                            <User size={22} className="group-hover:scale-110 transition-transform" />
-                                            <span className="text-[8px] font-bold uppercase mt-1 hidden lg:block">Login</span>
+                                            <User size={20} className="group-hover:scale-110 transition-transform" />
+                                            <span className="text-[9px] font-medium mt-1 hidden lg:block">Login</span>
                                         </Link>
                                     )}
                                 </div>
@@ -205,15 +202,15 @@ export default function Navbar() {
                                 <button
                                     type="button"
                                     onClick={() => cart.openCart()}
-                                    className="relative flex flex-col items-center p-2 text-gray-600 hover:text-[#8B1D3D] transition-colors group"
+                                    className="relative flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
                                 >
-                                    <ShoppingBag size={22} className="group-hover:scale-110 transition-transform" />
+                                    <ShoppingBag size={20} className="group-hover:scale-110 transition-transform" />
                                     {totalItems > 0 && (
-                                        <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#8B1D3D] text-[9px] font-black text-white">
+                                        <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-red text-[8px] font-bold text-white">
                                             {totalItems}
                                         </span>
                                     )}
-                                    <span className="text-[8px] font-bold uppercase mt-1 hidden lg:block">Cart</span>
+                                    <span className="text-[9px] font-medium mt-1 hidden lg:block">Cart</span>
                                 </button>
                             </div>
                         </div>
@@ -271,15 +268,15 @@ export default function Navbar() {
                                     key={href}
                                     href={href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="block text-lg font-serif font-bold text-gray-700 hover:text-[#8B1D3D] transition-colors"
+                                    className="block text-lg font-heading font-medium text-gray-800 hover:text-brand-red transition-colors"
                                 >
                                     {label}
                                 </Link>
                             ))}
                              <div className="pt-4 mt-4 border-t border-gray-50 space-y-4">
-                                <Link href="/profile" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-500 uppercase tracking-widest">My Account</Link>
-                                <Link href="/wishlist" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-500 uppercase tracking-widest">Wishlist</Link>
-                                <Link href="/stores" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-500 uppercase tracking-widest">Store Locator</Link>
+                                <Link href="/profile" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">My Account</Link>
+                                <Link href="/wishlist" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">Wishlist</Link>
+                                <Link href="/stores" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">Store Locator</Link>
                              </div>
                         </nav>
 
@@ -291,7 +288,7 @@ export default function Navbar() {
                                     setMobileMenuOpen(false);
                                     router.push('/');
                                 }}
-                                className="w-full py-4 bg-[#8B1D3D] text-white font-bold uppercase tracking-widest text-xs rounded-lg shadow-lg active:scale-95 transition-all"
+                                className="w-full py-4 bg-brand-red text-white font-bold uppercase tracking-widest text-[10px] rounded-full shadow-lg active:scale-95 transition-all"
                              >
                                  Logout
                              </button>
