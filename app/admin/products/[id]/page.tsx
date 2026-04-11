@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { Category, Product } from "@/types/product";
-import { productService } from "@/services/productService";
+import { productService } from "@/services/product.service";
 import { updateProductAction } from "../add/product.actions";
 import ProductForm from "@/components/admin/ProductForm";
 
@@ -60,7 +60,7 @@ export default function EditProductPage() {
                     Back to Inventory
                 </Link>
                 <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tighter mt-4">
-                    Modify <span className="text-brand-red underline decoration-brand-accent/30 decoration-8 underline-offset-4 font-serif italic lowercase">Collection</span>
+                    Modify <span className="text-brand-red underline decoration-brand-accent/30 decoration-8 underline-offset-4 font-serif lowercase">Collection</span>
                 </h1>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1">Refining excellence for {product.name}</p>
             </div>

@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { createProductAction } from "./product.actions";
 import { productService } from "@/services/product.service";
 import { Category } from "@/types/product";
+import ProductForm from "@/components/admin/ProductForm";
 
 export default function AddProductPage() {
     const [categories, setCategories] = useState<Category[]>([]);
@@ -41,7 +42,7 @@ export default function AddProductPage() {
                     Back to Inventory
                 </Link>
                 <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tighter mt-4">
-                    New <span className="text-brand-red underline decoration-brand-accent/30 decoration-8 underline-offset-4 font-serif italic lowercase">Creation</span>
+                    New <span className="text-brand-red underline decoration-brand-accent/30 decoration-8 underline-offset-4 font-serif lowercase">Creation</span>
                 </h1>
                 <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1">Design your next masterpiece</p>
             </div>
@@ -51,7 +52,5 @@ export default function AddProductPage() {
                 onSubmit={handleCreate} 
             />
         </div>
-    );
-}
     );
 }

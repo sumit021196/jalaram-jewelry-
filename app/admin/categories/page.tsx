@@ -1,7 +1,9 @@
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { Plus, Pencil, Trash2, Image as ImageIcon, LayoutGrid, Sparkles } from "lucide-react";
-import { FALLBACK_IMG } from "@/utils/images";
+import AdminImage from "@/components/admin/AdminImage";
+
+const cn = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
 export default async function AdminCategoriesPage() {
     const supabase = await createClient();
@@ -36,14 +38,13 @@ export default async function AdminCategoriesPage() {
                     <div key={category.id} className="group relative bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                         <div className="aspect-[4/5] bg-gray-50 relative overflow-hidden">
                             {category.image_url ? (
-                                <img 
+                                <AdminImage 
                                     src={category.image_url} 
                                     alt={category.name} 
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                                    onError={(e) => { e.currentTarget.src = FALLBACK_IMG; }} 
                                 />
                             ) : (
-                                <div className="w-full h-full flex flex-col items-center justify-center text-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 italic">
+                                <div className="w-full h-full flex flex-col items-center justify-center text-gray-200 bg-gradient-to-br from-gray-50 to-gray-100">
                                     <ImageIcon size={48} strokeWidth={1} />
                                     <span className="text-[10px] font-black uppercase tracking-widest mt-2">No Visual</span>
                                 </div>
@@ -57,7 +58,7 @@ export default async function AdminCategoriesPage() {
                                 )}>
                                     {category.is_active ? 'Active' : 'Private'}
                                 </span>
-                                <h3 className="text-2xl font-black italic uppercase tracking-tighter text-white leading-none group-hover:text-brand-accent transition-colors">
+                                <h3 className="text-2xl font-black uppercase tracking-tighter text-white leading-none group-hover:text-brand-accent transition-colors">
                                     {category.name}
                                 </h3>
                                 <div className="flex items-center gap-2 mt-2">
@@ -97,5 +98,3 @@ export default async function AdminCategoriesPage() {
         </div>
     );
 }
-
-const cn = (...classes: string[]) => classes.filter(Boolean).join(' ');

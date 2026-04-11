@@ -42,9 +42,9 @@ export default async function AdminDashboardPage() {
         <div className="space-y-10 pb-20">
             <div className="flex flex-col gap-2">
                 <h1 className="text-4xl font-black tracking-tighter text-gray-900 uppercase">
-                    Maison <span className="text-brand-red italic font-serif lowercase underline decoration-brand-accent/30 decoration-8 underline-offset-4">Dashboard</span>
+                    Maison <span className="text-brand-red font-serif lowercase underline decoration-brand-accent/30 decoration-8 underline-offset-4">Dashboard</span>
                 </h1>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1 italic">Overseeing the legacy of Shri Jalaram Jewellers</p>
+                <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1">Overseeing the legacy of Shri Jalaram Jewellers</p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -104,7 +104,7 @@ export default async function AdminDashboardPage() {
                                                 {order.status}
                                             </span>
                                         </td>
-                                        <td className="px-8 py-5 text-sm text-gray-900 text-right font-black italic">₹{order.total_amount.toLocaleString()}</td>
+                                        <td className="px-8 py-5 text-sm text-gray-900 text-right font-black">₹{order.total_amount.toLocaleString()}</td>
                                     </tr>
                                 )) || (
                                     <tr><td colSpan={3} className="py-20 text-center text-[10px] font-black text-gray-400 uppercase tracking-widest">The archives are still empty...</td></tr>
@@ -144,7 +144,7 @@ export default async function AdminDashboardPage() {
                                 </div>
                             </div>
                         )) || (
-                            <div className="py-10 text-center text-[10px] font-black text-gray-400 uppercase tracking-widest italic">Waiting for your first creation...</div>
+                            <div className="py-10 text-center text-[10px] font-black text-gray-400 uppercase tracking-widest">Waiting for your first creation...</div>
                         )}
                     </div>
                 </div>
@@ -169,7 +169,7 @@ function StatCard({
                 <div>
                     <h3 className={`text-[10px] font-black uppercase tracking-[0.2em] mb-1 ${variant === 'luxury' ? 'text-gray-400' : 'text-gray-400'}`}>{title}</h3>
                     <div className="flex items-baseline gap-2">
-                        <p className={`text-2xl font-black italic tracking-tighter ${variant === 'luxury' ? 'text-white' : 'text-gray-900'}`}>{value}</p>
+                        <p className={`text-2xl font-black tracking-tighter ${variant === 'luxury' ? 'text-white' : 'text-gray-900'}`}>{value}</p>
                     </div>
                     <p className={`text-[9px] font-bold uppercase tracking-widest mt-2 ${variant === 'luxury' ? 'text-brand-accent' : 'text-brand-red'}`}>{subtitle}</p>
                 </div>

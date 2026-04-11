@@ -8,7 +8,7 @@
   --muted: #f9f0f1;
   --muted-foreground: #666666;
   --border: #ece1e3;
-  --font-serif: var(--font-bodoni);
+  --font-serif: var(--font-outfit);
   --font-sans: var(--font-inter);
   color-scheme: light;
 }
@@ -22,7 +22,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-bodoni);
+  --font-heading: var(--font-outfit);
   --font-mono: var(--font-jetbrains-mono);
 }
 
@@ -44,7 +44,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-heading), sans-serif;
   letter-spacing: -0.02em;
 }
 
@@ -82,8 +82,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .luxury-heading {
-  @apply font-serif font-bold tracking-tight;
-  font-family: var(--font-playfair);
+  @apply font-bold tracking-tight;
+  font-family: var(--font-heading);
 }
 
 .gold-shimmer {

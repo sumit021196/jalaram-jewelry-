@@ -95,7 +95,7 @@ export default function AdminReviewsPage() {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="text-sm text-gray-900 line-clamp-3">
-                                                {review.comment || <span className="text-gray-400 italic">No comment provided</span>}
+                                                {review.comment || <span className="text-gray-400">No comment provided</span>}
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">

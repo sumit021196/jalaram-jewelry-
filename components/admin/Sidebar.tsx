@@ -45,21 +45,22 @@ export function AdminSidebar() {
             {/* Mobile Menu Toggle */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed top-4 left-4 z-50 p-2 bg-white rounded-md shadow-md md:hidden"
+                className="fixed top-4 left-4 z-[100] p-3 bg-white rounded-2xl shadow-xl border border-gray-100 md:hidden hover:scale-105 active:scale-95 transition-all"
+                aria-label="Toggle Menu"
             >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={20} className="text-brand-red" /> : <Menu size={20} className="text-gray-900" />}
             </button>
 
             {/* Sidebar */}
             <aside
                 className={cn(
-                    "fixed inset-y-0 left-0 z-40 w-64 bg-white border-r shadow-sm border-gray-200 transform transition-transform duration-300 ease-in-out md:translate-x-0",
+                    "fixed inset-y-0 left-0 z-[90] w-64 bg-white border-r shadow-2xl border-gray-100 transform transition-transform duration-500 ease-in-out md:translate-x-0",
                     isOpen ? "translate-x-0" : "-translate-x-full"
                 )}
             >
                 <div className="flex flex-col h-full">
                     <div className="h-20 flex items-center px-6 border-b border-gray-100 bg-[#fdf2f4]/50">
-                        <Link href="/" className="flex items-center gap-2">
+                        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
                             <div className="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center text-white font-black text-xl shadow-lg">J</div>
                             <h1 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-900">
                                 Jalaram <span className="text-brand-red">Admin</span>
@@ -118,7 +119,7 @@ export function AdminSidebar() {
             {/* Overlay for mobile */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/50 z-30 md:hidden"
+                    className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[80] md:hidden transition-all duration-500"
                     onClick={() => setIsOpen(false)}
                 />
             )}

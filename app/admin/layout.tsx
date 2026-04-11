@@ -1,5 +1,6 @@
 import { AdminSidebar } from "@/components/admin/Sidebar";
 import { ReactNode } from "react";
+import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -24,11 +25,19 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 
 
     return (
-        <div className="flex h-screen bg-[#fdf2f4]/30 overflow-hidden font-sans text-gray-900">
+        <div className="flex min-h-screen md:h-screen bg-[#fdf2f4]/30 md:overflow-hidden font-sans text-gray-900">
             <AdminSidebar />
 
-            <main className="flex-1 overflow-y-auto w-full transition-all duration-300 md:ml-64">
-                <div className="p-4 md:p-10 lg:p-12 mt-0 max-w-7xl mx-auto">
+            {/* Mobile Top Bar */}
+            <div className="md:hidden fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-gray-100 z-[70] flex items-center justify-center px-4">
+                <Link href="/" className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-brand-red flex items-center justify-center text-white font-black text-xl shadow-lg">J</div>
+                    <span className="text-sm font-bold uppercase tracking-widest">Jalaram <span className="text-brand-red">Admin</span></span>
+                </Link>
+            </div>
+
+            <main className="flex-1 overflow-x-hidden overflow-y-auto w-full transition-all duration-300 md:ml-64 pt-16 md:pt-0">
+                <div className="p-4 md:p-10 lg:p-12 max-w-7xl mx-auto">
                     {children}
                 </div>
             </main>

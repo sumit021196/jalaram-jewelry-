@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Package, Plus, Pencil, Trash2, Loader2, Sparkles, TrendingUp, Star, AlertCircle } from "lucide-react";
-import { productService } from "@/services/productService";
+import { productService } from "@/services/product.service";
 import { Product } from "@/types/product";
 import { deleteProductAction, updateProductAction } from "./add/product.actions";
 import { cn } from "@/utils/cn";
@@ -138,7 +138,7 @@ export default function AdminProductsPage() {
                                             </td>
                                             <td className="px-8 py-6">
                                                 <div className="flex flex-col">
-                                                    <span className="text-sm font-black text-gray-900 italic">₹{product.price.toLocaleString()}</span>
+                                                    <span className="text-sm font-black text-gray-900">₹{product.price.toLocaleString()}</span>
                                                     {product.mrp && (
                                                         <div className="flex items-center gap-2">
                                                             <span className="text-[10px] text-gray-400 line-through">₹{product.mrp.toLocaleString()}</span>
@@ -203,7 +203,5 @@ export default function AdminProductsPage() {
                 )}
             </div>
         </div>
-    );
-}
     );
 }
