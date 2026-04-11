@@ -95,12 +95,11 @@ export default function ProductCard({ product }: { product: Product }) {
         <button 
           onClick={(e) => {
             e.preventDefault();
-            cart.addItem({
+            cart.add({
               id: product.id,
               name: product.name,
               price: product.price,
               image: product.media_url || FALLBACK_IMG,
-              qty: 1
             });
           }}
           className="w-full mt-2 py-2 bg-brand-red text-white text-[11px] font-bold uppercase tracking-widest rounded-lg shadow-sm active:scale-95 transition-all flex items-center justify-center gap-2"

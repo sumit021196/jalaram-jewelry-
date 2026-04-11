@@ -20,6 +20,7 @@ export interface Product {
     price: number;
     media_url?: string;
     mrp?: number;
+    stock?: number;
     created_at?: string;
     size?: string;
     rating?: number;

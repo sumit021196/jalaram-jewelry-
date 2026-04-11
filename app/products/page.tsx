@@ -113,7 +113,7 @@ export default function ProductList() {
                 {visible.map((p) => (
                   <ProductCard
                     key={p.id}
-                    product={{ id: p.id, name: p.name, price: p.price, mediaUrl: p.media_url || undefined }}
+                    product={{ id: p.id, name: p.name, price: p.price, media_url: p.media_url || undefined }}
                   />
                 ))}
               </div>
