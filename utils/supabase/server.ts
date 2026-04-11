@@ -1,4 +1,3 @@
-
 import { createServerClient } from "@supabase/ssr";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
@@ -6,10 +5,16 @@ import { cookies } from "next/headers";
 export const createClient = async (useAdmin = false) => {
   const cookieStore = await cookies();
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://example.supabase.co";
+  const supabaseKey =
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "dummy_key";
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "dummy_service_key";
+
   if (useAdmin) {
     return createSupabaseClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      supabaseUrl,
+      serviceKey,
       {
         auth: {
           autoRefreshToken: false,
@@ -20,8 +25,8 @@ export const createClient = async (useAdmin = false) => {
   }
 
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    (process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!),
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {
