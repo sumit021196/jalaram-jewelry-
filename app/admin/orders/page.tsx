@@ -34,11 +34,11 @@ export default function AdminOrdersPage() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl flex items-center gap-2">
-                        <ShoppingCart className="text-blue-600" />
+                    <h1 className="text-xl md:text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+                        <ShoppingCart className="text-blue-600 w-5 h-5 md:w-6 md:h-6" />
                         Orders Management
                     </h1>
-                    <p className="mt-2 text-sm text-gray-500">
+                    <p className="mt-1 text-[10px] md:text-sm text-gray-500">
                         View and manage customer orders and fulfillment.
                     </p>
                 </div>
@@ -46,14 +46,14 @@ export default function AdminOrdersPage() {
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 {loading ? (
-                    <div className="p-12 flex justify-center"><Loader2 className="animate-spin text-gray-400" /></div>
+                    <div className="p-6 md:p-12 flex justify-center"><Loader2 className="animate-spin text-gray-400" /></div>
                 ) : orders.length === 0 ? (
-                    <div className="p-12 text-center">
-                        <div className="mx-auto w-16 h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4">
-                            <ShoppingCart size={32} />
+                    <div className="p-6 md:p-12 text-center">
+                        <div className="mx-auto w-12 h-12 md:w-16 md:h-16 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-4">
+                            <ShoppingCart className="w-6 h-6 md:w-8 md:h-8" />
                         </div>
-                        <h2 className="text-xl font-semibold text-gray-900">No Orders Yet</h2>
-                        <p className="text-gray-500 mt-2 max-w-md mx-auto">
+                        <h2 className="text-lg md:text-xl font-semibold text-gray-900">No Orders Yet</h2>
+                        <p className="text-[10px] md:text-sm text-gray-500 mt-2 max-w-md mx-auto">
                             When customers place orders, they will appear here.
                         </p>
                     </div>
@@ -62,38 +62,38 @@ export default function AdminOrdersPage() {
                         <table className="min-w-full divide-y divide-gray-200">
                             <thead className="bg-gray-50">
                                 <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID & Date</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                                    <th className="px-3 md:px-6 py-2.5 md:py-3 text-left text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
+                                    <th className="px-3 md:px-6 py-2.5 md:py-3 text-left text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+                                    <th className="px-3 md:px-6 py-2.5 md:py-3 text-left text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                                    <th className="px-3 md:px-6 py-2.5 md:py-3 text-left text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th className="px-3 md:px-6 py-2.5 md:py-3 text-right text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {orders.map((order) => (
-                                    <tr key={order.id} className="hover:bg-gray-50 transition-colors">
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm font-medium text-gray-900 truncate max-w-[150px]" title={order.id}>
+                                    <tr key={order.id} className="hover:bg-gray-50 transition-colors border-b last:border-0">
+                                        <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
+                                            <div className="text-xs md:text-sm font-medium text-gray-900 truncate max-w-[80px] md:max-w-[150px]" title={order.id}>
                                                 #{order.id.split('-')[0]}
                                             </div>
-                                            <div className="text-xs text-gray-500">
+                                            <div className="text-[9px] md:text-xs text-gray-500">
                                                 {formatDistanceToNow(new Date(order.created_at), { addSuffix: true })}
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900 font-medium">{order.customer_name}</div>
+                                        <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
+                                            <div className="text-xs md:text-sm text-gray-900 font-medium truncate max-w-[80px] md:max-w-none">{order.customer_name}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm font-bold text-gray-900">₹{order.total_amount}</div>
+                                        <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
+                                            <div className="text-xs md:text-sm font-bold text-gray-900">₹{order.total_amount}</div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className={`px-2.5 py-1 inline-flex text-xs leading-5 font-semibold rounded-full capitalize ${getStatusColor(order.status)}`}>
+                                        <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap">
+                                            <span className={`px-2 py-0.5 inline-flex text-[10px] leading-5 font-semibold rounded-full capitalize ${getStatusColor(order.status)}`}>
                                                 {order.status}
                                             </span>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <Link href={`/admin/orders/${order.id}`} className="text-blue-600 hover:text-blue-900 flex items-center justify-end gap-1">
-                                                <Eye size={16} /> View
+                                        <td className="px-3 md:px-6 py-3 md:py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <Link href={`/admin/orders/${order.id}`} className="text-blue-600 hover:text-blue-900 flex items-center justify-end gap-1 text-[10px] md:text-xs font-bold uppercase">
+                                                <Eye className="w-3 h-3 md:w-4 md:h-4" /> View
                                             </Link>
                                         </td>
                                     </tr>

@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 import { Plus, Pencil, Trash2, Image as ImageIcon, LayoutGrid, Sparkles } from "lucide-react";
 import AdminImage from "@/components/admin/AdminImage";
+import DeleteCategoryButton from "@/components/admin/DeleteCategoryButton";
 
 const cn = (...classes: string[]) => classes.filter(Boolean).join(' ');
 
@@ -13,11 +14,11 @@ export default async function AdminCategoriesPage() {
         .order('created_at', { ascending: false });
 
     return (
-        <div className="space-y-10 pb-20">
+        <div className="space-y-6 md:space-y-10 pb-20">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                 <div>
-                    <h1 className="text-4xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
-                        <LayoutGrid className="text-brand-red" size={32} />
+                    <h1 className="text-2xl md:text-4xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
+                        <LayoutGrid className="text-brand-red w-6 h-6 md:w-8 md:h-8" />
                         Collections
                     </h1>
                     <p className="mt-1 text-xs font-bold text-gray-400 uppercase tracking-[0.3em]">
@@ -26,16 +27,16 @@ export default async function AdminCategoriesPage() {
                 </div>
                 <Link
                     href="/admin/categories/new"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-brand-red hover:bg-brand-red/90 text-white text-xs font-black rounded-2xl transition-all shadow-xl shadow-brand-red/20 active:scale-95 uppercase tracking-widest"
+                    className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-brand-red hover:bg-brand-red/90 text-white text-[10px] md:text-xs font-black rounded-xl md:rounded-2xl transition-all shadow-xl shadow-brand-red/20 active:scale-95 uppercase tracking-widest"
                 >
-                    <Plus size={20} />
-                    New Category
+                    <Plus size={18} />
+                    Create Collection
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
                 {categories?.map((category) => (
-                    <div key={category.id} className="group relative bg-white rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div key={category.id} className="group relative bg-white rounded-2xl md:rounded-[2rem] border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                         <div className="aspect-[4/5] bg-gray-50 relative overflow-hidden">
                             {category.image_url ? (
                                 <AdminImage 
@@ -51,14 +52,14 @@ export default async function AdminCategoriesPage() {
                             )}
                             
                             {/* Gradient Overlay */}
-                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-8">
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-5 md:p-8">
                                 <span className={cn(
-                                    "w-fit px-3 py-1 mb-3 text-[9px] font-black uppercase tracking-widest rounded-full shadow-lg",
+                                    "w-fit px-3 py-1 mb-2 md:mb-3 text-[9px] font-black uppercase tracking-widest rounded-full shadow-lg",
                                     category.is_active ? "bg-green-500 text-white" : "bg-brand-red text-white"
                                 )}>
                                     {category.is_active ? 'Active' : 'Private'}
                                 </span>
-                                <h3 className="text-2xl font-black uppercase tracking-tighter text-white leading-none group-hover:text-brand-accent transition-colors">
+                                <h3 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white leading-none group-hover:text-brand-accent transition-colors">
                                     {category.name}
                                 </h3>
                                 <div className="flex items-center gap-2 mt-2">
@@ -72,26 +73,23 @@ export default async function AdminCategoriesPage() {
                                 <Link 
                                     href={`/admin/categories/${category.id}`} 
                                     className="p-3 bg-white/90 backdrop-blur-md text-gray-900 hover:bg-brand-red hover:text-white rounded-2xl shadow-2xl transition-all hover:scale-110 active:scale-95"
+                                    title="Edit Collection"
                                 >
                                     <Pencil size={18} />
                                 </Link>
-                                <button
-                                    className="p-3 bg-white/90 backdrop-blur-md text-gray-900 hover:bg-brand-red hover:text-white rounded-2xl shadow-2xl transition-all hover:scale-110 active:scale-95"
-                                >
-                                    <Trash2 size={18} />
-                                </button>
+                                <DeleteCategoryButton id={category.id} name={category.name} />
                             </div>
                         </div>
                     </div>
                 ))}
                 
                 {(!categories || categories.length === 0) && (
-                   <div className="col-span-full bg-white rounded-[3rem] border border-dashed border-gray-200 p-32 text-center">
-                        <div className="mx-auto w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
-                            <LayoutGrid className="text-gray-200" size={48} />
+                   <div className="col-span-full bg-white rounded-[2rem] md:rounded-[3rem] border border-dashed border-gray-200 p-16 md:p-32 text-center">
+                        <div className="mx-auto w-16 h-16 md:w-24 md:h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                            <LayoutGrid className="text-gray-200" size={40} />
                         </div>
-                        <h3 className="text-xl font-black text-gray-900 uppercase">Start organizing</h3>
-                        <p className="text-sm font-medium text-gray-400 mt-2 max-w-sm mx-auto uppercase tracking-wide">Create your first category to group related products.</p>
+                        <h3 className="text-lg md:text-xl font-black text-gray-900 uppercase">Start organizing</h3>
+                        <p className="text-[10px] md:text-sm font-medium text-gray-400 mt-2 max-w-sm mx-auto uppercase tracking-wide">Create your first category to group related products.</p>
                     </div>
                 )}
             </div>

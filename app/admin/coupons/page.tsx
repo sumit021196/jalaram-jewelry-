@@ -25,6 +25,8 @@ export default function CouponsPage() {
         discount_value: "",
         discount_type: "fixed",
         min_order_value: "0",
+        max_uses: "",
+        expiry_date: "",
         active: true
     });
 
@@ -46,15 +48,34 @@ export default function CouponsPage() {
     const handleCreate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await couponService.createCoupon({
+            const payload = {
                 ...formData,
+                code: formData.code.trim().toUpperCase(),
                 discount_value: Number(formData.discount_value),
-                min_order_value: Number(formData.min_order_value)
-            });
+                min_order_value: Number(formData.min_order_value),
+                max_uses: formData.max_uses ? Number(formData.max_uses) : null,
+                expiry_date: formData.expiry_date ? new Date(formData.expiry_date).toISOString() : null
+            };
+
+            await couponService.createCoupon(payload);
             setShowModal(false);
+            setFormData({
+                code: "",
+                discount_value: "",
+                discount_type: "fixed",
+                min_order_value: "0",
+                max_uses: "",
+                expiry_date: "",
+                active: true
+            });
             fetchCoupons();
         } catch (err: any) {
-            alert(err.message);
+            console.error("Coupon creation error:", err);
+            if (err.message?.includes("coupons_code_idx")) {
+                alert("This coupon code already exists. Please use a unique code.");
+            } else {
+                alert(err.message || "Failed to create coupon");
+            }
         }
     };
 
@@ -71,17 +92,17 @@ export default function CouponsPage() {
     if (loading) return <div className="flex h-96 items-center justify-center"><Loader2 className="animate-spin text-blue-600" /></div>;
 
     return (
-        <div className="p-8 max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-10">
+        <div className="p-4 md:p-8 max-w-7xl mx-auto">
+            <div className="flex justify-between items-center mb-6 md:mb-10">
                 <div>
-                    <h1 className="text-3xl font-black text-gray-900 tracking-tight">COUPONS</h1>
-                    <p className="text-gray-500 text-sm font-medium mt-1 uppercase tracking-widest">Manage your promotional codes</p>
+                    <h1 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tight">COUPONS</h1>
+                    <p className="text-gray-500 text-[10px] md:text-sm font-medium mt-1 uppercase tracking-widest">Manage your promotional codes</p>
                 </div>
                 <button 
                     onClick={() => setShowModal(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center gap-2 transition-all shadow-xl shadow-blue-200"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-3 rounded-xl md:rounded-2xl font-black text-[10px] md:text-xs uppercase tracking-widest flex items-center gap-2 transition-all shadow-xl shadow-blue-200"
                 >
-                    <Plus size={18} />
+                    <Plus size={16} />
                     New Coupon
                 </button>
             </div>
@@ -95,13 +116,13 @@ export default function CouponsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {coupons.length === 0 ? (
-                    <div className="col-span-full py-24 bg-gray-50 border-2 border-dashed border-gray-200 rounded-[40px] flex flex-col items-center justify-center opacity-50">
-                        <Ticket size={48} className="text-gray-300 mb-4" />
-                        <p className="font-black text-gray-400 uppercase tracking-widest">No coupons found</p>
+                    <div className="col-span-full py-12 md:py-24 bg-gray-50 border-2 border-dashed border-gray-200 rounded-3xl md:rounded-[40px] flex flex-col items-center justify-center opacity-50">
+                        <Ticket size={32} className="text-gray-300 mb-4" />
+                        <p className="font-black text-gray-400 text-xs md:text-base uppercase tracking-widest">No coupons found</p>
                     </div>
                 ) : (
                     coupons.map((c) => (
-                        <div key={c.id} className="bg-white border border-gray-100 rounded-[32px] p-6 shadow-sm hover:shadow-xl hover:shadow-blue-50 transition-all group relative overflow-hidden">
+                        <div key={c.id} className="bg-white border border-gray-100 rounded-2xl md:rounded-[32px] p-5 md:p-6 shadow-sm hover:shadow-xl hover:shadow-blue-50 transition-all group relative overflow-hidden">
                             <div className="absolute top-0 right-0 p-4">
                                 <button 
                                     onClick={() => handleDelete(c.id)}
@@ -111,19 +132,19 @@ export default function CouponsPage() {
                                 </button>
                             </div>
 
-                            <div className="flex items-start gap-4 mb-6">
-                                <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
-                                    <Ticket size={24} />
+                            <div className="flex items-start gap-4 mb-4 md:mb-6">
+                                <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-50 rounded-xl md:rounded-2xl flex items-center justify-center text-blue-600">
+                                    <Ticket className="w-5 h-5 md:w-6 md:h-6" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-black text-gray-900 uppercase tracking-tight">{c.code}</h3>
-                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ${c.active ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-100 text-gray-400'}`}>
+                                    <h3 className="text-lg md:text-xl font-black text-gray-900 uppercase tracking-tight">{c.code}</h3>
+                                    <span className={`text-[9px] md:text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest ${c.active ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-100 text-gray-400'}`}>
                                         {c.active ? 'ACTIVE' : 'DISABLED'}
                                     </span>
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-4 mb-4">
                                 <div className="bg-gray-50 rounded-2xl p-4">
                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Benefit</p>
                                     <p className="text-lg font-black text-blue-600">
@@ -135,6 +156,29 @@ export default function CouponsPage() {
                                     <p className="text-lg font-black text-gray-900">₹{c.min_order_value}</p>
                                 </div>
                             </div>
+
+                            <div className="space-y-3 pt-3 border-t border-gray-50">
+                                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest">
+                                    <span className="text-gray-400">Usage</span>
+                                    <span className={c.max_uses && c.uses_count >= c.max_uses ? "text-red-500" : "text-gray-900"}>
+                                        {c.uses_count} / {c.max_uses || "∞"}
+                                    </span>
+                                </div>
+                                {c.max_uses && (
+                                    <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">
+                                        <div 
+                                            className={`h-full transition-all duration-500 ${c.uses_count >= c.max_uses ? 'bg-red-500' : 'bg-blue-600'}`}
+                                            style={{ width: `${Math.min((c.uses_count / c.max_uses) * 100, 100)}%` }}
+                                        />
+                                    </div>
+                                )}
+                                <div className="flex justify-between items-center text-[10px] font-bold uppercase tracking-widest">
+                                    <span className="text-gray-400">Expires</span>
+                                    <span className={c.expiry_date && new Date(c.expiry_date) < new Date() ? "text-red-500" : "text-gray-900"}>
+                                        {c.expiry_date ? new Date(c.expiry_date).toLocaleDateString() : "NEVER"}
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     ))
                 )}
@@ -142,16 +186,16 @@ export default function CouponsPage() {
 
             {/* Modal */}
             {showModal && (
-                <div className="fixed inset-0 z-[100] bg-gray-900/40 backdrop-blur-sm flex items-center justify-center p-6 animate-in fade-in duration-200">
-                    <div className="bg-white w-full max-w-lg rounded-[40px] shadow-2xl p-8 relative animate-in zoom-in-95 duration-200">
+                <div className="fixed inset-0 z-[100] bg-gray-900/40 backdrop-blur-sm flex items-center justify-center p-4 md:p-6 animate-in fade-in duration-200">
+                    <div className="bg-white w-full max-w-lg rounded-3xl md:rounded-[40px] shadow-2xl p-6 md:p-8 relative animate-in zoom-in-95 duration-200">
                         <button 
                             onClick={() => setShowModal(false)}
                             className="absolute top-6 right-6 p-2 text-gray-400 hover:bg-gray-50 rounded-full transition-all"
                         >
-                            <X size={24} />
+                            <X size={20} />
                         </button>
 
-                        <h2 className="text-2xl font-black text-gray-900 uppercase tracking-tight mb-8">Create New Coupon</h2>
+                        <h2 className="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tight mb-6 md:mb-8">Create New Coupon</h2>
 
                         <form onSubmit={handleCreate} className="space-y-6">
                             <div>
@@ -199,6 +243,28 @@ export default function CouponsPage() {
                                     value={formData.min_order_value}
                                     onChange={(e) => setFormData({...formData, min_order_value: e.target.value})}
                                 />
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2 ml-1">Max Uses (Optional)</label>
+                                    <input 
+                                        type="number"
+                                        className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-bold placeholder:text-gray-300 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-600/5 outline-none transition-all"
+                                        placeholder="100"
+                                        value={formData.max_uses}
+                                        onChange={(e) => setFormData({...formData, max_uses: e.target.value})}
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-2 ml-1">Expiry Date</label>
+                                    <input 
+                                        type="date"
+                                        className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4 text-sm font-bold focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-600/5 outline-none transition-all"
+                                        value={formData.expiry_date}
+                                        onChange={(e) => setFormData({...formData, expiry_date: e.target.value})}
+                                    />
+                                </div>
                             </div>
 
                             <button className="w-full bg-gray-900 hover:bg-black text-white py-5 rounded-[24px] font-black text-sm uppercase tracking-widest transition-all shadow-xl shadow-gray-200 mt-4">

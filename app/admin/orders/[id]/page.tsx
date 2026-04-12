@@ -49,13 +49,13 @@ export default function OrderDetailsPage({ params }: { params: Promise<{ id: str
         }
     };
 
-    if (isLoading) return <div className="p-12 flex justify-center"><Loader2 className="animate-spin text-gray-400" /></div>;
-    if (error || !order) return <div className="p-12 text-center text-red-500">{error || "Not found"}</div>;
+    if (isLoading) return <div className="p-6 md:p-12 flex justify-center"><Loader2 className="animate-spin text-gray-400" /></div>;
+    if (error || !order) return <div className="p-6 md:p-12 text-center text-red-500">{error || "Not found"}</div>;
 
     const shipping = order.shipping_details?.[0]; // Assuming one shipping detail per order
 
     return (
-        <div className="max-w-5xl mx-auto space-y-6">
+        <div className="max-w-5xl mx-auto space-y-4 md:space-y-6">
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <Link href="/admin/orders" className="p-2 -ml-2 text-gray-400 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100">
@@ -109,7 +109,7 @@ export default function OrderDetailsPage({ params }: { params: Promise<{ id: str
                         </div>
                         <ul className="divide-y divide-gray-200">
                             {order.order_items?.map((item: any) => (
-                                <li key={item.id} className="p-6 flex items-center justify-between">
+                                <li key={item.id} className="p-4 md:p-6 flex items-center justify-between">
                                     <div className="flex items-center gap-4">
                                         <div className="h-16 w-16 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
                                             {item.image_url ? (
@@ -135,7 +135,7 @@ export default function OrderDetailsPage({ params }: { params: Promise<{ id: str
                 {/* Right Column: Customer & Payment */}
                 <div className="space-y-6">
                     
-                    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6">
                         <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                             <Receipt size={20} className="text-gray-500" />
                             Payment Summary
@@ -163,7 +163,7 @@ export default function OrderDetailsPage({ params }: { params: Promise<{ id: str
                     </div>
 
                     {shipping && (
-                        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 md:p-6">
                             <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                                 <MapPin size={20} className="text-gray-500" />
                                 Shipping Details

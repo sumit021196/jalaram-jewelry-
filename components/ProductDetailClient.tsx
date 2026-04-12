@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useMemo, useState, useRef } from "react";
+import Image from "next/image";
 import { FALLBACK_IMG } from "@/utils/images";
 import Link from "next/link";
 import { useCart } from "./cart/CartContext";
-import { X, ChevronRight, ChevronLeft, Minus, Plus, Heart, Share2, ShieldCheck, Truck, RefreshCw, Star } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Minus, Plus, Heart, Share2, ShieldCheck, Truck, RefreshCw, Star, Video } from "lucide-react";
 import { fallback } from "@/utils/data";
 import { productService } from "@/services/product.service";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,7 +18,12 @@ type Product = {
   media_url?: string | null;
   rating?: number | null;
   stock?: number | null;
+  category_id?: string | null;
+  category_name?: string | null;
   description?: string | null;
+  is_bestseller?: boolean;
+  badges?: string[];
+  video_url?: string | null;
   variants?: Array<{
     id: string;
     color?: string | null;
@@ -27,10 +33,10 @@ type Product = {
   }>;
 };
 
-export default function ProductDetailClient({ id }: { id: string }) {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function ProductDetailClient({ id, initialProduct, initialRelatedProducts }: { id: string, initialProduct?: Product, initialRelatedProducts?: Product[] }) {
+  const [product, setProduct] = useState<Product | null>(initialProduct || null);
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>(initialRelatedProducts || []);
+  const [loading, setLoading] = useState(!initialProduct);
   const cart = useCart();
   const [wished, setWished] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -41,11 +47,27 @@ export default function ProductDetailClient({ id }: { id: string }) {
   const [quantity, setQuantity] = useState(1);
   const mainCtaRef = useRef<HTMLDivElement>(null);
 
-  const images = useMemo(() => {
-    if (!product) return [FALLBACK_IMG];
+  const media = useMemo(() => {
+    const items: { url: string; type: "image" | "video" }[] = [];
+    if (!product) return [{ url: FALLBACK_IMG, type: "image" as const }];
+
+    // Add video if it exists
+    if (product.video_url) {
+      items.push({ url: product.video_url, type: "video" });
+    }
+
+    // Add main image
     const mainImg = product.media_url || product.image_url;
-    // For demo/fallback purposes if there are no additional images
-    return [mainImg, mainImg, mainImg].filter((s): s is string => !!s);
+    if (mainImg) {
+      items.push({ url: mainImg, type: "image" });
+    }
+
+    // Fallback if no media at all
+    if (items.length === 0) {
+      items.push({ url: FALLBACK_IMG, type: "image" });
+    }
+
+    return items;
   }, [product]);
 
   const availableColors = useMemo(() => {
@@ -70,6 +92,13 @@ export default function ProductDetailClient({ id }: { id: string }) {
   }, [availableSizes, product?.name]);
 
   useEffect(() => {
+    if (initialProduct) {
+      setProduct(initialProduct);
+      setRelatedProducts(initialRelatedProducts || []);
+      setLoading(false);
+      return;
+    }
+
     const fetchOne = async () => {
       setLoading(true);
       try {
@@ -184,27 +213,45 @@ export default function ProductDetailClient({ id }: { id: string }) {
              {/* Mobile/Desktop Carousel */}
              <div className="relative aspect-[3/4] rounded-[40px] overflow-hidden group bg-muted/30 border border-foreground/5 shadow-2xl">
                 <AnimatePresence mode="wait">
-                  <motion.img 
+                  <motion.div
                     key={currentImageIndex}
-                    src={images[currentImageIndex]} 
-                    alt={product.name} 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="w-full h-full object-cover"
-                  />
+                    className="w-full h-full"
+                  >
+                    {media[currentImageIndex].type === "video" ? (
+                      <video
+                        src={media[currentImageIndex].url}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={media[currentImageIndex].url}
+                        alt={product.name}
+                        fill
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                        className="object-cover"
+                      />
+                    )}
+                  </motion.div>
                 </AnimatePresence>
                 
                 {/* Carousel Controls */}
                 <button 
-                  onClick={() => setCurrentImageIndex(prev => (prev > 0 ? prev - 1 : images.length - 1))}
+                  onClick={() => setCurrentImageIndex(prev => (prev > 0 ? prev - 1 : media.length - 1))}
                   className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button 
-                  onClick={() => setCurrentImageIndex(prev => (prev < images.length - 1 ? prev + 1 : 0))}
+                  onClick={() => setCurrentImageIndex(prev => (prev < media.length - 1 ? prev + 1 : 0))}
                   className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg"
                 >
                   <ChevronRight size={24} />
@@ -212,7 +259,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
 
                 {/* Indicators */}
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                  {images.map((_, i) => (
+                  {media.map((_, i) => (
                     <button 
                       key={i} 
                       onClick={() => setCurrentImageIndex(i)}
@@ -235,21 +282,36 @@ export default function ProductDetailClient({ id }: { id: string }) {
                 </div>
              </div>
 
-             {/* Thumbnail Grid - Desktop only hidden on small */}
-             <div className="hidden md:grid grid-cols-4 gap-4">
-                {images.map((s, i) => (
+              {/* Thumbnail Grid - Desktop only hidden on small */}
+              <div className="hidden md:grid grid-cols-4 gap-4">
+                {media.map((item, i) => (
                   <button 
                     key={i} 
                     onClick={() => setCurrentImageIndex(i)}
                     className={cn(
-                      "aspect-[3/4] rounded-2xl border-2 overflow-hidden transition-all",
+                      "aspect-[3/4] rounded-2xl border-2 overflow-hidden transition-all relative group",
                       currentImageIndex === i ? "border-foreground shadow-lg" : "border-transparent opacity-60 hover:opacity-100"
                     )}
                   >
-                    <img src={s} className="w-full h-full object-cover" />
+                    {item.type === "video" ? (
+                      <>
+                        <video src={item.url} className="w-full h-full object-cover" muted />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
+                          <Video size={16} className="text-white drop-shadow-md" />
+                        </div>
+                      </>
+                    ) : (
+                      <Image 
+                        src={item.url} 
+                        alt={`Thumbnail ${i}`}
+                        fill
+                        sizes="100px"
+                        className="object-cover" 
+                      />
+                    )}
                   </button>
                 ))}
-             </div>
+              </div>
           </div>
 
           {/* Right Side: Details */}
@@ -421,7 +483,15 @@ export default function ProductDetailClient({ id }: { id: string }) {
           >
             <div className="flex items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <img src={images[0]} className="w-12 h-16 object-cover rounded-xl" />
+                <div className="relative w-12 h-16 bg-muted rounded-xl overflow-hidden">
+                   <Image 
+                     src={media[0].url} 
+                     alt="Sticky Nav Item"
+                     fill
+                     sizes="48px"
+                     className="object-cover" 
+                   />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-[10px] font-black uppercase truncate max-w-[120px]">{product.name}</span>
                   <span className="text-sm font-black text-brand-red">₹{product.price}</span>

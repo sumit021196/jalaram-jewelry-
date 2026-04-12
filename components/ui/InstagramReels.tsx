@@ -34,22 +34,24 @@ export default function InstagramReels() {
     return (
         <section className="py-20 bg-background overflow-hidden border-t border-foreground/5">
             <div className="max-w-[1440px] mx-auto px-6 lg:px-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div>
-                    <h2 className="text-5xl md:text-7xl font-serif text-foreground leading-none">
+                <div className="text-center md:text-left">
+                    <h2 className="text-3xl md:text-7xl font-serif text-foreground leading-none">
                         The <span className="text-brand-accent italic">Exquisite</span> Feed
                     </h2>
-                    <p className="mt-4 text-muted-foreground font-medium flex items-center gap-2">
+                    <p className="mt-4 text-muted-foreground font-medium flex items-center justify-center md:justify-start gap-2">
                         <Instagram size={16} /> @shrijalaramjwellers • Our community is growing
                     </p>
                 </div>
-                <a 
-                    href="https://instagram.com/shrijalaramjwellers" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 font-serif uppercase tracking-widest text-sm text-foreground hover:text-brand-accent transition-colors"
-                >
-                    Explore More <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                </a>
+                <div className="flex justify-center md:justify-end">
+                    <a 
+                        href="https://instagram.com/shrijalaramjwellers" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-2 font-serif uppercase tracking-widest text-sm text-foreground hover:text-brand-accent transition-colors"
+                    >
+                        Explore More <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                    </a>
+                </div>
             </div>
 
             <div className="relative group">
@@ -74,6 +76,7 @@ export default function InstagramReels() {
                                     src={embedUrl}
                                     className="w-full h-full border-0"
                                     allowFullScreen
+                                    loading="lazy"
                                     scrolling="no"
                                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                                 ></iframe>

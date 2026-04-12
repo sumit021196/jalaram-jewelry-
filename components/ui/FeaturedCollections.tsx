@@ -34,7 +34,7 @@ export default function FeaturedCollections() {
     <section className="py-16 px-4 bg-white">
       <div className="max-w-[1440px] mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-heading font-medium text-foreground tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-heading font-medium text-foreground tracking-tight">
             Our Signature Collections
           </h2>
           <div className="w-16 h-[2px] bg-brand-accent mx-auto" />

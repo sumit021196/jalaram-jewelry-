@@ -39,22 +39,22 @@ export default function AdminBannersPage() {
     };
 
     return (
-        <div className="space-y-8 pb-12">
+        <div className="space-y-6 md:space-y-8 pb-12">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-3xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
-                        <ImageIcon className="text-blue-600" size={32} />
+                    <h1 className="text-2xl md:text-3xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
+                        <ImageIcon className="text-blue-600 w-6 h-6 md:w-8 md:h-8" />
                         Banners & Hero
                     </h1>
-                    <p className="mt-1 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <p className="mt-1 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">
                         Manage your homepage visual identity and promo displays
                     </p>
                 </div>
                 <Link
                     href="/admin/banners/new"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-black rounded-2xl transition-all shadow-lg hover:shadow-blue-200 active:scale-95 uppercase tracking-widest"
+                    className="inline-flex items-center gap-2.5 px-5 md:px-6 py-2.5 md:py-3 bg-blue-600 hover:bg-blue-700 text-white text-[10px] md:text-sm font-black rounded-xl md:rounded-2xl transition-all shadow-lg hover:shadow-blue-200 active:scale-95 uppercase tracking-widest"
                 >
-                    <Plus size={20} />
+                    <Plus size={18} />
                     New Banner
                 </Link>
             </div>
@@ -65,17 +65,17 @@ export default function AdminBannersPage() {
                     <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">Fetching visual assets...</p>
                 </div>
             ) : banners.length === 0 ? (
-                <div className="bg-white rounded-3xl border border-gray-100 p-20 text-center shadow-sm">
-                    <div className="mx-auto w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
-                        <ImageIcon className="text-gray-200" size={48} />
+                <div className="bg-white rounded-2xl md:rounded-3xl border border-gray-100 p-10 md:p-20 text-center shadow-sm">
+                    <div className="mx-auto w-16 h-16 md:w-24 md:h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                        <ImageIcon className="text-gray-200" size={32} />
                     </div>
-                    <h3 className="text-xl font-black text-gray-900 uppercase">Your storefront is empty</h3>
-                    <p className="text-sm font-medium text-gray-400 mt-2 max-w-sm mx-auto uppercase tracking-wide">Add bold banners to grab your customers attention and drive sales.</p>
+                    <h3 className="text-lg md:text-xl font-black text-gray-900 uppercase">Your storefront is empty</h3>
+                    <p className="text-[10px] md:text-sm font-medium text-gray-400 mt-2 max-w-sm mx-auto uppercase tracking-wide">Add bold banners to grab your customers attention and drive sales.</p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
                     {banners.map((banner) => (
-                        <div key={banner.id} className="group bg-white rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col relative">
+                        <div key={banner.id} className="group bg-white rounded-2xl md:rounded-3xl border border-gray-100 overflow-hidden hover:shadow-2xl transition-all duration-500 flex flex-col relative">
                             {/* Badge for Position */}
                              <div className="absolute top-4 left-4 z-10 flex gap-2">
                                 <span className={`px-2 py-1 text-[9px] font-black uppercase tracking-widest rounded-full backdrop-blur-md shadow-sm ${banner.is_active ? 'bg-green-500/80 text-white' : 'bg-gray-500/80 text-white'}`}>
@@ -96,7 +96,7 @@ export default function AdminBannersPage() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             </div>
 
-                            <div className="p-6 flex flex-col flex-1 justify-between gap-4">
+                            <div className="p-4 md:p-6 flex flex-col flex-1 justify-between gap-4">
                                 <div>
                                     <div className="flex items-center gap-2 mb-1">
                                         {banner.style_type === 'wtflex_bold' && <Zap size={14} className="text-blue-600" />}

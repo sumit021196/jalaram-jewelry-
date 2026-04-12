@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ShoppingBag } from "lucide-react";
 
@@ -41,19 +42,21 @@ export default function HeroSection({ banners = [] }: { banners?: any[] }) {
                     {/* Background Overlay - subtly darker for text readability */}
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-background via-black/20 to-transparent" />
                     
-                    <img 
+                    <Image 
                         src={b.image_url} 
                         alt={b.title || 'Hero'} 
+                        fill
+                        priority={idx === 0}
                         className="h-full w-full object-cover transition-transform duration-[10000ms] ease-out scale-100 animate-[zoom-out_10s_ease-out_forwards]"
                     />
 
                     {/* Content Overlay */}
                     <div className="absolute inset-0 z-20 flex items-center justify-center text-center px-6">
                         <div className="max-w-4xl w-full space-y-4 md:space-y-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                             <h1 className="text-4xl md:text-7xl lg:text-8xl font-heading font-normal text-white drop-shadow-lg leading-[1.1]">
+                             <h1 className="text-3xl md:text-7xl lg:text-8xl font-heading font-normal text-white drop-shadow-lg leading-[1.1]">
                                  {b.title}
                              </h1>
-                             <p className="text-sm md:text-xl text-white/90 font-light max-w-2xl mx-auto tracking-wide">
+                             <p className="text-xs md:text-xl text-white/90 font-light max-w-2xl mx-auto tracking-wide">
                                  {b.subtitle}
                              </p>
 

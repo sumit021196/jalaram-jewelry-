@@ -47,18 +47,41 @@ export class ProductService implements IProductService {
         }
     }
 
-    async getTrendingProducts(): Promise<Product[]> {
-        const products = await this.getProducts();
-        // Simulate trending logic safely using mock/fallback for now if needed.
-        // Assuming fallback data has trending items (mock logic)
-        return products.slice(0, 8); // Simplification for UI focus
+    async getTrendingProducts(limit: number = 8): Promise<Product[]> {
+        try {
+            const { data, error } = await this.supabase
+                .from("products")
+                .select("*, categories(name)")
+                .eq("is_trending", true)
+                .limit(limit);
+            
+            if (error || !data || data.length === 0) {
+                // If no trending marked, just get top products
+                const { data: fallbackData } = await this.supabase
+                    .from("products")
+                    .select("*, categories(name)")
+                    .limit(limit);
+                return this.mapSupabaseData(fallbackData || []);
+            }
+            return this.mapSupabaseData(data);
+        } catch {
+            return [];
+        }
     }
 
-    async getNewArrivals(): Promise<Product[]> {
-        const products = await this.getProducts();
-        return [...products]
-            .sort((a, b) => new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime())
-            .slice(0, 8);
+    async getNewArrivals(limit: number = 8): Promise<Product[]> {
+        try {
+            const { data, error } = await this.supabase
+                .from("products")
+                .select("*, categories(name)")
+                .order("created_at", { ascending: false })
+                .limit(limit);
+            
+            if (error || !data) return [];
+            return this.mapSupabaseData(data);
+        } catch {
+            return [];
+        }
     }
 
     async getCategories(): Promise<Category[]> {
@@ -140,6 +163,8 @@ export class ProductService implements IProductService {
             category_id: d.category_id || undefined,
             category_name: d.categories?.name || d.category || undefined,
             description: d.description || undefined,
+            video_url: d.video_url || undefined,
+            stock: d.stock || 0,
             variants: []
         }));
     }

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { FALLBACK_IMG } from "@/utils/images";
 import { useWishlist } from "./wishlist/WishlistContext";
@@ -18,10 +19,12 @@ export default function ProductCard({ product }: { product: Product }) {
       {/* Image Container */}
       <div className="relative aspect-square w-full bg-[#fdf7f8] overflow-hidden">
         <Link href={`/product/${product.id}`} className="block h-full w-full">
-          <img
+          <Image
             src={product.media_url || FALLBACK_IMG}
             alt={product.name}
-            className="h-full w-full object-cover transition-all duration-700 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+            className="object-cover transition-all duration-700 group-hover:scale-105"
             loading="lazy"
           />
         </Link>

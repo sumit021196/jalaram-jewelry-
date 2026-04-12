@@ -60,6 +60,23 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
         setImages(prev => [...prev, ...newImages]);
     };
 
+    const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setVideo({
+                file,
+                url: URL.createObjectURL(file)
+            });
+        }
+    };
+
+    const removeVideo = () => {
+        if (video) {
+            URL.revokeObjectURL(video.url);
+            setVideo(null);
+        }
+    };
+
     const removeImage = (index: number) => {
         setImages(prev => {
             const newArr = [...prev];
@@ -96,10 +113,10 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
     };
 
     return (
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Left Column: Details */}
-            <div className="lg:col-span-2 space-y-6">
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm space-y-6">
+            <div className="lg:col-span-2 space-y-4 md:space-y-6">
+                <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
                     <div className="flex items-center gap-3 border-b border-gray-50 pb-4">
                         <div className="w-10 h-10 bg-brand-red/10 rounded-xl flex items-center justify-center text-brand-red">
                             <Sparkles size={20} />
@@ -108,7 +125,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                     </div>
 
                     <div className="space-y-5">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
                             <div className="md:col-span-2">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Product Title</label>
                                 <input
@@ -117,7 +134,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                     required
                                     value={formData.name}
                                     onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
+                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
                                     placeholder="e.g. Traditional Gold Temple Necklace"
                                 />
                             </div>
@@ -128,7 +145,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                     name="category_id"
                                     value={formData.category_id}
                                     onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none appearance-none"
+                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none appearance-none"
                                 >
                                     <option value="">Select Category</option>
                                     {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -142,7 +159,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                     name="stock"
                                     value={formData.stock}
                                     onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
+                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
                                 />
                             </div>
                         </div>
@@ -154,14 +171,14 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 rows={4}
                                 value={formData.description}
                                 onChange={handleInputChange}
-                                className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none resize-none"
+                                className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none resize-none"
                                 placeholder="Describe the materials, plating, and design details..."
                             />
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm space-y-6">
+                <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
                     <div className="flex items-center gap-3 border-b border-gray-50 pb-4">
                         <div className="w-10 h-10 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent">
                             <Star size={20} />
@@ -169,7 +186,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                         <h2 className="text-lg font-bold text-gray-900 uppercase tracking-tight">Pricing & Labels</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                         <div className="lg:col-span-1">
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Sale Price (₹)</label>
                             <input
@@ -178,7 +195,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 required
                                 value={formData.price}
                                 onChange={handleInputChange}
-                                className="w-full bg-[#fdf2f4]/50 border-gray-100 rounded-2xl p-4 text-base font-bold text-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/5 transition-all outline-none"
+                                className="w-full bg-[#fdf2f4]/50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-base font-bold text-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/5 transition-all outline-none"
                             />
                         </div>
                         <div className="lg:col-span-1">
@@ -188,7 +205,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 name="mrp"
                                 value={formData.mrp}
                                 onChange={handleInputChange}
-                                className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-base font-medium text-gray-500 line-through focus:bg-white focus:ring-4 focus:ring-gray-200 transition-all outline-none"
+                                className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-base font-medium text-gray-500 line-through focus:bg-white focus:ring-4 focus:ring-gray-200 transition-all outline-none"
                             />
                         </div>
                         <div className="lg:col-span-1">
@@ -200,7 +217,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 max="5"
                                 value={formData.rating}
                                 onChange={handleInputChange}
-                                className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 focus:border-brand-accent transition-all outline-none"
+                                className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 focus:border-brand-accent transition-all outline-none"
                             />
                         </div>
                         <div className="lg:col-span-1">
@@ -210,7 +227,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 name="review_count"
                                 value={formData.review_count}
                                 onChange={handleInputChange}
-                                className="w-full bg-gray-50 border-gray-100 rounded-2xl p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 transition-all outline-none"
+                                className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 transition-all outline-none"
                             />
                         </div>
                     </div>
@@ -235,7 +252,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             ))}
                         </div>
                         
-                        <div className="flex items-center gap-3 mt-6 p-4 bg-gray-50 rounded-2xl border border-gray-100 w-fit">
+                        <div className="flex items-center gap-3 mt-4 md:mt-6 p-3.5 md:p-4 bg-gray-50 rounded-xl md:rounded-2xl border border-gray-100 w-fit">
                             <input
                                 type="checkbox"
                                 name="is_bestseller"
@@ -251,8 +268,8 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
             </div>
 
             {/* Right Column: Media & Actions */}
-            <div className="space-y-6">
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm space-y-6">
+            <div className="space-y-4 md:space-y-6">
+                <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
                     <div className="flex items-center gap-3 border-b border-gray-50 pb-4">
                         <div className="w-10 h-10 bg-brand-accent/10 rounded-xl flex items-center justify-center text-brand-accent">
                             <UploadCloud size={20} />
@@ -299,9 +316,65 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                              </div>
                         )}
                     </div>
+
+                    <div className="pt-6 border-t border-gray-50 space-y-4">
+                        <div className="flex items-center justify-between">
+                            <h3 className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Video Showcase</h3>
+                            {video && (
+                                <button 
+                                    type="button" 
+                                    onClick={removeVideo}
+                                    className="text-[10px] font-bold text-brand-red uppercase tracking-widest hover:underline"
+                                >
+                                    Remove Video
+                                </button>
+                            )}
+                        </div>
+                        
+                        {!video ? (
+                            <label className="relative group cursor-pointer block">
+                                <div className="w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-100 rounded-2xl flex flex-col items-center justify-center gap-2 group-hover:bg-brand-accent/5 group-hover:border-brand-accent/20 transition-all overflow-hidden p-4 text-center">
+                                    <Video className="text-gray-300 group-hover:text-brand-accent transition-colors" size={24} />
+                                    <div className="space-y-0.5">
+                                        <p className="text-[10px] font-bold text-gray-800 uppercase tracking-widest">Add Product Reel</p>
+                                        <p className="text-[8px] text-gray-400 uppercase font-medium">MP4, WEBM up to 50MB</p>
+                                    </div>
+                                </div>
+                                <input type="file" accept="video/*" onChange={handleVideoChange} className="hidden" />
+                            </label>
+                        ) : (
+                            <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-100 bg-black group shadow-lg">
+                                <video 
+                                    src={video.url} 
+                                    autoPlay 
+                                    muted 
+                                    loop 
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+                                    <div className="flex items-center gap-2">
+                                        <div className="p-1.5 bg-brand-red rounded-lg text-white">
+                                            <Video size={12} />
+                                        </div>
+                                        <span className="text-[9px] font-black text-white uppercase tracking-widest">Live Preview</span>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {isEditing && !video && initialData?.video_url && (
+                             <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-100 bg-black/5 flex items-center justify-center group">
+                                <video src={initialData.video_url} className="w-full h-full object-cover opacity-50" />
+                                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 gap-2">
+                                    <Video className="text-white/60" size={20} />
+                                    <span className="text-white text-[9px] font-bold uppercase tracking-widest">Existing Video</span>
+                                </div>
+                             </div>
+                        )}
+                    </div>
                 </div>
 
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm space-y-6">
+                <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
                     {error && (
                         <div className="p-4 bg-brand-red/5 border border-brand-red/10 rounded-2xl text-brand-red text-xs font-bold uppercase tracking-wide">
                             {error}
@@ -327,7 +400,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             type="submit"
                             disabled={loading}
                             className={cn(
-                                "w-full py-5 rounded-[1.25rem] font-bold text-xs uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-3",
+                                "w-full py-4 md:py-5 rounded-xl md:rounded-[1.25rem] font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-3",
                                 loading
                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                                     : "bg-brand-red text-white hover:bg-brand-red/90 hover:scale-[1.02] active:scale-[0.98] shadow-brand-red/20"

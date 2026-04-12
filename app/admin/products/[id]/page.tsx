@@ -53,16 +53,16 @@ export default function EditProductPage() {
     );
 
     return (
-        <div className="max-w-6xl mx-auto space-y-10 pb-20">
+        <div className="max-w-6xl mx-auto space-y-6 md:space-y-10 pb-20">
             <div className="flex flex-col gap-2">
                 <Link href="/admin/products" className="flex items-center gap-2 text-[10px] font-bold text-gray-400 hover:text-brand-red uppercase tracking-[0.2em] w-fit transition-colors">
                     <ArrowLeft size={14} />
                     Back to Inventory
                 </Link>
-                <h1 className="text-4xl font-black text-gray-900 uppercase tracking-tighter mt-4">
+                <h1 className="text-2xl md:text-4xl font-black text-gray-900 uppercase tracking-tighter mt-4">
                     Modify <span className="text-brand-red underline decoration-brand-accent/30 decoration-8 underline-offset-4 font-serif lowercase">Collection</span>
                 </h1>
-                <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1">Refining excellence for {product.name}</p>
+                <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.3em] mt-1">Refining excellence for {product.name}</p>
             </div>
 
             <ProductForm 

@@ -30,6 +30,7 @@ export interface Product {
     category_id?: string;
     category_name?: string;
     description?: string;
+    video_url?: string;
     variants?: ProductVariant[];
 }
 

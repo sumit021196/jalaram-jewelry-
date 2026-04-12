@@ -11,17 +11,20 @@ import { Product } from "@/types/product";
 
 import TrustBadges from "@/components/ui/TrustBadges";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60; // Cache for 60 seconds (ISR)
 
 export default async function Page() {
   const supabase = await createClient();
   const service = new ProductService(supabase);
   
-  const trending = await service.getTrendingProducts();
-  const newArrivals = await service.getNewArrivals();
-  const allProducts = await service.getProducts();
-  const categories = await service.getCategories();
-  const { data: banners } = await supabase.from('banners').select('*').eq('is_active', true);
+  // Fetch all home page data in parallel
+  const [trending, newArrivals, allProducts, categories, { data: banners }] = await Promise.all([
+    service.getTrendingProducts(4),
+    service.getNewArrivals(4),
+    service.getProducts(), // Default limit 64 is fine for the bottom snapshot, though we only show 8
+    service.getCategories(),
+    supabase.from('banners').select('*').eq('is_active', true)
+  ]);
   
   return (
     <main className="bg-white min-h-screen text-foreground transition-colors duration-500 overflow-x-hidden">

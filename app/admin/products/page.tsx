@@ -50,52 +50,52 @@ export default function AdminProductsPage() {
     };
 
     return (
-        <div className="space-y-10 pb-20">
+        <div className="space-y-6 md:space-y-10 pb-20">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                 <div>
-                    <h1 className="text-4xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
-                        <Package className="text-brand-red" size={32} />
+                    <h1 className="text-2xl md:text-4xl font-black tracking-tighter text-gray-900 uppercase flex items-center gap-3">
+                        <Package className="text-brand-red w-6 h-6 md:w-8 md:h-8" />
                         Inventory
                     </h1>
-                    <p className="mt-1 text-xs font-bold text-gray-400 uppercase tracking-[0.3em]">
+                    <p className="mt-1 text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.3em]">
                         Manage your luxury catalog
                     </p>
                 </div>
 
                 <Link
                     href="/admin/products/add"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-brand-red hover:bg-brand-red/90 text-white text-xs font-black rounded-2xl transition-all shadow-xl shadow-brand-red/20 active:scale-95 uppercase tracking-widest"
+                    className="inline-flex items-center gap-3 px-6 md:px-8 py-3.5 md:py-4 bg-brand-red hover:bg-brand-red/90 text-white text-[10px] md:text-xs font-black rounded-xl md:rounded-2xl transition-all shadow-xl shadow-brand-red/20 active:scale-95 uppercase tracking-widest"
                 >
-                    <Plus size={18} />
+                    <Plus size={16} />
                     New Creation
                 </Link>
             </div>
 
-            <div className="bg-white rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
+            <div className="bg-white rounded-3xl md:rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
                 {loading ? (
-                    <div className="flex flex-col items-center justify-center p-32 gap-4">
-                        <Loader2 className="animate-spin text-brand-red" size={40} />
+                    <div className="flex flex-col items-center justify-center p-16 md:p-32 gap-4">
+                        <Loader2 className="animate-spin text-brand-red" size={32} />
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Fetching Collection...</p>
                     </div>
                 ) : products.length === 0 ? (
-                    <div className="p-32 text-center">
-                        <div className="mx-auto w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
-                            <Package size={48} className="text-gray-200" />
+                    <div className="p-16 md:p-32 text-center">
+                        <div className="mx-auto w-16 h-16 md:w-24 md:h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                            <Package size={32} className="text-gray-200" />
                         </div>
-                        <p className="text-xl font-black text-gray-900 uppercase tracking-tight">The Vault is Empty</p>
-                        <p className="mt-2 text-sm text-gray-400 uppercase font-bold tracking-wide">Start by adding your first masterpiece.</p>
+                        <p className="text-lg md:text-xl font-black text-gray-900 uppercase tracking-tight">The Vault is Empty</p>
+                        <p className="mt-2 text-[10px] md:text-sm text-gray-400 uppercase font-bold tracking-wide">Start by adding your first masterpiece.</p>
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="min-w-full">
                             <thead>
                                 <tr className="bg-gray-50/50 border-b border-gray-100">
-                                    <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Product</th>
-                                    <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Category</th>
-                                    <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Pricing</th>
-                                    <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Stock</th>
-                                    <th className="px-8 py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
-                                    <th className="px-8 py-5 text-right text-[10px] font-black text-gray-400 uppercase tracking-widest">Actions</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Product</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Category</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Pricing</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Stock</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-left text-[10px] font-black text-gray-400 uppercase tracking-widest">Status</th>
+                                    <th className="px-5 md:px-8 py-4 md:py-5 text-right text-[10px] font-black text-gray-400 uppercase tracking-widest">Actions</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
@@ -103,14 +103,14 @@ export default function AdminProductsPage() {
                                     const discount = product.mrp ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
                                     return (
                                         <tr key={product.id} className="group hover:bg-[#fdf2f4]/30 transition-all duration-300">
-                                            <td className="px-8 py-6">
+                                            <td className="px-5 md:px-8 py-4 md:py-6">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="relative h-14 w-14 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
+                                                    <div className="relative h-12 w-12 md:h-14 md:w-14 flex-shrink-0 rounded-xl md:rounded-2xl overflow-hidden bg-gray-50 border border-gray-100">
                                                         {product.media_url ? (
                                                             <img className="h-full w-full object-cover transition-transform group-hover:scale-110" src={product.media_url} alt={product.name} />
                                                         ) : (
                                                             <div className="h-full w-full flex items-center justify-center text-gray-300">
-                                                                <Package size={24} />
+                                                                <Package size={20} />
                                                             </div>
                                                         )}
                                                         {product.is_bestseller && (
@@ -131,12 +131,12 @@ export default function AdminProductsPage() {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="px-8 py-6">
+                                            <td className="px-5 md:px-8 py-4 md:py-6">
                                                 <span className="px-3 py-1.5 text-[10px] font-black uppercase tracking-widest rounded-lg bg-gray-50 text-gray-500 border border-gray-100">
                                                     {product.category_name || "Loose"}
                                                 </span>
                                             </td>
-                                            <td className="px-8 py-6">
+                                            <td className="px-5 md:px-8 py-4 md:py-6">
                                                 <div className="flex flex-col">
                                                     <span className="text-sm font-black text-gray-900">₹{product.price.toLocaleString()}</span>
                                                     {product.mrp && (
@@ -147,7 +147,7 @@ export default function AdminProductsPage() {
                                                     )}
                                                 </div>
                                             </td>
-                                            <td className="px-8 py-6">
+                                            <td className="px-5 md:px-8 py-4 md:py-6">
                                                 <div className="relative w-24">
                                                     <input 
                                                         type="number" 
@@ -165,7 +165,7 @@ export default function AdminProductsPage() {
                                                     )}
                                                 </div>
                                             </td>
-                                            <td className="px-8 py-6">
+                                            <td className="px-5 md:px-8 py-4 md:py-6">
                                                 {product.stock && product.stock > 0 ? (
                                                     <div className="flex items-center gap-2">
                                                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
@@ -178,7 +178,7 @@ export default function AdminProductsPage() {
                                                     </div>
                                                 )}
                                             </td>
-                                            <td className="px-8 py-6 text-right">
+                                            <td className="px-5 md:px-8 py-4 md:py-6 text-right">
                                                 <div className="flex items-center justify-end gap-2">
                                                     <Link 
                                                         href={`/admin/products/${product.id}`}
