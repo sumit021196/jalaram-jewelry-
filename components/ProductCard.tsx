@@ -71,23 +71,23 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Info Section */}
-      <div className="p-3 flex flex-col gap-1">
+      <div className="p-2 md:p-3 flex flex-col gap-0.5 md:gap-1">
         <Link href={`/product/${product.id}`} className="block w-full">
-          <h3 className="text-[13px] font-medium text-gray-800 line-clamp-1 group-hover:text-brand-red transition-colors">
+          <h3 className="text-[11px] md:text-[13px] font-medium text-gray-800 line-clamp-1 group-hover:text-brand-red transition-colors">
             {product.name}
           </h3>
           
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-sm font-bold text-gray-900">
+          <div className="flex items-center gap-1.5 md:gap-2 mt-0.5">
+            <span className="text-[12px] md:text-sm font-bold text-gray-900">
               ₹{product.price.toLocaleString("en-IN")}
             </span>
             {product.mrp && product.mrp > product.price && (
               <>
-                <span className="text-[11px] text-gray-400 line-through">
+                <span className="text-[9px] md:text-[11px] text-gray-400 line-through">
                   ₹{product.mrp.toLocaleString("en-IN")}
                 </span>
-                <span className="text-[11px] font-bold text-green-600">
-                  ({discount}% OFF)
+                <span className="text-[9px] md:text-[11px] font-bold text-green-600">
+                  {discount}% OFF
                 </span>
               </>
             )}
@@ -105,9 +105,9 @@ export default function ProductCard({ product }: { product: Product }) {
               image: product.media_url || FALLBACK_IMG,
             });
           }}
-          className="w-full mt-2 py-2 bg-brand-red text-white text-[11px] font-bold uppercase tracking-widest rounded-lg shadow-sm active:scale-95 transition-all flex items-center justify-center gap-2"
+          className="w-full mt-1.5 py-1.5 md:py-2 bg-brand-red text-white text-[9px] md:text-[11px] font-bold uppercase tracking-widest rounded-lg shadow-sm active:scale-95 transition-all flex items-center justify-center gap-1.5"
         >
-          <ShoppingBag size={14} />
+          <ShoppingBag size={12} className="md:w-3.5 md:h-3.5" />
           Add to Cart
         </button>
       </div>

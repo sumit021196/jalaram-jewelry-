@@ -22,6 +22,7 @@ function getFriendlyErrorMessage(message: string) {
 }
 
 export async function signup(formData: FormData) {
+    let success = false;
     try {
         const supabase = await createClient();
 
@@ -46,16 +47,20 @@ export async function signup(formData: FormData) {
         if (error) {
             return { error: getFriendlyErrorMessage(error.message) };
         }
+        success = true;
     } catch (err: any) {
         return { error: "An unexpected error occurred during signup. Please try again." };
     }
 
-    revalidatePath("/", "layout");
-    redirect("/?signup=success");
+    if (success) {
+        revalidatePath("/", "layout");
+        redirect("/?signup=success");
+    }
 }
 
 export async function login(formData: FormData) {
     let redirectToAdmin = false;
+    let success = false;
     try {
         const supabase = await createClient();
 
@@ -87,15 +92,18 @@ export async function login(formData: FormData) {
                 redirectToAdmin = true;
             }
         }
+        success = true;
     } catch (err: any) {
         return { error: "An unexpected error occurred during login. Please try again." };
     }
 
-    revalidatePath("/", "layout");
-    if (redirectToAdmin) {
-        redirect("/admin");
-    } else {
-        redirect("/");
+    if (success) {
+        revalidatePath("/", "layout");
+        if (redirectToAdmin) {
+            redirect("/admin");
+        } else {
+            redirect("/?login=success");
+        }
     }
 }
 

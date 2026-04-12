@@ -67,27 +67,27 @@ export default function CartPage() {
 
   return (
     <main className="min-h-screen bg-[#fdf7f8]/50 pb-32 lg:pb-12">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-6 md:py-10">
 
         {/* ── Header ── */}
-        <div className="flex items-center justify-between mb-10 px-1">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-3xl md:text-4xl font-heading font-medium text-gray-900 tracking-tight">Your Shopping Bag</h1>
-            <p className="text-[11px] font-bold text-gray-500 uppercase tracking-[0.2em]">{cart.items.length} Items Selected</p>
+        <div className="flex items-center justify-between mb-6 md:mb-10 px-1">
+          <div className="flex flex-col gap-0.5 md:gap-1">
+            <h1 className="text-2xl md:text-4xl font-heading font-medium text-gray-900 tracking-tight">Your Bag</h1>
+            <p className="text-[10px] md:text-[11px] font-bold text-gray-500 uppercase tracking-[0.2em]">{cart.items.length} Items</p>
           </div>
-          <Link href="/products" className="text-[10px] font-bold text-gray-400 hover:text-brand-red transition flex items-center gap-2 uppercase tracking-widest border border-gray-100 bg-white px-4 py-2 rounded-full shadow-sm">
-            <ArrowLeft size={14} />
-            <span>Continue Shopping</span>
+          <Link href="/products" className="text-[9px] md:text-[10px] font-bold text-gray-400 hover:text-brand-red transition flex items-center gap-1.5 md:gap-2 uppercase tracking-widest border border-gray-100 bg-white px-3 md:px-4 py-1.5 md:py-2 rounded-full shadow-sm">
+            <ArrowLeft size={12} className="md:w-3.5 md:h-3.5" />
+            <span>Continue</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6 md:gap-10 items-start">
 
           {/* ── Cart Items ── */}
-          <section className="space-y-4">
+          <section className="space-y-3 md:space-y-4">
             {cart.items.map((i) => (
-              <div key={`${i.id}-${i.variant_id || 'base'}-${i.size || 'none'}-${i.color || 'none'}`} className="group relative bg-white rounded-3xl p-4 flex gap-6 border border-gray-100 hover:shadow-xl hover:shadow-brand-red/5 transition-all duration-500">
-                <div className="relative h-32 w-28 flex-shrink-0 overflow-hidden rounded-2xl bg-[#fdf7f8] border border-gray-50">
+              <div key={`${i.id}-${i.variant_id || 'base'}-${i.size || 'none'}-${i.color || 'none'}`} className="group relative bg-white rounded-2xl md:rounded-3xl p-3 md:p-4 flex gap-4 md:gap-6 border border-gray-100 hover:shadow-xl hover:shadow-brand-red/5 transition-all duration-500">
+                <div className="relative h-24 md:h-32 w-20 md:w-28 flex-shrink-0 overflow-hidden rounded-xl md:rounded-2xl bg-[#fdf7f8] border border-gray-50">
                   <img
                     src={i.image || FALLBACK_IMG}
                     alt={i.name}
@@ -102,18 +102,17 @@ export default function CartPage() {
 
                 <div className="flex-1 flex flex-col py-1">
                   <div className="flex justify-between items-start gap-4">
-                    <div className="space-y-1">
-                      <h3 className="text-base font-bold text-gray-900 leading-tight pr-8">{i.name}</h3>
+                    <div className="space-y-0.5 md:space-y-1">
+                      <h3 className="text-sm md:text-base font-bold text-gray-900 leading-tight pr-8 line-clamp-1">{i.name}</h3>
                       {(i.size || i.color) && (
-                          <div className="flex items-center gap-2 mt-2">
-                              {i.size && <span className="text-[10px] font-bold text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">SIZE: {i.size}</span>}
-                              {i.color && <span className="text-[10px] font-bold text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">METAL: {i.color}</span>}
+                          <div className="flex items-center gap-2 mt-1 md:mt-2">
+                              {i.size && <span className="text-[8px] md:text-[10px] font-bold text-gray-500 bg-gray-50 px-1.5 md:px-2 py-0.5 rounded border border-gray-100">SIZE: {i.size}</span>}
+                              {i.color && <span className="text-[8px] md:text-[10px] font-bold text-gray-500 bg-gray-50 px-1.5 md:px-2 py-0.5 rounded border border-gray-100">METAL: {i.color}</span>}
                           </div>
                       )}
-                      <div className="flex items-center gap-3 mt-3">
-                        <span className="text-lg font-bold text-brand-red">₹{i.price.toLocaleString('en-IN')}</span>
-                        <span className="text-xs text-gray-400 line-through">₹{(i.price * 1.5).toLocaleString('en-IN')}</span>
-                        <span className="text-[10px] font-bold text-green-600">(33% OFF)</span>
+                      <div className="flex items-center gap-2 md:gap-3 mt-1.5 md:mt-3">
+                        <span className="text-base md:text-lg font-bold text-brand-red">₹{i.price.toLocaleString('en-IN')}</span>
+                        <span className="text-[10px] md:text-xs text-gray-400 line-through">₹{(i.price * 1.5).toLocaleString('en-IN')}</span>
                       </div>
                     </div>
                     <button

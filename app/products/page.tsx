@@ -50,10 +50,10 @@ export default function ProductList() {
 
   return (
     <main className="bg-background min-h-screen pb-16">
-      <div className="sticky top-16 z-40 bg-background/80 backdrop-blur-md border-b border-foreground/5 shadow-sm">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="no-scrollbar overflow-x-auto py-4">
-            <div className="flex gap-2.5">
+      <div className="sticky top-14 md:top-16 z-40 bg-background/80 backdrop-blur-md border-b border-foreground/5 shadow-sm">
+        <div className="mx-auto max-w-7xl px-3 md:px-4">
+          <div className="no-scrollbar overflow-x-auto py-2.5 md:py-4">
+            <div className="flex gap-2">
               <button
                 onClick={() => {
                   setActiveCatId("all");
@@ -86,7 +86,7 @@ export default function ProductList() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-3 md:px-4 py-6 md:py-8">
         {loadError ? (
           <div className="mb-6 rounded-xl border border-foreground/5 bg-muted/50 px-4 py-3 text-[10px] font-black uppercase tracking-widest text-foreground/40 flex items-center shadow-sm">
             <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
@@ -109,7 +109,7 @@ export default function ProductList() {
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 fade-in-up">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5 md:gap-8 fade-in-up">
                 {visible.map((p) => (
                   <ProductCard
                     key={p.id}

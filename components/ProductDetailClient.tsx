@@ -205,13 +205,13 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
 
   return (
     <div className="bg-background min-h-screen pb-24 md:pb-0">
-      <div className="mx-auto max-w-[1440px] px-6 lg:px-12 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-12 py-6 md:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 xl:gap-20">
           
           {/* Left Side: Images */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-4 md:space-y-6">
              {/* Mobile/Desktop Carousel */}
-             <div className="relative aspect-[3/4] rounded-[40px] overflow-hidden group bg-muted/30 border border-foreground/5 shadow-2xl">
+             <div className="relative aspect-[3/4] rounded-3xl md:rounded-[40px] overflow-hidden group bg-muted/30 border border-foreground/5 shadow-2xl">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentImageIndex}
@@ -258,7 +258,7 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                 </button>
 
                 {/* Indicators */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
+                <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
                   {media.map((_, i) => (
                     <button 
                       key={i} 
@@ -272,12 +272,12 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                 </div>
 
                 {/* Badges */}
-                <div className="absolute top-8 left-8 flex flex-col gap-2">
-                  <div className="bg-brand-accent text-white px-4 py-1.5 rounded-full text-[10px] font-medium uppercase tracking-widest shadow-xl">
+                <div className="absolute top-4 left-4 md:top-8 md:left-8 flex flex-col gap-1.5 md:gap-2">
+                  <div className="bg-brand-accent text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
                     LIMITED EDITION
                   </div>
-                  <div className="bg-foreground text-background px-4 py-1.5 rounded-full text-[10px] font-medium uppercase tracking-widest shadow-xl">
-                    New Collection
+                  <div className="bg-foreground text-background px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
+                    New Arrivals
                   </div>
                 </div>
              </div>
@@ -322,15 +322,15 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                  <ChevronRight size={10} />
                  <span className="text-[10px] font-medium uppercase tracking-widest text-foreground">{(product as any).category_name || "Jewellery"}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-foreground leading-tight mt-2">
+              <h1 className="text-2xl md:text-5xl font-serif font-bold tracking-tight text-foreground leading-tight mt-1 md:mt-2">
                 {product.name}
               </h1>
             </div>
 
             <div className="mt-8 flex flex-col gap-2">
-              <div className="flex items-center gap-4">
-                <span className="text-4xl font-serif font-bold text-brand-accent tracking-tight">₹{product.price.toLocaleString('en-IN')}</span>
-                <span className="text-xl text-muted-foreground line-through decoration-brand-accent/30 tracking-tight">₹{(product.price * 1.5).toLocaleString('en-IN')}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-2xl md:text-4xl font-serif font-bold text-brand-accent tracking-tight">₹{product.price.toLocaleString('en-IN')}</span>
+                <span className="text-base md:text-xl text-muted-foreground line-through decoration-brand-accent/30 tracking-tight">₹{(product.price * 1.5).toLocaleString('en-IN')}</span>
               </div>
               <div className="flex items-center gap-2">
                  <div className="flex gap-0.5">
@@ -355,8 +355,8 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                </div>
             </div>
 
-            <p className="mt-10 text-sm font-medium text-muted-foreground leading-relaxed">
-              {product.description ?? "A timeless masterpiece meticulously crafted with intricate detailing, embodying the elegance of traditional Indian heritage. This piece is designed to be cherished for generations."}
+            <p className="mt-6 md:mt-10 text-xs md:text-sm font-medium text-muted-foreground leading-relaxed">
+              {product.description ?? "A timeless masterpiece meticulously crafted with intricate detailing, embodying the elegance of traditional Indian heritage."}
             </p>
 
             {/* Variants */}
@@ -414,7 +414,7 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
             </div>
 
             {/* Quantity and CTA */}
-            <div className="mt-12 flex flex-col gap-6" ref={mainCtaRef}>
+            <div className="mt-8 md:mt-12 flex flex-col gap-4 md:gap-6" ref={mainCtaRef}>
               <div className="flex items-center gap-4">
                  <div className="flex items-center border-2 border-foreground/5 rounded-full px-2 py-1">
                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-3 hover:text-brand-accent transition-colors"><Minus size={16} /></button>
@@ -447,18 +447,18 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
             </div>
 
             {/* Features/Trust */}
-            <div className="mt-12 grid grid-cols-3 gap-4 py-8 border-y border-foreground/5">
-              <div className="flex flex-col items-center text-center gap-2">
-                <Truck size={20} className="text-brand-accent" />
-                <span className="text-[8px] font-black uppercase tracking-widest">Global Shipping</span>
+            <div className="mt-8 md:mt-12 grid grid-cols-3 gap-3 py-6 md:py-8 border-y border-foreground/5">
+              <div className="flex flex-col items-center text-center gap-1.5 md:gap-2">
+                <Truck size={18} className="text-brand-accent md:w-5 md:h-5" />
+                <span className="text-[7px] md:text-[8px] font-black uppercase tracking-widest">Global Ship</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-2">
-                <ShieldCheck size={20} className="text-brand-accent" />
-                <span className="text-[8px] font-black uppercase tracking-widest">Secure Payments</span>
+              <div className="flex flex-col items-center text-center gap-1.5 md:gap-2">
+                <ShieldCheck size={18} className="text-brand-accent md:w-5 md:h-5" />
+                <span className="text-[7px] md:text-[8px] font-black uppercase tracking-widest">Secure Pay</span>
               </div>
-              <div className="flex flex-col items-center text-center gap-2">
-                <RefreshCw size={20} className="text-brand-accent" />
-                <span className="text-[8px] font-black uppercase tracking-widest">7-Day Return</span>
+              <div className="flex flex-col items-center text-center gap-1.5 md:gap-2">
+                <RefreshCw size={18} className="text-brand-accent md:w-5 md:h-5" />
+                <span className="text-[7px] md:text-[8px] font-black uppercase tracking-widest">7-Day Return</span>
               </div>
             </div>
 
@@ -510,9 +510,9 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
 
       {/* Recommendations / Complete the Look */}
       {relatedProducts.length > 0 && (
-        <section className="mt-20 py-24 bg-muted/20 border-t border-foreground/5">
-          <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold tracking-tight mb-12">Complete the <span className="text-brand-accent italic">Look</span></h2>
+        <section className="mt-12 md:mt-20 py-12 md:py-24 bg-muted/20 border-t border-foreground/5">
+          <div className="mx-auto max-w-[1440px] px-4 md:px-6 lg:px-12">
+              <h2 className="text-2xl md:text-5xl font-serif font-bold tracking-tight mb-8 md:mb-12">Complete the <span className="text-brand-accent italic">Look</span></h2>
               <div className="flex gap-6 overflow-x-auto no-scrollbar pb-8">
                 {relatedProducts.map((p) => (
                   <Link key={p.id} href={`/product/${p.id}`} className="flex-none w-[280px] group">

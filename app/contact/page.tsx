@@ -10,17 +10,17 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="min-h-screen bg-black pt-32 pb-20 px-6">
+    <main className="min-h-screen bg-black pt-24 pb-12 px-4 md:pt-32 md:pb-20 md:px-6 text-white">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-6xl md:text-8xl font-black italic uppercase tracking-tighter text-white mb-12">Contact</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <h1 className="text-4xl md:text-8xl font-black italic uppercase tracking-tighter mb-8 md:mb-12">Contact</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <div>
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white mb-4">Email Us</h3>
-            <p className="text-lg text-white/60 italic">{contact.email}</p>
+            <h3 className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] mb-3 md:mb-4">Email Us</h3>
+            <p className="text-lg md:text-xl text-white/60 italic">{contact.email}</p>
           </div>
           <div>
-            <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white mb-4">Location</h3>
-            <p className="text-lg text-white/60 italic">{contact.address}</p>
+            <h3 className="text-[10px] md:text-sm font-black uppercase tracking-[0.3em] mb-3 md:mb-4">Location</h3>
+            <p className="text-lg md:text-xl text-white/60 italic">{contact.address}</p>
           </div>
         </div>
       </div>

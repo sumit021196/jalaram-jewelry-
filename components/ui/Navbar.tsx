@@ -29,6 +29,7 @@ import { logout } from "@/app/(auth)/auth.actions";
 import { User as UserType } from "@supabase/supabase-js";
 import Image from "next/image";
 import Ticker from "./Ticker";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
     { href: "/products", label: "Shop All" },
@@ -111,7 +112,7 @@ export default function Navbar() {
             <div className="fixed inset-x-0 top-0 z-[60]">
                 <Ticker />
                 <header
-                    className={`transition-all duration-300 bg-white border-b border-gray-100 ${isScrolled ? "h-auto py-2" : "h-auto py-3"}`}
+                    className={`transition-all duration-300 bg-white border-b border-gray-100 ${isScrolled ? "py-1.5" : "py-2.5"}`}
                 >
                     <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-12">
                         {/* Row 1: Logo & Icons */}
@@ -172,21 +173,79 @@ export default function Navbar() {
                             {/* Icons (Right) */}
                             <div className="flex items-center gap-0.5 sm:gap-2 flex-shrink-0">
                                 {/* Wishlist */}
-                                <Link href="/wishlist" className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group">
-                                    <Heart size={20} className="group-hover:scale-110 transition-transform" />
-                                    <span className="text-[9px] font-medium mt-1 hidden lg:block">Wishlist</span>
+                                <Link href="/wishlist" className="flex flex-col items-center px-1.5 py-1 text-gray-500 hover:text-brand-red transition-colors group">
+                                    <Heart size={18} className="group-hover:scale-110 transition-transform md:w-5 md:h-5" />
+                                    <span className="text-[8px] font-medium mt-0.5 hidden lg:block">Wishlist</span>
                                 </Link>
 
                                 {/* Account */}
-                                <div className="relative profile-container">
+                                <div className="relative profile-container group" onMouseEnter={() => setProfileOpen(true)} onMouseLeave={() => setProfileOpen(false)}>
                                     {user ? (
-                                        <button
-                                            onClick={() => setProfileOpen(!profileOpen)}
-                                            className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
-                                        >
-                                            <User size={20} className="group-hover:scale-110 transition-transform" />
-                                            <span className="text-[9px] font-medium mt-1 hidden lg:block">Profile</span>
-                                        </button>
+                                        <>
+                                            <Link
+                                                href={isAdmin ? "/admin" : "/profile"}
+                                                className="flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
+                                            >
+                                                <User size={20} className="group-hover:scale-110 transition-transform" />
+                                                <span className="text-[9px] font-medium mt-1 hidden lg:block">{isAdmin ? "Admin" : "Profile"}</span>
+                                            </Link>
+                                            
+                                            <AnimatePresence>
+                                                {profileOpen && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                                        className="absolute right-0 mt-0 w-56 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-[100] py-2 hidden md:block"
+                                                    >
+                                                        <div className="px-4 py-3 border-b border-gray-50 mb-2">
+                                                            <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-0.5">Welcome back</p>
+                                                            <p className="text-sm font-bold text-gray-900 truncate">{user.email || 'User'}</p>
+                                                        </div>
+                                                        
+                                                        {isAdmin && (
+                                                            <Link 
+                                                                href="/admin" 
+                                                                className="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-brand-red hover:bg-brand-red/5 transition-colors"
+                                                            >
+                                                                <LayoutDashboard size={18} />
+                                                                Admin Dashboard
+                                                            </Link>
+                                                        )}
+                                                        
+                                                        <Link 
+                                                            href="/profile" 
+                                                            className="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                                                        >
+                                                            <User size={18} />
+                                                            My Profile
+                                                        </Link>
+                                                        
+                                                        <Link 
+                                                            href="/orders" 
+                                                            className="flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
+                                                        >
+                                                            <Package size={18} />
+                                                            Order History
+                                                        </Link>
+                                                        
+                                                        <div className="h-px bg-gray-50 my-2" />
+                                                        
+                                                        <button 
+                                                            onClick={async () => {
+                                                                setProfileOpen(false);
+                                                                cart.clear();
+                                                                await logout();
+                                                            }}
+                                                            className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50 transition-colors text-left"
+                                                        >
+                                                            <LogOut size={18} />
+                                                            Sign Out
+                                                        </button>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </>
                                     ) : (
                                         <Link
                                             href="/login"
@@ -202,23 +261,23 @@ export default function Navbar() {
                                 <button
                                     type="button"
                                     onClick={() => cart.openCart()}
-                                    className="relative flex flex-col items-center p-2 text-gray-500 hover:text-brand-red transition-colors group"
+                                    className="relative flex flex-col items-center px-1.5 py-1 text-gray-500 hover:text-brand-red transition-colors group"
                                 >
-                                    <ShoppingBag size={20} className="group-hover:scale-110 transition-transform" />
+                                    <ShoppingBag size={18} className="group-hover:scale-110 transition-transform md:w-5 md:h-5" />
                                     {totalItems > 0 && (
-                                        <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-red text-[8px] font-bold text-white">
+                                        <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-brand-red text-[7px] font-bold text-white">
                                             {totalItems}
                                         </span>
                                     )}
-                                    <span className="text-[9px] font-medium mt-1 hidden lg:block">Cart</span>
+                                    <span className="text-[8px] font-medium mt-0.5 hidden lg:block">Cart</span>
                                 </button>
                             </div>
                         </div>
 
                         {/* Row 2: Mobile Search Bar (Permanent as Tanishq) */}
-                        <div className="mt-3 md:hidden">
+                        <div className="mt-2 md:hidden">
                             <div className="relative w-full">
-                                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
                                 <input
                                     type="text"
                                     value={searchQuery}
@@ -228,12 +287,12 @@ export default function Navbar() {
                                             router.push(`/products?search=${encodeURIComponent(searchQuery.trim())}`);
                                         }
                                     }}
-                                    placeholder="Search for jewellery..."
-                                    className="w-full bg-gray-50 border border-gray-100 rounded-lg py-2.5 pl-10 pr-16 text-xs outline-none focus:bg-white focus:border-gray-200 transition-all font-medium"
+                                    placeholder="Search jewellery..."
+                                    className="w-full bg-gray-50 border border-gray-100 rounded-full py-1.5 pl-9 pr-14 text-[11px] outline-none focus:bg-white focus:border-gray-200 transition-all font-medium"
                                 />
-                                <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-3">
-                                    <Camera size={14} className="text-gray-400" />
-                                    <Mic size={14} className="text-gray-400" />
+                                <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2.5">
+                                    <Camera size={12} className="text-gray-400" />
+                                    <Mic size={12} className="text-gray-400" />
                                 </div>
                             </div>
                         </div>
@@ -274,6 +333,9 @@ export default function Navbar() {
                                 </Link>
                             ))}
                              <div className="pt-4 mt-4 border-t border-gray-50 space-y-4">
+                                {isAdmin && (
+                                    <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-brand-red uppercase tracking-widest hover:text-brand-red">Admin Dashboard</Link>
+                                )}
                                 <Link href="/profile" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">My Account</Link>
                                 <Link href="/wishlist" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">Wishlist</Link>
                                 <Link href="/stores" onClick={() => setMobileMenuOpen(false)} className="block text-sm font-bold text-gray-400 uppercase tracking-widest hover:text-brand-red">Store Locator</Link>

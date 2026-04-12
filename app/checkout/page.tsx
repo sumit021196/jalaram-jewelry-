@@ -160,20 +160,20 @@ export default function CheckoutPage() {
   if (!isMounted || cart.items.length === 0) return null;
 
   return (
-    <main className="min-h-screen bg-zinc-50/30 pb-32 pt-24 lg:pt-32">
+    <main className="min-h-screen bg-zinc-50/30 pb-24 pt-20 md:pt-32">
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
-          <Link href="/cart" className="p-2 -ml-2 text-zinc-400 hover:text-zinc-900 transition-colors">
-            <ArrowLeft size={20} />
+        <div className="flex items-center gap-2 md:gap-4 mb-4 md:mb-8">
+          <Link href="/cart" className="p-1.5 -ml-1 text-zinc-400 hover:text-zinc-900 transition-colors">
+            <ArrowLeft size={18} className="md:w-5 md:h-5" />
           </Link>
-          <h1 className="text-2xl font-black text-zinc-900 tracking-tight">Checkout</h1>
+          <h1 className="text-xl md:text-2xl font-black text-zinc-900 tracking-tight">Checkout</h1>
         </div>
 
-        <div className="bg-white rounded-[2rem] border border-zinc-100 p-6 sm:p-10 shadow-sm mb-6">
-          <h2 className="text-lg font-bold text-zinc-900 mb-6 flex items-center gap-2">
+        <div className="bg-white rounded-2xl md:rounded-[2rem] border border-zinc-100 p-4 md:p-10 shadow-sm mb-4">
+          <h2 className="text-base md:text-lg font-bold text-zinc-900 mb-4 md:mb-6 flex items-center gap-2">
             Shipping Details
           </h2>
 
@@ -185,18 +185,18 @@ export default function CheckoutPage() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full rounded-2xl border border-zinc-100 bg-zinc-50/50 px-4 py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
-                    placeholder="John Doe"
+                    className="w-full rounded-xl md:rounded-2xl border border-zinc-100 bg-zinc-50/50 px-3.5 md:px-4 py-3 md:py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
+                    placeholder="Full Name"
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400 mb-2 ml-1">Phone Number *</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400 mb-1.5 md:mb-2 ml-1">Phone Number *</label>
                   <input
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full rounded-2xl border border-zinc-100 bg-zinc-50/50 px-4 py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
-                    placeholder="10-digit mobile number"
+                    className="w-full rounded-xl md:rounded-2xl border border-zinc-100 bg-zinc-50/50 px-3.5 md:px-4 py-3 md:py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
+                    placeholder="10-digit mobile"
                   />
                 </div>
             </div>
@@ -210,42 +210,42 @@ export default function CheckoutPage() {
                       maxLength={6}
                       value={pincode}
                       onChange={(e) => handlePincodeChange(e.target.value.replace(/\D/g, ''))}
-                      className={`w-full rounded-2xl border ${pincodeError ? 'border-red-200 bg-red-50/30' : 'border-zinc-100 bg-zinc-50/50'} px-4 py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all`}
+                      className={`w-full rounded-xl md:rounded-2xl border ${pincodeError ? 'border-red-200 bg-red-50/30' : 'border-zinc-100 bg-zinc-50/50'} px-3.5 md:px-4 py-3 md:py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all`}
                       placeholder="110001"
                     />
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                    <div className="absolute right-3.5 md:right-4 top-1/2 -translate-y-1/2">
                       {isCheckingPincode ? (
-                        <Loader2 size={16} className="animate-spin text-zinc-400" />
+                        <Loader2 size={14} className="animate-spin text-zinc-400" />
                       ) : shippingInfo?.serviceable ? (
-                        <ShieldCheck size={16} className="text-emerald-500" />
+                        <ShieldCheck size={14} className="text-emerald-500" />
                       ) : pincode.length === 6 ? (
-                        <AlertCircle size={16} className="text-red-500" />
+                        <AlertCircle size={14} className="text-red-500" />
                       ) : (
-                        <MapPin size={16} className="text-zinc-300" />
+                        <MapPin size={14} className="text-zinc-300" />
                       )}
                     </div>
                   </div>
                   {pincodeError && (
-                    <p className="text-[11px] font-bold text-red-500 mt-2 ml-1 uppercase tracking-wider flex items-center gap-1">
-                      <AlertCircle size={12} />
+                    <p className="text-[10px] md:text-[11px] font-bold text-red-500 mt-1.5 md:mt-2 ml-1 uppercase tracking-wider flex items-center gap-1">
+                      <AlertCircle size={10} className="md:w-3 md:h-3" />
                       {pincodeError}
                     </p>
                   )}
                   {shippingInfo?.serviceable && (
-                    <p className="text-[11px] font-bold text-emerald-600 mt-2 ml-1 uppercase tracking-wider flex items-center gap-1.5">
-                      <Truck size={12} />
+                    <p className="text-[10px] md:text-[11px] font-bold text-emerald-600 mt-1.5 md:mt-2 ml-1 uppercase tracking-wider flex items-center gap-1.5">
+                      <Truck size={10} className="md:w-3 md:h-3" />
                       ~{shippingInfo.estimated_delivery}
                     </p>
                   )}
                 </div>
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400 mb-2 ml-1">Address *</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-400 mb-1.5 md:mb-2 ml-1">Address *</label>
                   <input
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="w-full rounded-2xl border border-zinc-100 bg-zinc-50/50 px-4 py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
-                    placeholder="House no., Building, Street, Area"
+                    className="w-full rounded-xl md:rounded-2xl border border-zinc-100 bg-zinc-50/50 px-3.5 md:px-4 py-3 md:py-3.5 text-sm font-medium focus:ring-2 focus:ring-zinc-900/5 outline-none transition-all"
+                    placeholder="House no., Street, Area"
                   />
                 </div>
             </div>
@@ -253,8 +253,8 @@ export default function CheckoutPage() {
         </div>
 
         {/* Order Summary */}
-        <div className="bg-white rounded-[2rem] border border-zinc-100 p-6 sm:p-10 shadow-sm">
-          <h2 className="text-lg font-bold text-zinc-900 mb-6">Payment Summary</h2>
+        <div className="bg-white rounded-2xl md:rounded-[2rem] border border-zinc-100 p-4 md:p-10 shadow-sm">
+          <h2 className="text-base md:text-lg font-bold text-zinc-900 mb-4 md:mb-6">Payment Summary</h2>
           
           <div className="space-y-4 mb-6">
              <div className="flex justify-between items-center text-sm font-medium text-zinc-500">
