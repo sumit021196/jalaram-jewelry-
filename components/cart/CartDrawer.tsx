@@ -2,7 +2,7 @@
 
 import { useCart } from "./CartContext";
 import { FALLBACK_IMG } from "@/utils/images";
-import { ShoppingBag, X, Trash2, Plus, Minus, Ticket, CheckCircle2 } from "lucide-react";
+import { ShoppingBag, X, Trash2, Plus, Minus, Ticket, CheckCircle2, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -209,6 +209,11 @@ export default function CartDrawer() {
                             )}
                         </div>
 
+                        {/* Coupon Section in Drawer */}
+                        {items.length > 0 && (
+                            <DrawerCouponSection cart={cart} />
+                        )}
+
                         {/* Footer */}
                         {items.length > 0 && (
                             <div className="border-t border-gray-100 bg-white p-6 space-y-4 shadow-[0_-10px_20px_rgba(0,0,0,0.02)]">
@@ -248,5 +253,78 @@ export default function CartDrawer() {
                 </div>
             )}
         </AnimatePresence>
+    );
+}
+
+function DrawerCouponSection({ cart }: { cart: any }) {
+    const [input, setInput] = useState(cart.coupon || "");
+    const [isApplying, setIsApplying] = useState(false);
+
+    useEffect(() => {
+        if (!cart.coupon) setInput("");
+        else setInput(cart.coupon);
+    }, [cart.coupon]);
+
+    return (
+        <div className="px-6 py-4 border-t border-gray-50 bg-[#fdf7f8]/30">
+            <label className="block text-[9px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">Promo Code</label>
+            <div className="flex gap-2">
+                <div className="relative flex-1">
+                    <input 
+                        type="text"
+                        placeholder="ENTER CODE"
+                        className="w-full bg-white border border-gray-100 rounded-xl px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider outline-none focus:border-brand-red transition-all"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value.toUpperCase())}
+                        onKeyDown={async (e) => {
+                            if (e.key === 'Enter' && !cart.coupon && input) {
+                                setIsApplying(true);
+                                try {
+                                    const res = await cart.applyCoupon(input);
+                                    if (!res.success) alert(res.message);
+                                } catch (err) {
+                                    alert("Error applying coupon");
+                                } finally {
+                                    setIsApplying(false);
+                                }
+                            }
+                        }}
+                        disabled={!!cart.coupon || isApplying}
+                    />
+                    {cart.coupon && (
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-600">
+                            <CheckCircle2 size={14} />
+                        </div>
+                    )}
+                </div>
+                {cart.coupon ? (
+                    <button 
+                        onClick={() => cart.removeCoupon()}
+                        className="px-3 text-[9px] font-black uppercase tracking-widest text-brand-red border border-brand-red/10 rounded-xl hover:bg-brand-red/5 transition-all"
+                    >
+                        Remove
+                    </button>
+                ) : (
+                    <button 
+                        onClick={async () => {
+                            if (!input || isApplying) return;
+                            setIsApplying(true);
+                            try {
+                                const res = await cart.applyCoupon(input);
+                                if (!res.success) alert(res.message);
+                            } catch (err) {
+                                alert("Error applying coupon");
+                            } finally {
+                                setIsApplying(false);
+                            }
+                        }}
+                        disabled={!input || isApplying}
+                        className="px-4 py-2.5 bg-gray-900 text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-black transition-all flex items-center justify-center min-w-[70px]"
+                    >
+                        {isApplying ? <Loader2 size={12} className="animate-spin" /> : "Apply"}
+                    </button>
+                )}
+            </div>
+        </div>
     );
 }

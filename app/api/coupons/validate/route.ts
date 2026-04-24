@@ -18,13 +18,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ 
             success: true, 
-            coupon: {
-                id: coupon.id,
-                code: coupon.code,
-                discount_type: coupon.discount_type,
-                discount_value: Number(coupon.discount_value),
-                min_order_value: Number(coupon.min_order_value)
-            }
+            coupon: coupon
         });
 
     } catch (err: any) {

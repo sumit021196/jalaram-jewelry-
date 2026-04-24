@@ -18,12 +18,14 @@ type Product = {
   media_url?: string | null;
   rating?: number | null;
   stock?: number | null;
-  category_id?: string | null;
-  category_name?: string | null;
+  mrp?: number | null;
+  review_count?: number | null;
+  badges?: string[] | null;
+  material_care?: string | null;
+  shipping_returns?: string | null;
   description?: string | null;
-  is_bestseller?: boolean;
-  badges?: string[];
   video_url?: string | null;
+  images?: string[];
   variants?: Array<{
     id: string;
     color?: string | null;
@@ -33,7 +35,7 @@ type Product = {
   }>;
 };
 
-export default function ProductDetailClient({ id, initialProduct, initialRelatedProducts }: { id: string, initialProduct?: Product, initialRelatedProducts?: Product[] }) {
+export default function ProductDetailClient({ id, initialProduct, initialRelatedProducts, initialCoupons }: { id: string, initialProduct?: Product, initialRelatedProducts?: Product[], initialCoupons?: any[] }) {
   const [product, setProduct] = useState<Product | null>(initialProduct || null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>(initialRelatedProducts || []);
   const [loading, setLoading] = useState(!initialProduct);
@@ -45,6 +47,7 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showStickyBar, setShowStickyBar] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [coupons, setCoupons] = useState<any[]>(initialCoupons || []);
   const mainCtaRef = useRef<HTMLDivElement>(null);
 
   const media = useMemo(() => {
@@ -60,6 +63,15 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
     const mainImg = product.media_url || product.image_url;
     if (mainImg) {
       items.push({ url: mainImg, type: "image" });
+    }
+
+    // Add additional images
+    if (product.images && product.images.length > 0) {
+      product.images.forEach(img => {
+        if (img !== mainImg) {
+          items.push({ url: img, type: "image" });
+        }
+      });
     }
 
     // Fallback if no media at all
@@ -96,34 +108,40 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
       setProduct(initialProduct);
       setRelatedProducts(initialRelatedProducts || []);
       setLoading(false);
-      return;
-    }
+    } else {
+      const fetchOne = async () => {
+        setLoading(true);
+        try {
+          const data = await productService.getProductById(id);
+          if (!data) throw new Error("Not found");
+          setProduct(data as unknown as Product);
 
-    const fetchOne = async () => {
-      setLoading(true);
-      try {
-        const data = await productService.getProductById(id);
-        if (!data) throw new Error("Not found");
-        setProduct(data as unknown as Product);
-
-        // Fetch related products after product is loaded
-        const related = await productService.getRelatedProducts(id, (data as any).category_id);
-        setRelatedProducts(related as unknown as Product[]);
-      } catch {
-        const fallbackItem = fallback.find((i) => String(i.id) === String(id));
-        if (fallbackItem) {
-          setProduct(fallbackItem as unknown as Product);
-          // Set some related products from fallback for UX if db fails
-          setRelatedProducts(fallback.filter(i => String(i.id) !== String(id)).slice(0, 4) as unknown as Product[]);
-        } else {
-          setProduct(null);
+          // Fetch related products after product is loaded
+          const related = await productService.getRelatedProducts(id, (data as any).category_id);
+          setRelatedProducts(related as unknown as Product[]);
+        } catch {
+          const fallbackItem = fallback.find((i) => String(i.id) === String(id));
+          if (fallbackItem) {
+            setProduct(fallbackItem as unknown as Product);
+            // Set some related products from fallback for UX if db fails
+            setRelatedProducts(fallback.filter(i => String(i.id) !== String(id)).slice(0, 4) as unknown as Product[]);
+          } else {
+            setProduct(null);
+          }
+        } finally {
+          setLoading(false);
         }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchOne();
-  }, [id]);
+      };
+      fetchOne();
+    }
+  }, [id, initialProduct, initialRelatedProducts]);
+
+  // Refresh coupons if ID changes (fallback if server hydration misses)
+  useEffect(() => {
+    if (!initialCoupons) {
+      productService.getActiveCoupons().then(setCoupons);
+    }
+  }, [id, initialCoupons]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -165,8 +183,9 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
   };
 
   const src = product?.media_url || product?.image_url || "";
-  const rating = product?.rating ?? 4.2;
-  const stock = product?.stock ?? 12;
+  const rating = product?.rating ?? 4.5;
+  const stock = product?.stock ?? 10;
+  const reviewCount = product?.review_count ?? 0;
 
   if (loading) {
     return (
@@ -231,13 +250,9 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <Image
-                        src={media[currentImageIndex].url}
-                        alt={product.name}
-                        fill
-                        priority
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                        className="object-cover"
+                      <Magnify 
+                        src={media[currentImageIndex].url} 
+                        alt={product.name} 
                       />
                     )}
                   </motion.div>
@@ -271,14 +286,27 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
                   ))}
                 </div>
 
-                {/* Badges */}
+                {/* Badges from Database */}
                 <div className="absolute top-4 left-4 md:top-8 md:left-8 flex flex-col gap-1.5 md:gap-2">
-                  <div className="bg-brand-accent text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
-                    LIMITED EDITION
-                  </div>
-                  <div className="bg-foreground text-background px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
-                    New Arrivals
-                  </div>
+                  {product.badges && product.badges.length > 0 ? (
+                    product.badges.map((badge, idx) => (
+                      <div key={idx} className={cn(
+                        "px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl",
+                        idx === 0 ? "bg-brand-accent text-white" : "bg-foreground text-background"
+                      )}>
+                        {badge}
+                      </div>
+                    ))
+                  ) : (
+                    <>
+                      <div className="bg-brand-accent text-white px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
+                        Handcrafted
+                      </div>
+                      <div className="bg-foreground text-background px-3 py-1 md:px-4 md:py-1.5 rounded-full text-[8px] md:text-[10px] font-medium uppercase tracking-widest shadow-xl">
+                        Premium Quality
+                      </div>
+                    </>
+                  )}
                 </div>
              </div>
 
@@ -330,30 +358,35 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
             <div className="mt-8 flex flex-col gap-2">
               <div className="flex items-center gap-3">
                 <span className="text-2xl md:text-4xl font-serif font-bold text-brand-accent tracking-tight">₹{product.price.toLocaleString('en-IN')}</span>
-                <span className="text-base md:text-xl text-muted-foreground line-through decoration-brand-accent/30 tracking-tight">₹{(product.price * 1.5).toLocaleString('en-IN')}</span>
+                {product.mrp && Number(product.mrp) > Number(product.price) && (
+                  <span className="text-base md:text-xl text-muted-foreground line-through decoration-brand-accent decoration-2 tracking-tight">₹{product.mrp.toLocaleString('en-IN')}</span>
+                )}
               </div>
               <div className="flex items-center gap-2">
                  <div className="flex gap-0.5">
-                   {[1,2,3,4,5].map(i => <Star key={i} size={14} className={i <= rating ? "fill-brand-accent text-brand-accent" : "text-foreground/10"} />)}
+                   {[1,2,3,4,5].map(i => <Star key={i} size={14} className={i <= Math.floor(rating) ? "fill-brand-accent text-brand-accent" : "text-foreground/10"} />)}
                  </div>
-                 <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">(480+ Verified Reviews)</span>
+                 <span className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">({reviewCount}+ Verified Reviews)</span>
               </div>
             </div>
 
-            {/* Available Offers */}
-            <div className="mt-8">
-               <h3 className="text-[10px] font-serif font-bold uppercase tracking-widest text-foreground/40 mb-4">Exclusive Member Perks</h3>
-               <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
-                  <div className="flex-none w-[200px] p-5 rounded-3xl border-2 border-emerald-500/10 bg-emerald-500/5 space-y-2">
-                     <span className="text-[10px] font-bold uppercase text-emerald-600">FESTIVE10</span>
-                     <p className="text-[9px] font-medium text-emerald-800 uppercase tracking-widest">10% instant discount on all prepaid masterpieces.</p>
-                  </div>
-                  <div className="flex-none w-[200px] p-5 rounded-3xl border-2 border-brand-accent/10 bg-brand-accent/5 space-y-2">
-                     <span className="text-[10px] font-bold uppercase text-brand-accent">GLOW1000</span>
-                     <p className="text-[9px] font-medium text-brand-accent uppercase tracking-widest">Flat ₹1,000 off on festive orders above ₹4,999.</p>
-                  </div>
-               </div>
-            </div>
+            {/* Available Offers from Database */}
+            {coupons.length > 0 && (
+              <div className="mt-8">
+                 <h3 className="text-[10px] font-serif font-bold uppercase tracking-widest text-foreground/40 mb-4">Exclusive Member Perks</h3>
+                 <div className="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                    {coupons.map((coupon) => (
+                      <div key={coupon.id} className="flex-none w-[200px] p-5 rounded-3xl border-2 border-brand-accent/10 bg-brand-accent/5 space-y-2">
+                         <span className="text-[10px] font-bold uppercase text-brand-accent">{coupon.code}</span>
+                         <p className="text-[9px] font-medium text-brand-accent uppercase tracking-widest">
+                            {coupon.discount_type === 'percentage' ? `${coupon.discount_value}% off` : `Flat ₹${coupon.discount_value} off`} 
+                            {coupon.min_order_value > 0 ? ` on orders above ₹${coupon.min_order_value}` : ''}.
+                         </p>
+                      </div>
+                    ))}
+                 </div>
+              </div>
+            )}
 
             <p className="mt-6 md:mt-10 text-xs md:text-sm font-medium text-muted-foreground leading-relaxed">
               {product.description ?? "A timeless masterpiece meticulously crafted with intricate detailing, embodying the elegance of traditional Indian heritage."}
@@ -462,11 +495,11 @@ export default function ProductDetailClient({ id, initialProduct, initialRelated
               </div>
             </div>
 
-            {/* Details Accordion */}
+            {/* Details Accordion from Database */}
             <div className="mt-8 space-y-4">
               <Disclosure title="Artisan Description" content={product.description || "A timeless masterpiece."} defaultOpen />
-              <Disclosure title="Material & Care" content="Premium artificial gold plating with high-quality AD/Kundan stones. Keep away from water and chemicals. Store in a cool, dry place." />
-              <Disclosure title="Shipping & Returns" content="Dispatched within 24-48 hours. Easy returns up to 7 days." />
+              <Disclosure title="Material & Care" content={product.material_care || "Premium artificial gold plating with high-quality AD/Kundan stones. Keep away from water and chemicals. Store in a cool, dry place."} />
+              <Disclosure title="Shipping & Returns" content={product.shipping_returns || "Dispatched within 24-48 hours. Easy returns up to 7 days."} />
             </div>
           </div>
         </div>

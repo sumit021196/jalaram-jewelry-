@@ -31,6 +31,9 @@ export interface Product {
     category_name?: string;
     description?: string;
     video_url?: string;
+    material_care?: string;
+    shipping_returns?: string;
+    images?: string[];
     variants?: ProductVariant[];
 }
 

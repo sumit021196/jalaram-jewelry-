@@ -16,7 +16,7 @@ export class ProductService implements IProductService {
         try {
             const { data, error } = await this.supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select("*, categories(name), product_variants(*), product_images(*)")
                 .limit(64);
             if (error) {
                 console.error("Supabase Error (getProducts):", error);
@@ -36,7 +36,7 @@ export class ProductService implements IProductService {
         try {
             const { data, error } = await this.supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select("*, categories(name), product_variants(*), product_images(*)")
                 .eq("id", id)
                 .single();
             if (error || !data) throw error;
@@ -51,7 +51,7 @@ export class ProductService implements IProductService {
         try {
             const { data, error } = await this.supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select("*, categories(name), product_variants(*), product_images(*)")
                 .eq("is_trending", true)
                 .limit(limit);
             
@@ -73,7 +73,7 @@ export class ProductService implements IProductService {
         try {
             const { data, error } = await this.supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select("*, categories(name), product_variants(*), product_images(*)")
                 .order("created_at", { ascending: false })
                 .limit(limit);
             
@@ -130,7 +130,7 @@ export class ProductService implements IProductService {
         try {
             let query = this.supabase
                 .from("products")
-                .select("*, categories(name)")
+                .select("*, categories(name), product_variants(*), product_images(*)")
                 .neq("id", excludeId)
                 .limit(4);
             
@@ -143,6 +143,20 @@ export class ProductService implements IProductService {
             return this.mapSupabaseData(data);
         } catch (e) {
             console.error("Catch Error (getRelatedProducts):", e);
+            return [];
+        }
+    }
+
+    async getActiveCoupons(): Promise<any[]> {
+        try {
+            const { data, error } = await this.supabase
+                .from("coupons")
+                .select("*")
+                .eq("active", true)
+                .order("created_at", { ascending: false });
+            if (error) throw error;
+            return data || [];
+        } catch {
             return [];
         }
     }
@@ -164,8 +178,11 @@ export class ProductService implements IProductService {
             category_name: d.categories?.name || d.category || undefined,
             description: d.description || undefined,
             video_url: d.video_url || undefined,
+            material_care: d.material_care || undefined,
+            shipping_returns: d.shipping_returns || undefined,
             stock: d.stock || 0,
-            variants: []
+            variants: d.product_variants || [],
+            images: d.product_images?.map((img: any) => img.image_url) || []
         }));
     }
 }

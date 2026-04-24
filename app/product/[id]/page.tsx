@@ -19,5 +19,15 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   // Fetch related products based on category
   const relatedProducts = await service.getRelatedProducts(id, product.category_id);
 
-  return <ProductDetailClient id={id} initialProduct={product as any} initialRelatedProducts={relatedProducts as any} />;
+  // Fetch active coupons
+  const coupons = await service.getActiveCoupons();
+
+  return (
+    <ProductDetailClient 
+      id={id} 
+      initialProduct={product as any} 
+      initialRelatedProducts={relatedProducts as any} 
+      initialCoupons={coupons}
+    />
+  );
 }

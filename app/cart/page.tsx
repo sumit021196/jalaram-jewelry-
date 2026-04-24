@@ -14,11 +14,10 @@ export default function CartPage() {
   const [isCheckingPincode, setIsCheckingPincode] = useState(false);
   const [pincodeError, setPincodeError] = useState("");
   const [couponCode, setCouponCode] = useState("");
-  const [appliedCoupon, setAppliedCoupon] = useState<any>(null);
   const [isApplyingCoupon, setIsApplyingCoupon] = useState(false);
   const [couponError, setCouponError] = useState("");
 
-  const total = useMemo(() => cart.items.reduce((s, i) => s + i.price * i.qty, 0), [cart.items]);
+  const subtotal = useMemo(() => cart.items.reduce((s, i) => s + i.price * i.qty, 0), [cart.items]);
 
 
 
@@ -211,19 +210,19 @@ export default function CartPage() {
                           setCouponCode(e.target.value.toUpperCase());
                           setCouponError("");
                         }}
-                        disabled={!!appliedCoupon}
+                        disabled={!!cart.activeCoupon}
                         className={`w-full rounded-xl border ${couponError ? 'border-brand-red/20 bg-brand-red/5' : 'border-gray-100 bg-[#fdf7f8]/50'} px-4 py-3 text-xs font-bold focus:bg-white focus:border-brand-red outline-none transition-all uppercase placeholder:text-gray-300`}
                       />
-                      {appliedCoupon && (
+                      {cart.activeCoupon && (
                         <div className="absolute right-3 top-1/2 -translate-y-1/2 text-green-600">
                           <CheckCircle2 size={16} />
                         </div>
                       )}
                     </div>
-                    {appliedCoupon ? (
+                    {cart.activeCoupon ? (
                       <button 
                         onClick={() => {
-                          setAppliedCoupon(null);
+                          cart.removeCoupon();
                           setCouponCode("");
                         }}
                         className="px-4 py-3 text-[10px] font-black uppercase tracking-widest text-brand-red border border-brand-red/20 rounded-xl hover:bg-brand-red/5 transition-all"
@@ -237,18 +236,12 @@ export default function CartPage() {
                           setIsApplyingCoupon(true);
                           setCouponError("");
                           try {
-                            const res = await fetch('/api/coupons/validate', {
-                              method: 'POST',
-                              body: JSON.stringify({ code: couponCode, cartTotal: total })
-                            });
-                            const data = await res.json();
-                            if (data.success) {
-                              setAppliedCoupon(data.coupon);
-                            } else {
-                              setCouponError(data.error);
+                            const res = await cart.applyCoupon(couponCode);
+                            if (!res.success) {
+                              setCouponError(res.message);
                             }
                           } catch (err) {
-                            setCouponError("Failed to apply coupon");
+                            setCouponError("An unexpected error occurred");
                           } finally {
                             setIsApplyingCoupon(false);
                           }
@@ -266,7 +259,7 @@ export default function CartPage() {
                       {couponError}
                     </p>
                   )}
-                  {appliedCoupon && (
+                  {cart.activeCoupon && (
                     <p className="text-[10px] font-bold text-green-600 mt-2 ml-1 uppercase tracking-tight flex items-center gap-1.5">
                       <CheckCircle2 size={12} />
                       Awesome! Coupon applied successfully
@@ -278,7 +271,7 @@ export default function CartPage() {
               <div className="space-y-4 pt-8 border-t border-gray-50">
                 <div className="flex justify-between items-center text-sm font-bold text-gray-400">
                   <span className="uppercase tracking-widest text-[10px]">Bag Total</span>
-                  <span className="text-gray-900">₹{total.toLocaleString()}</span>
+                  <span className="text-gray-900">₹{subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm font-bold text-gray-400">
                   <span className="uppercase tracking-widest text-[10px]">Shipping</span>
@@ -289,35 +282,25 @@ export default function CartPage() {
                   )}
                 </div>
 
-                {appliedCoupon && (
+                {cart.activeCoupon && (
                   <div className="flex justify-between items-center text-sm font-bold text-green-600 animate-in slide-in-from-right-4">
                     <span className="uppercase tracking-widest text-[10px] flex items-center gap-1">
-                       Coupon <span className="text-green-700">({appliedCoupon.code})</span>
+                       Coupon <span className="text-green-700">({cart.activeCoupon.code})</span>
                     </span>
-                    <span>- ₹{
-                      appliedCoupon.discount_type === 'fixed' 
-                        ? appliedCoupon.discount_value.toLocaleString()
-                        : Math.floor(total * (appliedCoupon.discount_value / 100)).toLocaleString()
-                    }</span>
+                    <span>- ₹{cart.discount.toLocaleString()}</span>
                   </div>
                 )}
 
                 <div className="flex justify-between items-center pt-5 border-t border-gray-100 group">
                   <span className="text-xl font-heading font-medium text-gray-900">Grand Total</span>
                   <span className="text-2xl font-bold text-brand-red tracking-tight">
-                    ₹{Math.max(0, total - (
-                      appliedCoupon 
-                        ? (appliedCoupon.discount_type === 'fixed' 
-                            ? appliedCoupon.discount_value 
-                            : total * (appliedCoupon.discount_value / 100))
-                        : 0
-                    )).toLocaleString('en-IN')}
+                    ₹{Math.max(0, subtotal - cart.discount).toLocaleString('en-IN')}
                   </span>
                 </div>
 
                 <div className="bg-brand-red/5 p-3 rounded-xl text-center mt-4">
                     <p className="text-[10px] font-bold text-brand-red uppercase tracking-[0.1em]">
-                       Saving ₹{(total * 0.5).toLocaleString()} on this order
+                       Saving ₹{(subtotal * 0.5).toLocaleString()} on this order
                     </p>
                 </div>
 
@@ -362,7 +345,7 @@ export default function CartPage() {
         <div className="max-w-md mx-auto flex items-center gap-6">
           <div className="flex flex-col">
             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em] mb-1">Total Amount</span>
-            <span className="text-xl font-bold text-brand-red tracking-tight leading-none">₹{total.toLocaleString()}</span>
+            <span className="text-xl font-bold text-brand-red tracking-tight leading-none">₹{(subtotal - cart.discount).toLocaleString()}</span>
           </div>
           <Link
             href={shippingInfo?.serviceable ? "/checkout" : "#"}
