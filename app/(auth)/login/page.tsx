@@ -12,13 +12,27 @@ export default function LoginPage() {
     const { settings } = useSettings();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [isSuccess, setIsSuccess] = useState(false);
 
     async function handleSubmit(formData: FormData) {
         setLoading(true);
         setError(null);
-        const result = await login(formData);
-        if (result?.error) {
-            setError(result.error);
+        try {
+            const result = await login(formData);
+            if (result?.error) {
+                setError(result.error);
+                setLoading(false);
+            } else {
+                // If we reach here, it means the redirect hasn't happened yet
+                // (though redirect() usually throws, sometimes it takes a tick)
+                setIsSuccess(true);
+            }
+        } catch (err) {
+            // Next.js redirect throws an error, we should probably ignore it if it's a redirect
+            if (err instanceof Error && err.message === 'NEXT_REDIRECT') {
+                setIsSuccess(true);
+                return;
+            }
             setLoading(false);
         }
     }
@@ -100,7 +114,17 @@ export default function LoginPage() {
                         className="w-full relative py-4 bg-black text-white text-[15px] font-bold rounded-2xl shadow-lg shadow-black/10 hover:shadow-black/20 hover:-translate-y-0.5 active:scale-[0.98] transition-all disabled:opacity-70 disabled:hover:translate-y-0 overflow-hidden group"
                     >
                         <AnimatePresence mode="wait">
-                            {loading ? (
+                            {isSuccess ? (
+                                <motion.div 
+                                    key="success"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    className="flex items-center justify-center text-green-400"
+                                >
+                                    <Sparkles className="mr-2 h-5 w-5 animate-pulse" />
+                                    <span className="font-outfit uppercase tracking-widest text-[13px]">Access Granted</span>
+                                </motion.div>
+                            ) : loading ? (
                                 <motion.div 
                                     key="loading"
                                     initial={{ opacity: 0, scale: 0.8 }}
@@ -108,7 +132,8 @@ export default function LoginPage() {
                                     exit={{ opacity: 0, scale: 0.8 }}
                                     className="flex items-center justify-center"
                                 >
-                                    <Loader2 className="animate-spin h-5 w-5" />
+                                    <Loader2 className="animate-spin h-5 w-5 mr-2" />
+                                    <span className="font-outfit uppercase tracking-widest text-[12px]">Verifying...</span>
                                 </motion.div>
                             ) : (
                                 <motion.div 

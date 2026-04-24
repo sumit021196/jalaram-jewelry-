@@ -71,7 +71,7 @@ export async function login(formData: FormData) {
             return { error: "Please provide both email and password." };
         }
 
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
@@ -80,7 +80,7 @@ export async function login(formData: FormData) {
             return { error: getFriendlyErrorMessage(error.message) };
         }
 
-        const { data: { user } } = await supabase.auth.getUser();
+        const user = data.user;
         if (user) {
             const { data: profile } = await supabase
                 .from("profiles")

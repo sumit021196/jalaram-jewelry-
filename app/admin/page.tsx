@@ -4,39 +4,23 @@ import { createClient } from "@/utils/supabase/server";
 export default async function AdminDashboardPage() {
     const supabase = await createClient();
 
-    // Fetch basic stats
-    const { data: rawRevenue } = await supabase
-        .from('orders')
-        .select('total_amount')
-        .in('status', ['paid', 'processing', 'shipped', 'delivered']);
-
+    // Fetch all data in parallel for maximum speed
+    const [
+        { data: rawRevenue },
+        { count: activeOrdersCount },
+        { count: productsCount },
+        { count: customersCount },
+        { data: recentOrders },
+        { data: recentProducts }
+    ] = await Promise.all([
+        supabase.from('orders').select('total_amount').in('status', ['paid', 'processing', 'shipped', 'delivered']),
+        supabase.from('orders').select('*', { count: 'exact', head: true }).in('status', ['paid', 'processing', 'shipped']),
+        supabase.from('products').select('*', { count: 'exact', head: true }),
+        supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('is_admin', false),
+        supabase.from('orders').select('id, customer_name, total_amount, status, created_at').order('created_at', { ascending: false }).limit(5),
+        supabase.from('products').select('id, name, stock, price, media_url').order('created_at', { ascending: false }).limit(5)
+    ]);
     const totalRevenue = rawRevenue?.reduce((sum, order) => sum + Number(order.total_amount), 0) || 0;
-
-    const { count: activeOrdersCount } = await supabase
-        .from('orders')
-        .select('*', { count: 'exact', head: true })
-        .in('status', ['paid', 'processing', 'shipped']);
-
-    const { count: productsCount } = await supabase
-        .from('products')
-        .select('*', { count: 'exact', head: true });
-
-    const { count: customersCount } = await supabase
-        .from('profiles')
-        .select('*', { count: 'exact', head: true })
-        .eq('is_admin', false);
-        
-    const { data: recentOrders } = await supabase
-        .from('orders')
-        .select('id, customer_name, total_amount, status, created_at')
-        .order('created_at', { ascending: false })
-        .limit(5);
-
-    const { data: recentProducts } = await supabase
-        .from('products')
-        .select('id, name, stock, price, media_url')
-        .order('created_at', { ascending: false })
-        .limit(5);
 
     return (
         <div className="space-y-6 md:space-y-10 pb-20">
