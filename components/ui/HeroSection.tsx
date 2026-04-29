@@ -47,6 +47,7 @@ export default function HeroSection({ banners = [] }: { banners?: any[] }) {
                         alt={b.title || 'Hero'} 
                         fill
                         priority={idx === 0}
+                        fetchPriority={idx === 0 ? "high" : "auto"}
                         className="h-full w-full object-cover transition-transform duration-[10000ms] ease-out scale-100 animate-[zoom-out_10s_ease-out_forwards]"
                     />
 

@@ -35,10 +35,10 @@ export interface Product {
 }
 
 export interface IProductService {
-    getProducts(): Promise<Product[]>;
+    getProducts(limit?: number): Promise<Product[]>;
     getProductById(id: string | number): Promise<Product | null>;
-    getTrendingProducts(): Promise<Product[]>;
-    getNewArrivals(): Promise<Product[]>;
+    getTrendingProducts(limit?: number): Promise<Product[]>;
+    getNewArrivals(limit?: number): Promise<Product[]>;
     getCategories(): Promise<Category[]>;
     createCategory(name: string, slug: string): Promise<Category | null>;
 }

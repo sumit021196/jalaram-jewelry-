@@ -21,7 +21,7 @@ export default async function Page() {
   const [trending, newArrivals, allProducts, categories, { data: banners }] = await Promise.all([
     service.getTrendingProducts(4),
     service.getNewArrivals(4),
-    service.getProducts(), // Default limit 64 is fine for the bottom snapshot, though we only show 8
+    service.getProducts(8), // Limit to 8 since we only show 8 on the homepage
     service.getCategories(),
     supabase.from('banners').select('*').eq('is_active', true)
   ]);
