@@ -1,0 +1,4651 @@
+
+> thedv27@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 1861ms
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /admin/products/add 404 in 2.0s (compile: -153836µs, proxy.ts: 2.0s, render: 160ms)
+○ Compiling /_not-found/page ...
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 79ms (compile: -12837µs, proxy.ts: 77ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 134ms (compile: -11415µs, proxy.ts: 132ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 69ms (compile: -10329µs, proxy.ts: 59ms, render: 20ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 91ms (compile: -11337µs, proxy.ts: 88ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -10877µs, proxy.ts: 83ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -9852µs, proxy.ts: 82ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 96ms (compile: -11752µs, proxy.ts: 94ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -15137µs, proxy.ts: 82ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 106ms (compile: -11295µs, proxy.ts: 104ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 91ms (compile: -10639µs, proxy.ts: 88ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -11054µs, proxy.ts: 59ms, render: 33ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 90ms (compile: -9441µs, proxy.ts: 88ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -10276µs, proxy.ts: 78ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -9696µs, proxy.ts: 79ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -10686µs, proxy.ts: 84ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -10478µs, proxy.ts: 76ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 104ms (compile: -10669µs, proxy.ts: 92ms, render: 23ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -9429µs, proxy.ts: 60ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -9367µs, proxy.ts: 64ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -9816µs, proxy.ts: 70ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -9421µs, proxy.ts: 60ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -9620µs, proxy.ts: 63ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -9494µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -9584µs, proxy.ts: 63ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -9568µs, proxy.ts: 65ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -9628µs, proxy.ts: 63ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -9389µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -9839µs, proxy.ts: 60ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -9305µs, proxy.ts: 60ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -9497µs, proxy.ts: 62ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -9257µs, proxy.ts: 55ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -9640µs, proxy.ts: 62ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -9562µs, proxy.ts: 68ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -9349µs, proxy.ts: 54ms, render: 28ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -10318µs, proxy.ts: 82ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -9371µs, proxy.ts: 69ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 73ms (compile: -9659µs, proxy.ts: 55ms, render: 27ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -10340µs, proxy.ts: 65ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -10796µs, proxy.ts: 82ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 82ms (compile: -9636µs, proxy.ts: 77ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -9380µs, proxy.ts: 70ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -10209µs, proxy.ts: 68ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -9832µs, proxy.ts: 68ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 88ms (compile: -10708µs, proxy.ts: 86ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 76ms (compile: -9834µs, proxy.ts: 74ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 92ms (compile: -11669µs, proxy.ts: 90ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 82ms (compile: -10952µs, proxy.ts: 80ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 92ms (compile: -9713µs, proxy.ts: 90ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -11025µs, proxy.ts: 79ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -9992µs, proxy.ts: 82ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 107ms (compile: -10441µs, proxy.ts: 102ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -10732µs, proxy.ts: 69ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 90ms (compile: -9685µs, proxy.ts: 88ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 79ms (compile: -10234µs, proxy.ts: 77ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 74ms (compile: -10880µs, proxy.ts: 60ms, render: 25ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -10914µs, proxy.ts: 83ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 79ms (compile: -9724µs, proxy.ts: 77ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -10018µs, proxy.ts: 79ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -8307µs, proxy.ts: 75ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -9188µs, proxy.ts: 65ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -8519µs, proxy.ts: 78ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -9046µs, proxy.ts: 75ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -10155µs, proxy.ts: 59ms, render: 36ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -8699µs, proxy.ts: 84ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -8979µs, proxy.ts: 76ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 82ms (compile: -10211µs, proxy.ts: 59ms, render: 33ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 89ms (compile: -8111µs, proxy.ts: 87ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 131ms (compile: -68602µs, proxy.ts: 128ms, render: 71ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -8925µs, proxy.ts: 75ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -9546µs, proxy.ts: 84ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -9045µs, proxy.ts: 69ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -8271µs, proxy.ts: 75ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 82ms (compile: -8978µs, proxy.ts: 80ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -8505µs, proxy.ts: 84ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -8323µs, proxy.ts: 79ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 79ms (compile: -11281µs, proxy.ts: 77ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 75ms (compile: -9251µs, proxy.ts: 73ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -9501µs, proxy.ts: 74ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -14044µs, proxy.ts: 63ms, render: 31ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 69ms (compile: -8306µs, proxy.ts: 67ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -10979µs, proxy.ts: 78ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -8997µs, proxy.ts: 79ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 90ms (compile: -9581µs, proxy.ts: 88ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -9217µs, proxy.ts: 68ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -8398µs, proxy.ts: 70ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 106ms (compile: -8763µs, proxy.ts: 104ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8410µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -8654µs, proxy.ts: 78ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -9488µs, proxy.ts: 74ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -8879µs, proxy.ts: 56ms, render: 23ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 95ms (compile: -8712µs, proxy.ts: 93ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -9640µs, proxy.ts: 83ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -10226µs, proxy.ts: 57ms, render: 31ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 90ms (compile: -8711µs, proxy.ts: 85ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 89ms (compile: -9848µs, proxy.ts: 87ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 112ms (compile: -11820µs, proxy.ts: 89ms, render: 35ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8335µs, proxy.ts: 54ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 69ms (compile: -8483µs, proxy.ts: 68ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8278µs, proxy.ts: 59ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8583µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8437µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8309µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -7986µs, proxy.ts: 59ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8252µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 59ms (compile: -8401µs, proxy.ts: 53ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8060µs, proxy.ts: 59ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8304µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8584µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8539µs, proxy.ts: 63ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8692µs, proxy.ts: 62ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -9255µs, proxy.ts: 56ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8863µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8905µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8970µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8107µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8686µs, proxy.ts: 63ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8507µs, proxy.ts: 59ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8421µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -9289µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8345µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 100ms (compile: -8584µs, proxy.ts: 98ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8348µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8286µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8828µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8378µs, proxy.ts: 54ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8485µs, proxy.ts: 63ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8292µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8091µs, proxy.ts: 54ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8123µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8264µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8197µs, proxy.ts: 55ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8719µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8104µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8567µs, proxy.ts: 53ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8775µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -8216µs, proxy.ts: 63ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8121µs, proxy.ts: 54ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8162µs, proxy.ts: 58ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8250µs, proxy.ts: 58ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8250µs, proxy.ts: 54ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8527µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -9110µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -9002µs, proxy.ts: 54ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -8600µs, proxy.ts: 61ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8202µs, proxy.ts: 60ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8020µs, proxy.ts: 53ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8567µs, proxy.ts: 63ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -9858µs, proxy.ts: 63ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8254µs, proxy.ts: 53ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8578µs, proxy.ts: 59ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -9146µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8251µs, proxy.ts: 55ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8441µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8542µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8354µs, proxy.ts: 53ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8305µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8300µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8291µs, proxy.ts: 54ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8207µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8603µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 73ms (compile: -8352µs, proxy.ts: 66ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8265µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8653µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8708µs, proxy.ts: 56ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -8710µs, proxy.ts: 63ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8615µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -9886µs, proxy.ts: 58ms, render: 29ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 83ms (compile: -8597µs, proxy.ts: 81ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -9524µs, proxy.ts: 79ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -9089µs, proxy.ts: 56ms, render: 34ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 87ms (compile: -8350µs, proxy.ts: 81ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 89ms (compile: -9969µs, proxy.ts: 86ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -9029µs, proxy.ts: 55ms, render: 31ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -8384µs, proxy.ts: 83ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -9166µs, proxy.ts: 84ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 76ms (compile: -8539µs, proxy.ts: 74ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 97ms (compile: -9131µs, proxy.ts: 95ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -9716µs, proxy.ts: 75ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -8311µs, proxy.ts: 84ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 89ms (compile: -9842µs, proxy.ts: 87ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 76ms (compile: -9600µs, proxy.ts: 73ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 101ms (compile: -9546µs, proxy.ts: 99ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 86ms (compile: -9605µs, proxy.ts: 84ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -9562µs, proxy.ts: 59ms, render: 29ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 88ms (compile: -8700µs, proxy.ts: 87ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -9526µs, proxy.ts: 82ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 82ms (compile: -9706µs, proxy.ts: 59ms, render: 33ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 83ms (compile: -8715µs, proxy.ts: 81ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -9026µs, proxy.ts: 79ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 83ms (compile: -9091µs, proxy.ts: 58ms, render: 34ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -8736µs, proxy.ts: 83ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 81ms (compile: -10117µs, proxy.ts: 79ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 88ms (compile: -10180µs, proxy.ts: 60ms, render: 38ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 87ms (compile: -8391µs, proxy.ts: 82ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 99ms (compile: -9780µs, proxy.ts: 96ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 77ms (compile: -9415µs, proxy.ts: 56ms, render: 30ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 100ms (compile: -10038µs, proxy.ts: 98ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 241ms (compile: -9269µs, proxy.ts: 239ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -9159µs, proxy.ts: 57ms, render: 30ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 92ms (compile: -8186µs, proxy.ts: 91ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 98ms (compile: -9710µs, proxy.ts: 96ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 608ms (compile: -9355µs, proxy.ts: 606ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8316µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8373µs, proxy.ts: 66ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8474µs, proxy.ts: 54ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8304µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 69ms (compile: -8536µs, proxy.ts: 67ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8233µs, proxy.ts: 53ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8088µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8029µs, proxy.ts: 58ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8053µs, proxy.ts: 53ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 60ms (compile: -8087µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8300µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8431µs, proxy.ts: 53ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8695µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8426µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -9346µs, proxy.ts: 55ms, render: 18ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -9263µs, proxy.ts: 63ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -8689µs, proxy.ts: 64ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8890µs, proxy.ts: 57ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 89ms (compile: -14142µs, proxy.ts: 86ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 69ms (compile: -8758µs, proxy.ts: 64ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -9039µs, proxy.ts: 57ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 74ms (compile: -9267µs, proxy.ts: 68ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8801µs, proxy.ts: 65ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 102ms (compile: -9506µs, proxy.ts: 60ms, render: 52ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -9040µs, proxy.ts: 65ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -9211µs, proxy.ts: 63ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8399µs, proxy.ts: 54ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -8391µs, proxy.ts: 61ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8320µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8887µs, proxy.ts: 57ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8018µs, proxy.ts: 61ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -8752µs, proxy.ts: 64ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8536µs, proxy.ts: 57ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -8766µs, proxy.ts: 66ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8189µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8632µs, proxy.ts: 53ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8644µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8606µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8262µs, proxy.ts: 54ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8282µs, proxy.ts: 62ms, render: 13ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -8655µs, proxy.ts: 62ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -8847µs, proxy.ts: 56ms, render: 18ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8453µs, proxy.ts: 62ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 78ms (compile: -9091µs, proxy.ts: 75ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8734µs, proxy.ts: 55ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -9414µs, proxy.ts: 64ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -9783µs, proxy.ts: 64ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -9529µs, proxy.ts: 57ms, render: 18ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -8551µs, proxy.ts: 70ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 80ms (compile: -8855µs, proxy.ts: 78ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8320µs, proxy.ts: 56ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -9373µs, proxy.ts: 70ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8471µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 1076ms (compile: -10721µs, proxy.ts: 1066ms, render: 21ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -9824µs, proxy.ts: 70ms, render: 12ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 130ms (compile: -17148µs, proxy.ts: 124ms, render: 24ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 196ms (compile: -23001µs, proxy.ts: 167ms, render: 52ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 118ms (compile: -35137µs, proxy.ts: 115ms, render: 39ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 84ms (compile: -12377µs, proxy.ts: 81ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 85ms (compile: -10512µs, proxy.ts: 59ms, render: 36ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 96ms (compile: -10766µs, proxy.ts: 91ms, render: 15ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 73ms (compile: -9026µs, proxy.ts: 72ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -8856µs, proxy.ts: 57ms, render: 18ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -8846µs, proxy.ts: 69ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 68ms (compile: -8444µs, proxy.ts: 63ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8179µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 70ms (compile: -8499µs, proxy.ts: 64ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8703µs, proxy.ts: 65ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8424µs, proxy.ts: 55ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8119µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -9171µs, proxy.ts: 61ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8078µs, proxy.ts: 54ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8189µs, proxy.ts: 62ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 72ms (compile: -8674µs, proxy.ts: 67ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8510µs, proxy.ts: 54ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8321µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 62ms (compile: -8158µs, proxy.ts: 60ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8990µs, proxy.ts: 55ms, render: 18ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 61ms (compile: -8014µs, proxy.ts: 59ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8706µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 63ms (compile: -8470µs, proxy.ts: 55ms, render: 16ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -9029µs, proxy.ts: 62ms, render: 11ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 67ms (compile: -8707µs, proxy.ts: 62ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 64ms (compile: -8813µs, proxy.ts: 56ms, render: 17ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 66ms (compile: -8159µs, proxy.ts: 65ms, render: 10ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 71ms (compile: -8423µs, proxy.ts: 65ms, render: 14ms)
+⨯ Error: Your project's URL and Key are required to create a Supabase client!
+
+Check your Supabase project's API settings to find these values
+
+https://supabase.com/dashboard/project/_/settings/api
+    at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+    at updateSession (utils/supabase/middleware.ts:19:38)
+    at proxy (proxy.ts:5:31)
+  17 |   });
+  18 |
+> 19 |   const supabase = createServerClient(
+     |                                      ^
+  20 |     supabaseUrl!,
+  21 |     supabaseKey!,
+  22 |     {
+ GET /api/settings 404 in 65ms (compile: -10738µs, proxy.ts: 57ms, render: 19ms)
