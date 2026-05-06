@@ -2,30 +2,27 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { productSchema } from "../product.schema";
 
-export async function createProductAction(formData: {
-    name: string;
-    price: number;
-    description?: string | null;
-    category?: string | null;
-    category_id?: string | null;
-    images?: File[];
-    video?: File | null;
-    variants?: string | null; 
-    mrp?: number | null;
-    badges?: string[];
-    is_bestseller?: boolean;
-    rating?: number;
-    review_count?: number;
-}) {
+export async function createProductAction(data: any) {
     try {
         const supabase = await createClient(true);
+
+        // Security check
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error("Unauthorized");
+
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+        if (!profile?.is_admin) throw new Error("Forbidden: Admin access required");
+
+        // Server-side validation
+        const validated = productSchema.parse(data);
 
         let finalVideoUrl = null;
         let finalImageUrls: string[] = [];
 
-        if (formData.video && formData.video.size > 0) {
-            const file = formData.video;
+        if (data.video && data.video.size > 0) {
+            const file = data.video;
             const fileExt = file.name.split('.').pop();
             const fileName = `vid_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
             const { error: uploadError } = await supabase.storage
@@ -37,8 +34,8 @@ export async function createProductAction(formData: {
             finalVideoUrl = urlData.publicUrl;
         }
 
-        if (formData.images && formData.images.length > 0) {
-            for (const file of formData.images) {
+        if (data.images && data.images.length > 0) {
+            for (const file of data.images) {
                 if (file.size > 0) {
                     const fileExt = file.name.split('.').pop();
                     const fileName = `img_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
@@ -58,20 +55,20 @@ export async function createProductAction(formData: {
         const { data: productData, error: dbError } = await supabase
             .from('products')
             .insert([{
-                name: formData.name,
-                slug: formData.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Math.random().toString(36).substring(7),
-                price: formData.price,
-                mrp: formData.mrp || null,
-                description: formData.description || null,
-                category_id: formData.category_id || null,
+                name: validated.name,
+                slug: validated.name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '-' + Math.random().toString(36).substring(7),
+                price: validated.price,
+                mrp: validated.mrp || null,
+                description: validated.description || null,
+                category_id: validated.category_id || null,
                 media_url: mainMediaUrl,
                 video_url: finalVideoUrl,
-                stock: 100, // Default for now
+                stock: validated.stock,
                 is_active: true,
-                rating: formData.rating || 4.5,
-                review_count: formData.review_count || 10,
-                badges: formData.badges || [],
-                is_bestseller: formData.is_bestseller || false
+                rating: validated.rating,
+                review_count: validated.review_count,
+                badges: validated.badges,
+                is_bestseller: validated.is_bestseller
             }])
             .select()
             .single();
@@ -89,23 +86,6 @@ export async function createProductAction(formData: {
             if (imgError) console.error("Error inserting multiple images:", imgError);
         }
 
-        if (formData.variants) {
-            try {
-                const parsedVariants = JSON.parse(formData.variants);
-                if (Array.isArray(parsedVariants) && parsedVariants.length > 0) {
-                    const variantInserts = parsedVariants.map((v: any) => ({
-                        product_id: productId,
-                        color: v.color || null,
-                        size: v.size || null,
-                        stock: Number(v.stock) || 0,
-                        sku: v.sku || null
-                    }));
-                    const { error: varError } = await supabase.from('product_variants').insert(variantInserts);
-                    if (varError) console.error("Error inserting variants:", varError);
-                }
-            } catch (jsonErr) {}
-        }
-
         revalidatePath("/admin/products");
         revalidatePath("/");
         revalidatePath("/products");
@@ -117,33 +97,33 @@ export async function createProductAction(formData: {
     }
 }
 
-export async function updateProductAction(id: string | number, formData: {
-    name: string;
-    price: number;
-    mrp?: number | null;
-    description?: string | null;
-    category_id?: string | null;
-    badges?: string[];
-    is_bestseller?: boolean;
-    rating?: number;
-    review_count?: number;
-    stock?: number;
-}) {
+export async function updateProductAction(id: string | number, data: any) {
     try {
         const supabase = await createClient(true);
+
+        // Security check
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error("Unauthorized");
+
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+        if (!profile?.is_admin) throw new Error("Forbidden: Admin access required");
+
+        // Server-side validation
+        const validated = productSchema.parse(data);
+
         const { error } = await supabase
             .from('products')
             .update({
-                name: formData.name,
-                price: formData.price,
-                mrp: formData.mrp || null,
-                description: formData.description || null,
-                category_id: formData.category_id || null,
-                badges: formData.badges || [],
-                is_bestseller: formData.is_bestseller || false,
-                rating: formData.rating || 4.5,
-                review_count: formData.review_count || 10,
-                stock: formData.stock ?? 10
+                name: validated.name,
+                price: validated.price,
+                mrp: validated.mrp || null,
+                description: validated.description || null,
+                category_id: validated.category_id || null,
+                badges: validated.badges,
+                is_bestseller: validated.is_bestseller,
+                rating: validated.rating,
+                review_count: validated.review_count,
+                stock: validated.stock
             })
             .eq('id', id);
 

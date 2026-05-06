@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { UploadCloud, CheckCircle2, ArrowLeft, Loader2, Plus, Trash2, Video, Star, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { UploadCloud, Loader2, Trash2, Video, Star, Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Category, Product } from "@/types/product";
 import { cn } from "@/utils/cn";
-import { FALLBACK_IMG } from "@/utils/images";
+import { productSchema, type ProductFormData } from "@/app/admin/products/product.schema";
+import { toast } from "sonner";
 
 const COMMON_BADGES = ['New Arrival', 'Best Seller', 'Trending', 'Limited Edition', 'Sale', 'Offer'];
 
@@ -17,38 +20,39 @@ interface ProductFormProps {
 
 export default function ProductForm({ initialData, categories, onSubmit, isEditing = false }: ProductFormProps) {
     const [loading, setLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState<string | null>(null);
-
-    const [formData, setFormData] = useState({
-        name: initialData?.name || "",
-        price: initialData?.price?.toString() || "",
-        mrp: initialData?.mrp?.toString() || "",
-        description: initialData?.description || "",
-        category_id: initialData?.category_id || "",
-        rating: initialData?.rating?.toString() || "4.5",
-        review_count: initialData?.review_count?.toString() || "24",
-        is_bestseller: initialData?.is_bestseller || false,
-        badges: initialData?.badges || [] as string[],
-        stock: initialData?.stock?.toString() || "100",
-    });
-
     const [images, setImages] = useState<{ file: File; url: string }[]>([]);
     const [video, setVideo] = useState<{ file: File; url: string } | null>(null);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value, type } = e.target as HTMLInputElement;
-        const val = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-        setFormData(prev => ({ ...prev, [name]: val }));
-    };
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        formState: { errors }
+    } = useForm<ProductFormData>({
+        resolver: zodResolver(productSchema),
+        defaultValues: {
+            name: initialData?.name || "",
+            price: initialData?.price || 0,
+            mrp: initialData?.mrp || null,
+            description: initialData?.description || "",
+            category_id: initialData?.category_id?.toString() || "",
+            rating: initialData?.rating || 4.5,
+            review_count: initialData?.review_count || 24,
+            is_bestseller: initialData?.is_bestseller || false,
+            badges: initialData?.badges || [],
+            stock: initialData?.stock || 100,
+        }
+    });
+
+    const selectedBadges = watch("badges");
 
     const toggleBadge = (badge: string) => {
-        setFormData(prev => ({
-            ...prev,
-            badges: prev.badges.includes(badge)
-                ? prev.badges.filter(b => b !== badge)
-                : [...prev.badges, badge]
-        }));
+        const current = selectedBadges;
+        const updated = current.includes(badge)
+            ? current.filter(b => b !== badge)
+            : [...current, badge];
+        setValue("badges", updated);
     };
 
     const handleImagesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,34 +90,33 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
         });
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError(null);
+    const onFormSubmit = async (data: ProductFormData) => {
         setLoading(true);
+        const toastId = toast.loading(isEditing ? "Updating product..." : "Launching product...");
 
         try {
             const result = await onSubmit({
-                ...formData,
-                price: Number(formData.price),
-                mrp: formData.mrp ? Number(formData.mrp) : null,
-                rating: Number(formData.rating),
-                review_count: Number(formData.review_count),
-                stock: Number(formData.stock),
+                ...data,
                 images: images.map(i => i.file),
                 video: video?.file || null
             });
 
             if (!result.success) throw new Error(result.error);
-            setSuccess(true);
+
+            toast.success(isEditing ? "Product updated!" : "Product launched!", { id: toastId });
+
+            if (!isEditing) {
+                setTimeout(() => window.location.href = "/admin/products", 1500);
+            }
         } catch (err: any) {
-            setError(err.message || "Failed to save product");
+            toast.error(err.message || "Failed to save product", { id: toastId });
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+        <form onSubmit={handleSubmit(onFormSubmit)} className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
             {/* Left Column: Details */}
             <div className="lg:col-span-2 space-y-4 md:space-y-6">
                 <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
@@ -129,51 +132,57 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             <div className="md:col-span-2">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Product Title</label>
                                 <input
-                                    type="text"
-                                    name="name"
-                                    required
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
+                                    {...register("name")}
+                                    className={cn(
+                                        "w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none",
+                                        errors.name && "border-red-500 ring-red-50"
+                                    )}
                                     placeholder="e.g. Traditional Gold Temple Necklace"
                                 />
+                                {errors.name && <p className="mt-1 text-[10px] text-red-500 font-bold uppercase ml-1">{errors.name.message}</p>}
                             </div>
 
                             <div>
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Category</label>
                                 <select
-                                    name="category_id"
-                                    value={formData.category_id}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none appearance-none"
+                                    {...register("category_id")}
+                                    className={cn(
+                                        "w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none appearance-none",
+                                        errors.category_id && "border-red-500"
+                                    )}
                                 >
                                     <option value="">Select Category</option>
                                     {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                                 </select>
+                                {errors.category_id && <p className="mt-1 text-[10px] text-red-500 font-bold uppercase ml-1">{errors.category_id.message}</p>}
                             </div>
 
                             <div>
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Stock Level</label>
                                 <input
                                     type="number"
-                                    name="stock"
-                                    value={formData.stock}
-                                    onChange={handleInputChange}
-                                    className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none"
+                                    {...register("stock")}
+                                    className={cn(
+                                        "w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none",
+                                        errors.stock && "border-red-500"
+                                    )}
                                 />
+                                {errors.stock && <p className="mt-1 text-[10px] text-red-500 font-bold uppercase ml-1">{errors.stock.message}</p>}
                             </div>
                         </div>
 
                         <div>
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Description</label>
                             <textarea
-                                name="description"
+                                {...register("description")}
                                 rows={4}
-                                value={formData.description}
-                                onChange={handleInputChange}
-                                className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none resize-none"
+                                className={cn(
+                                    "w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-medium focus:bg-white focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none resize-none",
+                                    errors.description && "border-red-500"
+                                )}
                                 placeholder="Describe the materials, plating, and design details..."
                             />
+                            {errors.description && <p className="mt-1 text-[10px] text-red-500 font-bold uppercase ml-1">{errors.description.message}</p>}
                         </div>
                     </div>
                 </div>
@@ -191,20 +200,19 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Sale Price (₹)</label>
                             <input
                                 type="number"
-                                name="price"
-                                required
-                                value={formData.price}
-                                onChange={handleInputChange}
-                                className="w-full bg-[#fdf2f4]/50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-base font-bold text-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/5 transition-all outline-none"
+                                {...register("price")}
+                                className={cn(
+                                    "w-full bg-[#fdf2f4]/50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-base font-bold text-brand-red focus:bg-white focus:ring-4 focus:ring-brand-red/5 transition-all outline-none",
+                                    errors.price && "border-red-500"
+                                )}
                             />
+                            {errors.price && <p className="mt-1 text-[10px] text-red-500 font-bold uppercase ml-1">{errors.price.message}</p>}
                         </div>
                         <div className="lg:col-span-1">
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">MRP Price (₹)</label>
                             <input
                                 type="number"
-                                name="mrp"
-                                value={formData.mrp}
-                                onChange={handleInputChange}
+                                {...register("mrp")}
                                 className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-base font-medium text-gray-500 line-through focus:bg-white focus:ring-4 focus:ring-gray-200 transition-all outline-none"
                             />
                         </div>
@@ -212,11 +220,9 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Rating</label>
                             <input
                                 type="number"
-                                name="rating"
                                 step="0.1"
                                 max="5"
-                                value={formData.rating}
-                                onChange={handleInputChange}
+                                {...register("rating")}
                                 className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 focus:border-brand-accent transition-all outline-none"
                             />
                         </div>
@@ -224,9 +230,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Reviews</label>
                             <input
                                 type="number"
-                                name="review_count"
-                                value={formData.review_count}
-                                onChange={handleInputChange}
+                                {...register("review_count")}
                                 className="w-full bg-gray-50 border-gray-100 rounded-xl md:rounded-2xl p-3.5 md:p-4 text-sm font-bold text-gray-900 focus:bg-white focus:ring-4 focus:ring-brand-accent/5 transition-all outline-none"
                             />
                         </div>
@@ -242,7 +246,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                     onClick={() => toggleBadge(badge)}
                                     className={cn(
                                         "px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all border",
-                                        formData.badges.includes(badge)
+                                        selectedBadges.includes(badge)
                                             ? "bg-brand-red text-white border-brand-red shadow-lg shadow-brand-red/20"
                                             : "bg-white text-gray-400 border-gray-100 hover:border-brand-red/30 hover:text-brand-red"
                                     )}
@@ -255,10 +259,8 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                         <div className="flex items-center gap-3 mt-4 md:mt-6 p-3.5 md:p-4 bg-gray-50 rounded-xl md:rounded-2xl border border-gray-100 w-fit">
                             <input
                                 type="checkbox"
-                                name="is_bestseller"
                                 id="is_bestseller"
-                                checked={formData.is_bestseller}
-                                onChange={handleInputChange}
+                                {...register("is_bestseller")}
                                 className="w-5 h-5 rounded-lg text-brand-red focus:ring-brand-red border-gray-300"
                             />
                             <label htmlFor="is_bestseller" className="text-xs font-bold text-gray-700 uppercase tracking-widest cursor-pointer">Mark as Bestseller</label>
@@ -308,7 +310,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 ))}
                             </div>
                         )}
-                        
+
                         {isEditing && !images.length && initialData?.media_url && (
                              <div className="relative aspect-square rounded-2xl overflow-hidden border border-gray-100 opacity-50 grayscale transition-all hover:opacity-100 hover:grayscale-0">
                                 <img src={initialData.media_url} className="w-full h-full object-cover" alt="" />
@@ -332,16 +334,28 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                         </div>
                         
                         {!video ? (
-                            <label className="relative group cursor-pointer block">
-                                <div className="w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-100 rounded-2xl flex flex-col items-center justify-center gap-2 group-hover:bg-brand-accent/5 group-hover:border-brand-accent/20 transition-all overflow-hidden p-4 text-center">
-                                    <Video className="text-gray-300 group-hover:text-brand-accent transition-colors" size={24} />
-                                    <div className="space-y-0.5">
-                                        <p className="text-[10px] font-bold text-gray-800 uppercase tracking-widest">Add Product Reel</p>
-                                        <p className="text-[8px] text-gray-400 uppercase font-medium">MP4, WEBM up to 50MB</p>
+                            <div className="space-y-4">
+                                <label className="relative group cursor-pointer block">
+                                    <div className="w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-100 rounded-2xl flex flex-col items-center justify-center gap-2 group-hover:bg-brand-accent/5 group-hover:border-brand-accent/20 transition-all overflow-hidden p-4 text-center">
+                                        <Video className="text-gray-300 group-hover:text-brand-accent transition-colors" size={24} />
+                                        <div className="space-y-0.5">
+                                            <p className="text-[10px] font-bold text-gray-800 uppercase tracking-widest">Add Product Reel</p>
+                                            <p className="text-[8px] text-gray-400 uppercase font-medium">MP4, WEBM up to 50MB</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <input type="file" accept="video/*" onChange={handleVideoChange} className="hidden" />
-                            </label>
+                                    <input type="file" accept="video/*" onChange={handleVideoChange} className="hidden" />
+                                </label>
+
+                                {isEditing && initialData?.video_url && (
+                                    <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-100 bg-black/5 flex items-center justify-center group">
+                                        <video src={initialData.video_url} className="w-full h-full object-cover opacity-50" />
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 gap-2">
+                                            <Video className="text-white/60" size={20} />
+                                            <span className="text-white text-[9px] font-bold uppercase tracking-widest">Existing Video</span>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         ) : (
                             <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-100 bg-black group shadow-lg">
                                 <video 
@@ -361,61 +375,29 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                                 </div>
                             </div>
                         )}
-
-                        {isEditing && !video && initialData?.video_url && (
-                             <div className="relative aspect-video rounded-2xl overflow-hidden border border-gray-100 bg-black/5 flex items-center justify-center group">
-                                <video src={initialData.video_url} className="w-full h-full object-cover opacity-50" />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 gap-2">
-                                    <Video className="text-white/60" size={20} />
-                                    <span className="text-white text-[9px] font-bold uppercase tracking-widest">Existing Video</span>
-                                </div>
-                             </div>
-                        )}
                     </div>
                 </div>
 
                 <div className="bg-white p-5 md:p-8 rounded-2xl md:rounded-[2rem] border border-gray-100 shadow-sm space-y-4 md:space-y-6">
-                    {error && (
-                        <div className="p-4 bg-brand-red/5 border border-brand-red/10 rounded-2xl text-brand-red text-xs font-bold uppercase tracking-wide">
-                            {error}
-                        </div>
-                    )}
-
-                    {success ? (
-                        <div className="flex flex-col items-center justify-center gap-4 py-6 animate-in zoom-in duration-500">
-                            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                <CheckCircle2 size={32} />
-                            </div>
-                            <p className="text-sm font-bold text-gray-900 uppercase tracking-widest">Saved Successfully!</p>
-                            <button
-                                type="button"
-                                onClick={() => window.location.href = "/admin/products"}
-                                className="text-xs font-bold text-brand-red uppercase tracking-widest border-b border-brand-red pb-1"
-                            >
-                                Back to Inventory
-                            </button>
-                        </div>
-                    ) : (
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className={cn(
-                                "w-full py-4 md:py-5 rounded-xl md:rounded-[1.25rem] font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-3",
-                                loading
-                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                    : "bg-brand-red text-white hover:bg-brand-red/90 hover:scale-[1.02] active:scale-[0.98] shadow-brand-red/20"
-                            )}
-                        >
-                            {loading ? (
-                                <Loader2 className="animate-spin" size={18} />
-                            ) : (
-                                <>
-                                    <Sparkles size={18} />
-                                    {isEditing ? 'Update Selection' : 'Launch Product'}
-                                </>
-                            )}
-                        </button>
-                    )}
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className={cn(
+                            "w-full py-4 md:py-5 rounded-xl md:rounded-[1.25rem] font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] shadow-2xl transition-all flex items-center justify-center gap-3",
+                            loading
+                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                : "bg-brand-red text-white hover:bg-brand-red/90 hover:scale-[1.02] active:scale-[0.98] shadow-brand-red/20"
+                        )}
+                    >
+                        {loading ? (
+                            <Loader2 className="animate-spin" size={18} />
+                        ) : (
+                            <>
+                                <Sparkles size={18} />
+                                {isEditing ? 'Update Selection' : 'Launch Product'}
+                            </>
+                        )}
+                    </button>
                 </div>
             </div>
         </form>

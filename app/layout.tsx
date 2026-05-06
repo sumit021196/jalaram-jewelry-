@@ -50,6 +50,7 @@ import { SettingsProvider } from "@/components/SettingsContext";
 import FloatingChat from "@/components/ui/FloatingChat";
 import AuthFeedback from "@/components/ui/AuthFeedback";
 import { Suspense } from "react";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -72,6 +73,7 @@ export default function RootLayout({
                 <AuthFeedback />
               </Suspense>
               <FloatingChat />
+              <Toaster position="top-center" richColors />
             </CartProvider>
           </WishlistProvider>
         </SettingsProvider>
