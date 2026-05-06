@@ -6,7 +6,7 @@ import { productSchema } from "../product.schema";
 
 export async function createProductAction(data: any) {
     try {
-        const supabase = await createClient(true);
+        const supabase = await createClient(); // Regular client to check session
 
         // Security check
         const { data: { user } } = await supabase.auth.getUser();
@@ -14,6 +14,8 @@ export async function createProductAction(data: any) {
 
         const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
         if (!profile?.is_admin) throw new Error("Forbidden: Admin access required");
+
+        const adminClient = await createClient(true); // Admin client for storage & DB bypass
 
         // Server-side validation
         const validated = productSchema.parse(data);
@@ -25,12 +27,12 @@ export async function createProductAction(data: any) {
             const file = data.video;
             const fileExt = file.name.split('.').pop();
             const fileName = `vid_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-            const { error: uploadError } = await supabase.storage
+            const { error: uploadError } = await adminClient.storage
                 .from('products')
                 .upload(fileName, file, { cacheControl: '3600', upsert: false });
 
             if (uploadError) throw uploadError;
-            const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
+            const { data: urlData } = adminClient.storage.from('products').getPublicUrl(fileName);
             finalVideoUrl = urlData.publicUrl;
         }
 
@@ -39,12 +41,12 @@ export async function createProductAction(data: any) {
                 if (file.size > 0) {
                     const fileExt = file.name.split('.').pop();
                     const fileName = `img_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-                    const { error: uploadError } = await supabase.storage
+                    const { error: uploadError } = await adminClient.storage
                         .from('products')
                         .upload(fileName, file, { cacheControl: '3600', upsert: false });
                     
                     if (uploadError) throw uploadError;
-                    const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
+                    const { data: urlData } = adminClient.storage.from('products').getPublicUrl(fileName);
                     finalImageUrls.push(urlData.publicUrl);
                 }
             }
@@ -52,7 +54,7 @@ export async function createProductAction(data: any) {
 
         const mainMediaUrl = finalImageUrls.length > 0 ? finalImageUrls[0] : null;
 
-        const { data: productData, error: dbError } = await supabase
+        const { data: productData, error: dbError } = await adminClient
             .from('products')
             .insert([{
                 name: validated.name,
@@ -82,7 +84,7 @@ export async function createProductAction(data: any) {
                 image_url: url,
                 display_order: idx
             }));
-            const { error: imgError } = await supabase.from('product_images').insert(imageInserts);
+            const { error: imgError } = await adminClient.from('product_images').insert(imageInserts);
             if (imgError) console.error("Error inserting multiple images:", imgError);
         }
 
@@ -99,7 +101,7 @@ export async function createProductAction(data: any) {
 
 export async function updateProductAction(id: string | number, data: any) {
     try {
-        const supabase = await createClient(true);
+        const supabase = await createClient();
 
         // Security check
         const { data: { user } } = await supabase.auth.getUser();
@@ -108,10 +110,12 @@ export async function updateProductAction(id: string | number, data: any) {
         const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
         if (!profile?.is_admin) throw new Error("Forbidden: Admin access required");
 
+        const adminClient = await createClient(true);
+
         // Server-side validation
         const validated = productSchema.parse(data);
 
-        const { error } = await supabase
+        const { error } = await adminClient
             .from('products')
             .update({
                 name: validated.name,
@@ -141,8 +145,8 @@ export async function updateProductAction(id: string | number, data: any) {
 
 export async function deleteProductAction(id: string | number) {
     try {
-        const supabase = await createClient(true);
-        const { error } = await supabase.from('products').delete().eq('id', id);
+        const adminClient = await createClient(true);
+        const { error } = await adminClient.from('products').delete().eq('id', id);
         if (error) throw error;
 
         revalidatePath("/admin/products");
