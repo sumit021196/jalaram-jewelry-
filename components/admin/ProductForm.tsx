@@ -407,7 +407,10 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             )}
                         >
                             {loading ? (
-                                <Loader2 className="animate-spin" size={18} />
+                                <>
+                                    <Loader2 className="animate-spin" size={18} />
+                                    {isEditing ? 'Updating...' : 'Launching...'}
+                                </>
                             ) : (
                                 <>
                                     <Sparkles size={18} />

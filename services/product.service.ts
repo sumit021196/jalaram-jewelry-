@@ -86,28 +86,24 @@ export class ProductService implements IProductService {
 
     async getCategories(): Promise<Category[]> {
         try {
-            // Fetch categories that have at least one product
+            // Fetch all categories for the admin panel and store
             const { data, error } = await this.supabase
                 .from("categories")
                 .select("id, name, slug")
-                .not("id", "is", null); // Placeholder for logic "at least one product" if needed via join, but simple fetch for now
+                .order("name", { ascending: true });
 
-            // More accurate: categories JOIN products
-            const { data: catWithProds, error: joinError } = await this.supabase
-                .from("categories")
-                .select("id, name, slug, products!inner(id)");
+            if (error || !data) {
+                console.error("Error fetching categories:", error);
+                return [];
+            }
 
-            if (joinError || !catWithProds) return [];
-
-            // Remove duplicates
-            const uniqueCats = Array.from(new Map<string, any>(catWithProds.map((c: any) => [c.id, c])).values());
-
-            return uniqueCats.map((c: any) => ({
+            return data.map((c: any) => ({
                 id: c.id,
                 name: c.name,
                 slug: c.slug
             }));
-        } catch {
+        } catch (e) {
+            console.error("Catch Error (getCategories):", e);
             return [];
         }
     }
