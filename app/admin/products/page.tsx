@@ -11,22 +11,43 @@ import { cn } from "@/utils/cn";
 export default function AdminProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
     const [updatingStock, setUpdatingStock] = useState<string | number | null>(null);
+    const [searchQuery, setSearchQuery] = useState("");
 
-    const loadProducts = async () => {
+    const ITEMS_PER_PAGE = 20;
+
+    const loadProducts = async (isInitial = true) => {
+        if (isInitial) setLoading(true);
+        else setLoadingMore(true);
+
         try {
-            const data = await productService.getProducts();
-            setProducts(data);
+            const offset = isInitial ? 0 : products.length;
+            const data = await productService.getProducts(ITEMS_PER_PAGE, offset);
+
+            if (isInitial) {
+                setProducts(data);
+            } else {
+                setProducts(prev => [...prev, ...data]);
+            }
+
+            setHasMore(data.length === ITEMS_PER_PAGE);
         } catch (error) {
             console.error("Failed to load products", error);
         } finally {
             setLoading(false);
+            setLoadingMore(false);
         }
     };
 
     useEffect(() => {
         loadProducts();
     }, []);
+
+    const filteredProducts = products.filter(p =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     const handleDelete = async (id: string | number) => {
         if (!confirm("Are you sure you want to delete this product?")) return;
@@ -71,6 +92,16 @@ export default function AdminProductsPage() {
                 </Link>
             </div>
 
+            <div className="relative">
+                <input
+                    type="text"
+                    placeholder="Search inventory..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-medium shadow-sm focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none mb-6"
+                />
+            </div>
+
             <div className="bg-white rounded-3xl md:rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center p-16 md:p-32 gap-4">
@@ -99,7 +130,7 @@ export default function AdminProductsPage() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
-                                {products.map((product) => {
+                                {filteredProducts.map((product) => {
                                     const discount = product.mrp ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
                                     return (
                                         <tr key={product.id} className="group hover:bg-[#fdf2f4]/30 transition-all duration-300">
@@ -199,6 +230,18 @@ export default function AdminProductsPage() {
                                 })}
                             </tbody>
                         </table>
+
+                        {hasMore && !searchQuery && (
+                            <div className="p-8 border-t border-gray-50 flex justify-center">
+                                <button
+                                    onClick={() => loadProducts(false)}
+                                    disabled={loadingMore}
+                                    className="px-8 py-3 bg-gray-50 hover:bg-gray-100 text-[10px] font-black uppercase tracking-[0.2em] rounded-xl transition-all disabled:opacity-50 flex items-center gap-2"
+                                >
+                                    {loadingMore ? <Loader2 size={14} className="animate-spin" /> : "Load More Assets"}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

@@ -14,8 +14,9 @@ export const createClient = async (useAdmin = false) => {
                      process.env.SERVICE_ROLE_KEY;
 
   if (useAdmin) {
-    if (!serviceKey || serviceKey === "dummy_service_key") {
-      throw new Error("CRITICAL: SUPABASE_SERVICE_ROLE_KEY is missing. Admin client cannot be initialized.");
+    if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
+      console.error("ADMIN CONFIG ERROR: Service key is missing or same as anon key.");
+      throw new Error("CRITICAL: SUPABASE_SERVICE_ROLE_KEY is required for admin operations. Please check your Netlify environment variables.");
     }
     return createSupabaseClient(
       supabaseUrl,
@@ -24,6 +25,11 @@ export const createClient = async (useAdmin = false) => {
         auth: {
           autoRefreshToken: false,
           persistSession: false
+        },
+        global: {
+          headers: {
+            'x-my-custom-header': 'admin-client'
+          }
         }
       }
     );

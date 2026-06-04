@@ -21,6 +21,17 @@ export async function createCategoryAction(formData: {
 
         let finalImageUrl = null;
 
+        const uploadWithRetry = async (fileName: string, buffer: Buffer, options: any, retries = 2) => {
+            let lastError = null;
+            for (let i = 0; i <= retries; i++) {
+                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, options);
+                if (!error) return { data, error: null };
+                lastError = error;
+                if (i < retries) await new Promise(res => setTimeout(res, 1000 * (i + 1)));
+            }
+            return { data: null, error: lastError };
+        };
+
         if (formData.image && formData.image.size > 0) {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
@@ -30,13 +41,11 @@ export async function createCategoryAction(formData: {
             const arrayBuffer = await file.arrayBuffer();
             const buffer = Buffer.from(arrayBuffer);
 
-            const { error: uploadError } = await supabase.storage
-                .from('products') // Using products bucket as it exists and is configured
-                .upload(fileName, buffer, {
-                    cacheControl: '3600',
-                    upsert: true,
-                    contentType: file.type || 'image/jpeg'
-                });
+            const { error: uploadError } = await uploadWithRetry(fileName, buffer, {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: file.type || 'image/jpeg'
+            });
 
             if (uploadError) {
                 console.error("Category Image Upload Error Details:", {
@@ -97,6 +106,17 @@ export async function updateCategoryAction(id: string, formData: {
             is_active: formData.is_active ?? true
         };
 
+        const uploadWithRetry = async (fileName: string, buffer: Buffer, options: any, retries = 2) => {
+            let lastError = null;
+            for (let i = 0; i <= retries; i++) {
+                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, options);
+                if (!error) return { data, error: null };
+                lastError = error;
+                if (i < retries) await new Promise(res => setTimeout(res, 1000 * (i + 1)));
+            }
+            return { data: null, error: lastError };
+        };
+
         if (formData.image && formData.image.size > 0) {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
@@ -106,13 +126,11 @@ export async function updateCategoryAction(id: string, formData: {
             const arrayBuffer = await file.arrayBuffer();
             const buffer = Buffer.from(arrayBuffer);
 
-            const { error: uploadError } = await supabase.storage
-                .from('products')
-                .upload(fileName, buffer, {
-                    cacheControl: '3600',
-                    upsert: true,
-                    contentType: file.type || 'image/jpeg'
-                });
+            const { error: uploadError } = await uploadWithRetry(fileName, buffer, {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: file.type || 'image/jpeg'
+            });
 
             if (uploadError) {
                 console.error("Category Image Update Error Details:", {

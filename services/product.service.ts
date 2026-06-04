@@ -12,12 +12,13 @@ export class ProductService implements IProductService {
     private get supabase() {
         return this._supabase;
     }
-    async getProducts(limit: number = 64): Promise<Product[]> {
+    async getProducts(limit: number = 64, offset: number = 0): Promise<Product[]> {
         try {
             const { data, error } = await this.supabase
                 .from("products")
-                .select("*, categories(name)")
-                .limit(limit);
+                .select("id, name, price, mrp, media_url, created_at, stock, is_bestseller, rating, categories(name)")
+                .order("created_at", { ascending: false })
+                .range(offset, offset + limit - 1);
             if (error) {
                 console.error("Supabase Error (getProducts):", error);
             }
