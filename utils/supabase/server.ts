@@ -9,9 +9,9 @@ export const createClient = async (useAdmin = false) => {
   const supabaseKey =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "dummy_key";
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "dummy_service_key";
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
 
-  if (useAdmin) {
+  if (useAdmin && serviceKey) {
     return createSupabaseClient(
       supabaseUrl,
       serviceKey,

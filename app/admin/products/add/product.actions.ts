@@ -21,6 +21,12 @@ export async function createProductAction(formData: {
     try {
         const supabase = await createClient(true);
 
+        // Debug check for service key availability
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        if (!isServiceKeyAvailable) {
+            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+        }
+
         let finalVideoUrl = null;
         let finalImageUrls: string[] = [];
 
@@ -42,8 +48,12 @@ export async function createProductAction(formData: {
                 });
 
             if (uploadError) {
-                console.error("Video Upload Error:", uploadError);
-                throw uploadError;
+                console.error("Video Upload Error Details:", {
+                    message: uploadError.message,
+                    name: uploadError.name,
+                    status: (uploadError as any).status
+                });
+                throw new Error(`Video upload failed: ${uploadError.message}`);
             }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalVideoUrl = urlData.publicUrl;
@@ -68,8 +78,12 @@ export async function createProductAction(formData: {
                         });
                     
                     if (uploadError) {
-                        console.error("Image Upload Error:", uploadError);
-                        throw uploadError;
+                        console.error("Image Upload Error Details:", {
+                            message: uploadError.message,
+                            name: uploadError.name,
+                            status: (uploadError as any).status
+                        });
+                        throw new Error(`Image upload failed: ${uploadError.message}`);
                     }
                     const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
                     finalImageUrls.push(urlData.publicUrl);

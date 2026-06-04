@@ -12,6 +12,12 @@ export async function createCategoryAction(formData: {
     try {
         const supabase = await createClient(true);
 
+        // Debug check for service key availability
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        if (!isServiceKeyAvailable) {
+            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+        }
+
         let finalImageUrl = null;
 
         if (formData.image && formData.image.size > 0) {
@@ -32,8 +38,12 @@ export async function createCategoryAction(formData: {
                 });
 
             if (uploadError) {
-                console.error("Category Image Upload Error:", uploadError);
-                throw uploadError;
+                console.error("Category Image Upload Error Details:", {
+                    message: uploadError.message,
+                    name: uploadError.name,
+                    status: (uploadError as any).status
+                });
+                throw new Error(`Category image upload failed: ${uploadError.message}`);
             }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalImageUrl = urlData.publicUrl;
@@ -73,6 +83,12 @@ export async function updateCategoryAction(id: string, formData: {
     try {
         const supabase = await createClient(true);
 
+        // Debug check for service key availability
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        if (!isServiceKeyAvailable) {
+            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+        }
+
         let updateData: any = {
             name: formData.name,
             slug: formData.slug,
@@ -97,8 +113,12 @@ export async function updateCategoryAction(id: string, formData: {
                 });
 
             if (uploadError) {
-                console.error("Category Image Update Error:", uploadError);
-                throw uploadError;
+                console.error("Category Image Update Error Details:", {
+                    message: uploadError.message,
+                    name: uploadError.name,
+                    status: (uploadError as any).status
+                });
+                throw new Error(`Category image update failed: ${uploadError.message}`);
             }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             updateData.image_url = urlData.publicUrl;
