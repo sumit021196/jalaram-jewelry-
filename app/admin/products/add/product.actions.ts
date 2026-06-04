@@ -28,11 +28,23 @@ export async function createProductAction(formData: {
             const file = formData.video;
             const fileExt = file.name.split('.').pop();
             const fileName = `vid_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+            // Convert File to Buffer for more reliable upload from server
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
             const { error: uploadError } = await supabase.storage
                 .from('products')
-                .upload(fileName, file, { cacheControl: '3600', upsert: false });
+                .upload(fileName, buffer, {
+                    cacheControl: '3600',
+                    upsert: false,
+                    contentType: file.type || 'video/mp4'
+                });
 
-            if (uploadError) throw uploadError;
+            if (uploadError) {
+                console.error("Video Upload Error:", uploadError);
+                throw uploadError;
+            }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalVideoUrl = urlData.publicUrl;
         }
@@ -42,11 +54,23 @@ export async function createProductAction(formData: {
                 if (file.size > 0) {
                     const fileExt = file.name.split('.').pop();
                     const fileName = `img_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+                    // Convert File to Buffer for more reliable upload from server
+                    const arrayBuffer = await file.arrayBuffer();
+                    const buffer = Buffer.from(arrayBuffer);
+
                     const { error: uploadError } = await supabase.storage
                         .from('products')
-                        .upload(fileName, file, { cacheControl: '3600', upsert: false });
+                        .upload(fileName, buffer, {
+                            cacheControl: '3600',
+                            upsert: false,
+                            contentType: file.type || 'image/jpeg'
+                        });
                     
-                    if (uploadError) throw uploadError;
+                    if (uploadError) {
+                        console.error("Image Upload Error:", uploadError);
+                        throw uploadError;
+                    }
                     const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
                     finalImageUrls.push(urlData.publicUrl);
                 }

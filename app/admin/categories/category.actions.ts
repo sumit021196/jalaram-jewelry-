@@ -18,11 +18,23 @@ export async function createCategoryAction(formData: {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
             const fileName = `cat_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+            // Convert File to Buffer for more reliable upload from server
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
             const { error: uploadError } = await supabase.storage
                 .from('products') // Using products bucket as it exists and is configured
-                .upload(fileName, file, { cacheControl: '3600', upsert: false });
+                .upload(fileName, buffer, {
+                    cacheControl: '3600',
+                    upsert: false,
+                    contentType: file.type || 'image/jpeg'
+                });
 
-            if (uploadError) throw uploadError;
+            if (uploadError) {
+                console.error("Category Image Upload Error:", uploadError);
+                throw uploadError;
+            }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalImageUrl = urlData.publicUrl;
         }
@@ -71,11 +83,23 @@ export async function updateCategoryAction(id: string, formData: {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
             const fileName = `cat_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+
+            // Convert File to Buffer for more reliable upload from server
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
             const { error: uploadError } = await supabase.storage
                 .from('products')
-                .upload(fileName, file, { cacheControl: '3600', upsert: false });
+                .upload(fileName, buffer, {
+                    cacheControl: '3600',
+                    upsert: false,
+                    contentType: file.type || 'image/jpeg'
+                });
 
-            if (uploadError) throw uploadError;
+            if (uploadError) {
+                console.error("Category Image Update Error:", uploadError);
+                throw uploadError;
+            }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             updateData.image_url = urlData.publicUrl;
         } else if (formData.image_url !== undefined) {
