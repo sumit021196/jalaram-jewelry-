@@ -9,9 +9,14 @@ export const createClient = async (useAdmin = false) => {
   const supabaseKey =
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "dummy_key";
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY ||
+                     process.env.SUPABASE_SERVICE_KEY ||
+                     process.env.SERVICE_ROLE_KEY;
 
-  if (useAdmin && serviceKey) {
+  if (useAdmin) {
+    if (!serviceKey || serviceKey === "dummy_service_key") {
+      throw new Error("CRITICAL: SUPABASE_SERVICE_ROLE_KEY is missing. Admin client cannot be initialized.");
+    }
     return createSupabaseClient(
       supabaseUrl,
       serviceKey,

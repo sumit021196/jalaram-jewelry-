@@ -13,9 +13,10 @@ export async function createCategoryAction(formData: {
         const supabase = await createClient(true);
 
         // Debug check for service key availability
-        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY);
         if (!isServiceKeyAvailable) {
             console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+            return { success: false, error: "Configuration Error: Service Key is missing. Please check environment variables." };
         }
 
         let finalImageUrl = null;
@@ -33,7 +34,7 @@ export async function createCategoryAction(formData: {
                 .from('products') // Using products bucket as it exists and is configured
                 .upload(fileName, buffer, {
                     cacheControl: '3600',
-                    upsert: false,
+                    upsert: true,
                     contentType: file.type || 'image/jpeg'
                 });
 
@@ -84,9 +85,10 @@ export async function updateCategoryAction(id: string, formData: {
         const supabase = await createClient(true);
 
         // Debug check for service key availability
-        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY);
         if (!isServiceKeyAvailable) {
             console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+            return { success: false, error: "Configuration Error: Service Key is missing. Please check environment variables." };
         }
 
         let updateData: any = {
@@ -108,7 +110,7 @@ export async function updateCategoryAction(id: string, formData: {
                 .from('products')
                 .upload(fileName, buffer, {
                     cacheControl: '3600',
-                    upsert: false,
+                    upsert: true,
                     contentType: file.type || 'image/jpeg'
                 });
 

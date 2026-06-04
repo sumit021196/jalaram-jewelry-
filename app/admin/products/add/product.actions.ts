@@ -22,9 +22,10 @@ export async function createProductAction(formData: {
         const supabase = await createClient(true);
 
         // Debug check for service key availability
-        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY);
+        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY);
         if (!isServiceKeyAvailable) {
             console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
+            return { success: false, error: "Configuration Error: Service Key is missing. Please check environment variables." };
         }
 
         let finalVideoUrl = null;
@@ -43,7 +44,7 @@ export async function createProductAction(formData: {
                 .from('products')
                 .upload(fileName, buffer, {
                     cacheControl: '3600',
-                    upsert: false,
+                    upsert: true,
                     contentType: file.type || 'video/mp4'
                 });
 
@@ -73,7 +74,7 @@ export async function createProductAction(formData: {
                         .from('products')
                         .upload(fileName, buffer, {
                             cacheControl: '3600',
-                            upsert: false,
+                            upsert: true,
                             contentType: file.type || 'image/jpeg'
                         });
                     
