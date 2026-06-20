@@ -46,12 +46,8 @@ export async function createCategoryAction(formData: {
             });
 
             if (uploadError) {
-                console.error("Category Image Upload Error Details:", {
-                    message: uploadError.message,
-                    name: uploadError.name,
-                    status: (uploadError as any).status
-                });
-                throw new Error(`Category image upload failed: ${uploadError.message}`);
+                console.error("FULL CATEGORY IMAGE UPLOAD ERROR:", JSON.stringify(uploadError, null, 2));
+                throw new Error(`Category image upload failed: ${uploadError.message || 'Check logs'}`);
             }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalImageUrl = urlData.publicUrl;

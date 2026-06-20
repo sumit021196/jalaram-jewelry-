@@ -32,9 +32,22 @@ export async function createProductAction(formData: {
         const uploadWithRetry = async (fileName: string, buffer: Buffer, options: any, retries = 2) => {
             let lastError = null;
             for (let i = 0; i <= retries; i++) {
-                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, options);
+                // Ensure buffer is actually a Buffer and has length
+                if (!buffer || buffer.length === 0) {
+                    return { data: null, error: { message: "Empty buffer provided for upload", name: "EmptyPayloadError" } };
+                }
+
+                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, {
+                    ...options,
+                    // duplex: 'half' // Sometimes required for Node 18+ streams, though upload() handles it
+                });
+
                 if (!error) return { data, error: null };
                 lastError = error;
+
+                // If it's a 400 Bad Request, retrying might not help if it's malformed, but let's try once more just in case of transient issues
+                console.warn(`Upload attempt ${i + 1} failed:`, error.message);
+
                 if (i < retries) await new Promise(res => setTimeout(res, 1000 * (i + 1)));
             }
             return { data: null, error: lastError };
@@ -77,19 +90,21 @@ export async function createProductAction(formData: {
                     const arrayBuffer = await file.arrayBuffer();
                     const buffer = Buffer.from(arrayBuffer);
 
-                    const { error: uploadError } = await uploadWithRetry(fileName, buffer, {
+                    const { error: uploadError, data: uploadData } = await uploadWithRetry(fileName, buffer, {
                         cacheControl: '3600',
                         upsert: true,
                         contentType: file.type || 'image/jpeg'
                     });
 
                     if (uploadError) {
-                        console.error("Image Upload Error Details:", {
-                            message: uploadError.message,
-                            name: uploadError.name,
-                            status: (uploadError as any).status
+                        // Log full error details to help diagnose 400 Bad Request
+                        console.error("FULL IMAGE UPLOAD ERROR:", JSON.stringify(uploadError, null, 2));
+                        console.error("Payload info:", {
+                            fileName,
+                            bufferSize: buffer.length,
+                            contentType: file.type || 'image/jpeg'
                         });
-                        throw new Error(`Image upload failed: ${uploadError.message}`);
+                        throw new Error(`Image upload failed: ${uploadError.message || 'Check logs for details'}`);
                     }
                     const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
                     finalImageUrls.push(urlData.publicUrl);

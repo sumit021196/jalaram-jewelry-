@@ -6,10 +6,26 @@ export async function GET(req: Request) {
         const { searchParams } = new URL(req.url);
         const limit = parseInt(searchParams.get('limit') || '20', 10);
         const offset = parseInt(searchParams.get('offset') || '0', 10);
-        const isAdmin = searchParams.get('isAdmin') === 'true';
+        const isAdminParam = searchParams.get('isAdmin') === 'true';
+        let isAdmin = false;
+
+        // Verify session for admin access
+        const supabaseAuth = await createClient(false);
+        const { data: { user } } = await supabaseAuth.auth.getUser();
+
+        if (isAdminParam && user) {
+            const { data: profile } = await supabaseAuth.from('profiles').select('is_admin').eq('id', user.id).single();
+            if (profile?.is_admin) {
+                isAdmin = true;
+            }
+        }
 
         const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY;
         const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+        if (isAdminParam && !isAdmin) {
+            return NextResponse.json({ error: "Forbidden: Admin access required" }, { status: 403 });
+        }
 
         if (isAdmin && (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey)) {
              return NextResponse.json({

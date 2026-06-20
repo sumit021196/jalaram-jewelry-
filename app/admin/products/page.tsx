@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Package, Plus, Pencil, Trash2, Loader2, Sparkles, TrendingUp, Star, AlertCircle } from "lucide-react";
-import { ProductService } from "@/services/product.service";
 import { Product } from "@/types/product";
 import { deleteProductAction, updateProductAction } from "./add/product.actions";
 import { createClient } from "@/utils/supabase/client";
