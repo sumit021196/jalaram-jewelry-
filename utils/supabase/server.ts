@@ -24,11 +24,12 @@ export const createClient = async (useAdmin = false) => {
       {
         auth: {
           autoRefreshToken: false,
-          persistSession: false
+          persistSession: false,
+          detectSessionInUrl: false
         },
         global: {
           headers: {
-            'x-my-custom-header': 'admin-client'
+            'Authorization': `Bearer ${serviceKey}`
           }
         }
       }

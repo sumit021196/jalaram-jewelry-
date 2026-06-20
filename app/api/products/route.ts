@@ -1,6 +1,27 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 
+export async function GET(req: Request) {
+    try {
+        const { searchParams } = new URL(req.url);
+        const limit = parseInt(searchParams.get('limit') || '20', 10);
+        const offset = parseInt(searchParams.get('offset') || '0', 10);
+        const isAdmin = searchParams.get('isAdmin') === 'true';
+
+        const supabase = await createClient(isAdmin);
+        const { data, error } = await supabase
+            .from("products")
+            .select("id, name, price, mrp, media_url, created_at, stock, is_bestseller, rating, categories(name)")
+            .order("created_at", { ascending: false })
+            .range(offset, offset + limit - 1);
+
+        if (error) throw error;
+        return NextResponse.json({ products: data });
+    } catch (error: any) {
+        return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+}
+
 export async function POST(req: Request) {
     try {
         const supabase = await createClient();

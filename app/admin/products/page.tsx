@@ -3,14 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Package, Plus, Pencil, Trash2, Loader2, Sparkles, TrendingUp, Star, AlertCircle } from "lucide-react";
-import { productService } from "@/services/product.service";
+import { ProductService } from "@/services/product.service";
 import { Product } from "@/types/product";
 import { deleteProductAction, updateProductAction } from "./add/product.actions";
+import { createClient } from "@/utils/supabase/client";
 import { cn } from "@/utils/cn";
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [loadingMore, setLoadingMore] = useState(false);
     const [hasMore, setHasMore] = useState(true);
     const [updatingStock, setUpdatingStock] = useState<string | number | null>(null);
@@ -19,12 +21,19 @@ export default function AdminProductsPage() {
     const ITEMS_PER_PAGE = 20;
 
     const loadProducts = async (isInitial = true) => {
-        if (isInitial) setLoading(true);
+        if (isInitial) {
+            setLoading(true);
+            setError(null);
+        }
         else setLoadingMore(true);
 
         try {
             const offset = isInitial ? 0 : products.length;
-            const data = await productService.getProducts(ITEMS_PER_PAGE, offset);
+            const res = await fetch(`/api/products?limit=${ITEMS_PER_PAGE}&offset=${offset}&isAdmin=true`);
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || "Failed to fetch products");
+            const data = result.products || [];
 
             if (isInitial) {
                 setProducts(data);
@@ -33,8 +42,9 @@ export default function AdminProductsPage() {
             }
 
             setHasMore(data.length === ITEMS_PER_PAGE);
-        } catch (error) {
-            console.error("Failed to load products", error);
+        } catch (err: any) {
+            console.error("Failed to load products", err);
+            setError(err.message || "Failed to fetch inventory. Ensure you have proper permissions.");
         } finally {
             setLoading(false);
             setLoadingMore(false);
@@ -107,6 +117,12 @@ export default function AdminProductsPage() {
                     <div className="flex flex-col items-center justify-center p-16 md:p-32 gap-4">
                         <Loader2 className="animate-spin text-brand-red" size={32} />
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Fetching Collection...</p>
+                    </div>
+                ) : error ? (
+                    <div className="p-16 md:p-32 text-center">
+                        <AlertCircle className="mx-auto w-12 h-12 text-brand-red mb-4" />
+                        <p className="text-sm font-bold text-gray-900 uppercase tracking-widest">{error}</p>
+                        <button onClick={() => loadProducts()} className="mt-4 text-[10px] font-black text-brand-red underline uppercase tracking-[0.2em]">Try Again</button>
                     </div>
                 ) : products.length === 0 ? (
                     <div className="p-16 md:p-32 text-center">

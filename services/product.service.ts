@@ -12,8 +12,11 @@ export class ProductService implements IProductService {
     private get supabase() {
         return this._supabase;
     }
-    async getProducts(limit: number = 64, offset: number = 0): Promise<Product[]> {
+    async getProducts(limit: number = 64, offset: number = 0, isAdmin: boolean = false): Promise<Product[]> {
         try {
+            // If admin, we should ideally use the admin client from utils/supabase/server
+            // But since this service is shared, we'll stick to the provided client
+            // The caller (Server Action or API Route) is responsible for providing an admin client
             const { data, error } = await this.supabase
                 .from("products")
                 .select("id, name, price, mrp, media_url, created_at, stock, is_bestseller, rating, categories(name)")
