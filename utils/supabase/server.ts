@@ -15,8 +15,24 @@ export const createClient = async (useAdmin = false) => {
 
   if (useAdmin) {
     if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
-      console.error("ADMIN CONFIG ERROR: Service key is missing or same as anon key.");
-      throw new Error("CRITICAL: SUPABASE_SERVICE_ROLE_KEY is required for admin operations. Please check your Netlify environment variables.");
+      console.warn("ADMIN CONFIG WARNING: Service key is missing or same as anon key.");
+      // Return the standard client as a fallback instead of crashing
+      return createServerClient(
+        supabaseUrl,
+        supabaseKey,
+        {
+          cookies: {
+            getAll() { return cookieStore.getAll(); },
+            setAll(cookiesToSet) {
+              try {
+                cookiesToSet.forEach(({ name, value, options }) =>
+                  cookieStore.set(name, value, options)
+                );
+              } catch {}
+            },
+          },
+        }
+      );
     }
     return createSupabaseClient(
       supabaseUrl,

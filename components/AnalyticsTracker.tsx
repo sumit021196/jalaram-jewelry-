@@ -17,14 +17,19 @@ export default function AnalyticsTracker() {
                 sessionStorage.setItem("dv27_session_id", sessionId);
             }
 
-            const { data: { user } } = await supabase.auth.getUser();
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
 
-            await supabase.from("page_views").insert({
-                path: pathname,
-                session_id: sessionId,
-                user_id: user?.id || null,
-                user_agent: window.navigator.userAgent,
-            });
+                await supabase.from("page_views").insert({
+                    path: pathname,
+                    session_id: sessionId,
+                    user_id: user?.id || null,
+                    user_agent: window.navigator.userAgent,
+                });
+            } catch (err) {
+                // Silently fail for analytics to prevent UI disruption or 400 errors in logs
+                console.warn("Analytics tracking skipped.");
+            }
         };
 
         trackView();

@@ -13,10 +13,15 @@ export async function createCategoryAction(formData: {
         const supabase = await createClient(true);
 
         // Debug check for service key availability
-        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY);
-        if (!isServiceKeyAvailable) {
-            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
-            return { success: false, error: "Configuration Error: Service Key is missing. Please check environment variables." };
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+        if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
+            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined or is set to anon key. Admin operations will fail RLS.");
+            return {
+                success: false,
+                error: "CONFIGURATION ERROR: Your Service Role Key is missing or invalid. Please set SUPABASE_SERVICE_ROLE_KEY in your Netlify Environment Variables to bypass security policies."
+            };
         }
 
         let finalImageUrl = null;
@@ -93,11 +98,14 @@ export async function updateCategoryAction(id: string, formData: {
     try {
         const supabase = await createClient(true);
 
-        // Debug check for service key availability
-        const isServiceKeyAvailable = !!(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY);
-        if (!isServiceKeyAvailable) {
-            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined. Admin operations may fail.");
-            return { success: false, error: "Configuration Error: Service Key is missing. Please check environment variables." };
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+        if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
+            return {
+                success: false,
+                error: "CONFIGURATION ERROR: Your Service Role Key is missing or invalid. Please set SUPABASE_SERVICE_ROLE_KEY in your Netlify Environment Variables."
+            };
         }
 
         let updateData: any = {

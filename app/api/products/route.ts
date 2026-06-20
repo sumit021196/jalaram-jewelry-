@@ -8,6 +8,15 @@ export async function GET(req: Request) {
         const offset = parseInt(searchParams.get('offset') || '0', 10);
         const isAdmin = searchParams.get('isAdmin') === 'true';
 
+        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+        if (isAdmin && (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey)) {
+             return NextResponse.json({
+                 error: "CONFIGURATION ERROR: Admin access requires SUPABASE_SERVICE_ROLE_KEY to be set in environment variables."
+             }, { status: 403 });
+        }
+
         const supabase = await createClient(isAdmin);
         const { data, error } = await supabase
             .from("products")
