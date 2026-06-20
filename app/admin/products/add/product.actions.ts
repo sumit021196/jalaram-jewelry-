@@ -19,18 +19,11 @@ export async function createProductAction(formData: {
     review_count?: number;
 }) {
     try {
-        const supabase = await createClient(true);
-
-        // Debug check for service key availability
-        const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_KEY || process.env.SERVICE_ROLE_KEY;
-        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
-        if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
-            console.warn("SUPABASE_SERVICE_ROLE_KEY is not defined or is set to anon key. Admin operations will fail RLS.");
-            return {
-                success: false,
-                error: "CONFIGURATION ERROR: Your Service Role Key is missing or invalid. Please set SUPABASE_SERVICE_ROLE_KEY in your Netlify Environment Variables to bypass security policies."
-            };
+        let supabase;
+        try {
+            supabase = await createClient(true);
+        } catch (authErr: any) {
+            return { success: false, error: `Authorization Setup Failed: ${authErr.message}. Please check your Netlify environment variables.` };
         }
 
         let finalVideoUrl = null;

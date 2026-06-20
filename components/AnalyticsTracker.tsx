@@ -20,15 +20,21 @@ export default function AnalyticsTracker() {
             try {
                 const { data: { user } } = await supabase.auth.getUser();
 
-                await supabase.from("page_views").insert({
+                // Basic validation before insert to avoid 400 errors
+                if (!pathname || !sessionId) return;
+
+                const { error } = await supabase.from("page_views").insert({
                     path: pathname,
                     session_id: sessionId,
                     user_id: user?.id || null,
-                    user_agent: window.navigator.userAgent,
+                    user_agent: typeof window !== 'undefined' ? window.navigator.userAgent : 'server',
                 });
+
+                if (error) {
+                    console.warn("Analytics insert skipped:", error.message);
+                }
             } catch (err) {
                 // Silently fail for analytics to prevent UI disruption or 400 errors in logs
-                console.warn("Analytics tracking skipped.");
             }
         };
 

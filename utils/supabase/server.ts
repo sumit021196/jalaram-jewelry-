@@ -15,25 +15,11 @@ export const createClient = async (useAdmin = false) => {
 
   if (useAdmin) {
     if (!serviceKey || serviceKey === "dummy_service_key" || serviceKey === supabaseKey) {
-      console.warn("ADMIN CONFIG WARNING: Service key is missing or same as anon key.");
-      // Return the standard client as a fallback instead of crashing
-      return createServerClient(
-        supabaseUrl,
-        supabaseKey,
-        {
-          cookies: {
-            getAll() { return cookieStore.getAll(); },
-            setAll(cookiesToSet) {
-              try {
-                cookiesToSet.forEach(({ name, value, options }) =>
-                  cookieStore.set(name, value, options)
-                );
-              } catch {}
-            },
-          },
-        }
-      );
+      console.error("ADMIN CONFIG ERROR: Service role key is missing or invalid. Check SUPABASE_SERVICE_ROLE_KEY.");
+      // Do not fall back to anon client, it will only cause confusing RLS errors
+      throw new Error("ADMIN_AUTH_FAILED: Service Role Key is missing or invalid.");
     }
+
     return createSupabaseClient(
       supabaseUrl,
       serviceKey,
@@ -42,11 +28,6 @@ export const createClient = async (useAdmin = false) => {
           autoRefreshToken: false,
           persistSession: false,
           detectSessionInUrl: false
-        },
-        global: {
-          headers: {
-            'Authorization': `Bearer ${serviceKey}`
-          }
         }
       }
     );
