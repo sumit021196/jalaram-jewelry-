@@ -47,7 +47,6 @@ export async function generateMetadata() {
 
 import { SettingsProvider } from "@/components/SettingsContext";
 
-import FloatingChat from "@/components/ui/FloatingChat";
 import AuthFeedback from "@/components/ui/AuthFeedback";
 import { Suspense } from "react";
 
@@ -71,7 +70,6 @@ export default function RootLayout({
               <Suspense fallback={null}>
                 <AuthFeedback />
               </Suspense>
-              <FloatingChat />
             </CartProvider>
           </WishlistProvider>
         </SettingsProvider>

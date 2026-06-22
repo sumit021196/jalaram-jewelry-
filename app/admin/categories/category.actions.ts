@@ -10,19 +10,45 @@ export async function createCategoryAction(formData: {
     is_active?: boolean;
 }) {
     try {
-        const supabase = await createClient(true);
+        let supabase;
+        try {
+            supabase = await createClient(true);
+        } catch (authErr: any) {
+            return { success: false, error: `Authorization Setup Failed: ${authErr.message}. Please check your Netlify environment variables.` };
+        }
 
         let finalImageUrl = null;
+
+        const uploadWithRetry = async (fileName: string, buffer: Buffer, options: any, retries = 2) => {
+            let lastError = null;
+            for (let i = 0; i <= retries; i++) {
+                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, options);
+                if (!error) return { data, error: null };
+                lastError = error;
+                if (i < retries) await new Promise(res => setTimeout(res, 1000 * (i + 1)));
+            }
+            return { data: null, error: lastError };
+        };
 
         if (formData.image && formData.image.size > 0) {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
             const fileName = `cat_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-            const { error: uploadError } = await supabase.storage
-                .from('products') // Using products bucket as it exists and is configured
-                .upload(fileName, file, { cacheControl: '3600', upsert: false });
 
-            if (uploadError) throw uploadError;
+            // Convert File to Buffer for more reliable upload from server
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
+            const { error: uploadError } = await uploadWithRetry(fileName, buffer, {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: file.type || 'image/jpeg'
+            });
+
+            if (uploadError) {
+                console.error("FULL CATEGORY IMAGE UPLOAD ERROR:", JSON.stringify(uploadError, null, 2));
+                throw new Error(`Category image upload failed: ${uploadError.message || 'Check logs'}`);
+            }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             finalImageUrl = urlData.publicUrl;
         }
@@ -59,7 +85,12 @@ export async function updateCategoryAction(id: string, formData: {
     is_active?: boolean;
 }) {
     try {
-        const supabase = await createClient(true);
+        let supabase;
+        try {
+            supabase = await createClient(true);
+        } catch (authErr: any) {
+            return { success: false, error: `Authorization Setup Failed: ${authErr.message}. Please check your Netlify environment variables.` };
+        }
 
         let updateData: any = {
             name: formData.name,
@@ -67,15 +98,40 @@ export async function updateCategoryAction(id: string, formData: {
             is_active: formData.is_active ?? true
         };
 
+        const uploadWithRetry = async (fileName: string, buffer: Buffer, options: any, retries = 2) => {
+            let lastError = null;
+            for (let i = 0; i <= retries; i++) {
+                const { data, error } = await supabase.storage.from('products').upload(fileName, buffer, options);
+                if (!error) return { data, error: null };
+                lastError = error;
+                if (i < retries) await new Promise(res => setTimeout(res, 1000 * (i + 1)));
+            }
+            return { data: null, error: lastError };
+        };
+
         if (formData.image && formData.image.size > 0) {
             const file = formData.image;
             const fileExt = file.name.split('.').pop() || 'jpg';
             const fileName = `cat_${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
-            const { error: uploadError } = await supabase.storage
-                .from('products')
-                .upload(fileName, file, { cacheControl: '3600', upsert: false });
 
-            if (uploadError) throw uploadError;
+            // Convert File to Buffer for more reliable upload from server
+            const arrayBuffer = await file.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+
+            const { error: uploadError } = await uploadWithRetry(fileName, buffer, {
+                cacheControl: '3600',
+                upsert: true,
+                contentType: file.type || 'image/jpeg'
+            });
+
+            if (uploadError) {
+                console.error("Category Image Update Error Details:", {
+                    message: uploadError.message,
+                    name: uploadError.name,
+                    status: (uploadError as any).status
+                });
+                throw new Error(`Category image update failed: ${uploadError.message}`);
+            }
             const { data: urlData } = supabase.storage.from('products').getPublicUrl(fileName);
             updateData.image_url = urlData.publicUrl;
         } else if (formData.image_url !== undefined) {

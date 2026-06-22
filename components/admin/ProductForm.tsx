@@ -63,6 +63,7 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
     const handleVideoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            if (video) URL.revokeObjectURL(video.url);
             setVideo({
                 file,
                 url: URL.createObjectURL(file)
@@ -78,13 +79,17 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
     };
 
     const removeImage = (index: number) => {
-        setImages(prev => {
-            const newArr = [...prev];
-            URL.revokeObjectURL(newArr[index].url);
-            newArr.splice(index, 1);
-            return newArr;
-        });
+        URL.revokeObjectURL(images[index].url);
+        setImages(prev => prev.filter((_, i) => i !== index));
     };
+
+    // Cleanup object URLs on unmount to prevent memory leaks
+    useEffect(() => {
+        return () => {
+            images.forEach(img => URL.revokeObjectURL(img.url));
+            if (video) URL.revokeObjectURL(video.url);
+        };
+    }, [images, video]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -407,7 +412,10 @@ export default function ProductForm({ initialData, categories, onSubmit, isEditi
                             )}
                         >
                             {loading ? (
-                                <Loader2 className="animate-spin" size={18} />
+                                <>
+                                    <Loader2 className="animate-spin" size={18} />
+                                    {isEditing ? 'Updating...' : 'Launching...'}
+                                </>
                             ) : (
                                 <>
                                     <Sparkles size={18} />

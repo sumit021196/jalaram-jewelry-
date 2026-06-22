@@ -3,30 +3,60 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Package, Plus, Pencil, Trash2, Loader2, Sparkles, TrendingUp, Star, AlertCircle } from "lucide-react";
-import { productService } from "@/services/product.service";
 import { Product } from "@/types/product";
 import { deleteProductAction, updateProductAction } from "./add/product.actions";
+import { createClient } from "@/utils/supabase/client";
 import { cn } from "@/utils/cn";
 
 export default function AdminProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [loadingMore, setLoadingMore] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
     const [updatingStock, setUpdatingStock] = useState<string | number | null>(null);
+    const [searchQuery, setSearchQuery] = useState("");
 
-    const loadProducts = async () => {
+    const ITEMS_PER_PAGE = 20;
+
+    const loadProducts = async (isInitial = true) => {
+        if (isInitial) {
+            setLoading(true);
+            setError(null);
+        }
+        else setLoadingMore(true);
+
         try {
-            const data = await productService.getProducts();
-            setProducts(data);
-        } catch (error) {
-            console.error("Failed to load products", error);
+            const offset = isInitial ? 0 : products.length;
+            const res = await fetch(`/api/products?limit=${ITEMS_PER_PAGE}&offset=${offset}&isAdmin=true`);
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || "Failed to fetch products");
+            const data = result.products || [];
+
+            if (isInitial) {
+                setProducts(data);
+            } else {
+                setProducts(prev => [...prev, ...data]);
+            }
+
+            setHasMore(data.length === ITEMS_PER_PAGE);
+        } catch (err: any) {
+            console.error("Failed to load products", err);
+            setError(err.message || "Failed to fetch inventory. Ensure you have proper permissions.");
         } finally {
             setLoading(false);
+            setLoadingMore(false);
         }
     };
 
     useEffect(() => {
         loadProducts();
     }, []);
+
+    const filteredProducts = products.filter(p =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     const handleDelete = async (id: string | number) => {
         if (!confirm("Are you sure you want to delete this product?")) return;
@@ -71,11 +101,27 @@ export default function AdminProductsPage() {
                 </Link>
             </div>
 
+            <div className="relative">
+                <input
+                    type="text"
+                    placeholder="Search inventory..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 text-sm font-medium shadow-sm focus:ring-4 focus:ring-brand-red/5 focus:border-brand-red transition-all outline-none mb-6"
+                />
+            </div>
+
             <div className="bg-white rounded-3xl md:rounded-[2.5rem] shadow-sm border border-gray-100 overflow-hidden">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center p-16 md:p-32 gap-4">
                         <Loader2 className="animate-spin text-brand-red" size={32} />
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Fetching Collection...</p>
+                    </div>
+                ) : error ? (
+                    <div className="p-16 md:p-32 text-center">
+                        <AlertCircle className="mx-auto w-12 h-12 text-brand-red mb-4" />
+                        <p className="text-sm font-bold text-gray-900 uppercase tracking-widest">{error}</p>
+                        <button onClick={() => loadProducts()} className="mt-4 text-[10px] font-black text-brand-red underline uppercase tracking-[0.2em]">Try Again</button>
                     </div>
                 ) : products.length === 0 ? (
                     <div className="p-16 md:p-32 text-center">
@@ -99,7 +145,7 @@ export default function AdminProductsPage() {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
-                                {products.map((product) => {
+                                {filteredProducts.map((product) => {
                                     const discount = product.mrp ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
                                     return (
                                         <tr key={product.id} className="group hover:bg-[#fdf2f4]/30 transition-all duration-300">
@@ -199,6 +245,18 @@ export default function AdminProductsPage() {
                                 })}
                             </tbody>
                         </table>
+
+                        {hasMore && !searchQuery && (
+                            <div className="p-8 border-t border-gray-50 flex justify-center">
+                                <button
+                                    onClick={() => loadProducts(false)}
+                                    disabled={loadingMore}
+                                    className="px-8 py-3 bg-gray-50 hover:bg-gray-100 text-[10px] font-black uppercase tracking-[0.2em] rounded-xl transition-all disabled:opacity-50 flex items-center gap-2"
+                                >
+                                    {loadingMore ? <Loader2 size={14} className="animate-spin" /> : "Load More Assets"}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
