@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 import { login } from "../auth.actions";
 import { ArrowLeft, Loader2, Sparkles, Mail, Lock } from "lucide-react";
@@ -11,16 +11,16 @@ import { useSettings } from "@/components/SettingsContext";
 export default function LoginPage() {
     const { settings } = useSettings();
     const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     async function handleSubmit(formData: FormData) {
-        setLoading(true);
         setError(null);
-        const result = await login(formData);
-        if (result?.error) {
-            setError(result.error);
-            setLoading(false);
-        }
+        startTransition(async () => {
+            const result = await login(formData);
+            if (result?.error) {
+                setError(result.error);
+            }
+        });
     }
 
     return (
@@ -96,11 +96,11 @@ export default function LoginPage() {
 
                     <button
                         type="submit"
-                        disabled={loading}
+                        disabled={isPending}
                         className="w-full relative py-4 bg-black text-white text-[15px] font-bold rounded-2xl shadow-lg shadow-black/10 hover:shadow-black/20 hover:-translate-y-0.5 active:scale-[0.98] transition-all disabled:opacity-70 disabled:hover:translate-y-0 overflow-hidden group"
                     >
                         <AnimatePresence mode="wait">
-                            {loading ? (
+                            {isPending ? (
                                 <motion.div 
                                     key="loading"
                                     initial={{ opacity: 0, scale: 0.8 }}

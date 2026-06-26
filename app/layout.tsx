@@ -6,6 +6,7 @@ import { WishlistProvider } from "@/components/wishlist/WishlistContext";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import { createClient } from "@/utils/supabase/server";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -23,13 +24,17 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export async function generateMetadata() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-  
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/settings`, { cache: 'no-store' });
-    const data = await res.json();
-    const settings = data.settings || {};
+    const supabase = await createClient();
+    const { data: settingsData } = await supabase
+      .from('settings')
+      .select('*');
+
+    const settings: any = settingsData?.reduce((acc: any, curr: any) => {
+      acc[curr.key] = curr.value;
+      return acc;
+    }, {}) || {};
+
     const seo = settings.seo_meta || {};
     
     return {
