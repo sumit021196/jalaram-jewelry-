@@ -18,9 +18,10 @@ import {
     Ticket
 } from "lucide-react";
 import { cn } from "@/utils/cn";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { logout } from "@/app/(auth)/auth.actions";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 const navItems = [
     { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -39,6 +40,16 @@ export function AdminSidebar() {
     const pathname = usePathname();
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
+    const [isPending, startTransition] = useTransition();
+    const [pendingPath, setPendingPath] = useState<string | null>(null);
+
+    const handleNavigation = (href: string) => {
+        setPendingPath(href);
+        setIsOpen(false);
+        startTransition(() => {
+            router.push(href);
+        });
+    };
 
     return (
         <>
@@ -74,29 +85,37 @@ export function AdminSidebar() {
                             // Exact match for dashboard home, startsWith for others
                             const active = item.href === '/admin' ? pathname === item.href : pathname.startsWith(item.href);
 
+                            const isThisItemPending = isPending && pendingPath === item.href;
+
                             return (
-                                <Link
+                                <button
                                     key={item.href}
-                                    href={item.href}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => handleNavigation(item.href)}
+                                    disabled={isPending}
                                     className={cn(
-                                        "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group",
+                                        "w-full flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-300 group",
                                         active
                                             ? "bg-brand-red text-white shadow-xl shadow-brand-red/20 translate-x-1"
-                                            : "text-gray-500 hover:bg-[#fdf2f4] hover:text-brand-red"
+                                            : "text-gray-500 hover:bg-[#fdf2f4] hover:text-brand-red",
+                                        isPending && !isThisItemPending && "opacity-70 cursor-not-allowed"
                                     )}
                                 >
-                                    <Icon
-                                        size={20}
-                                        className={cn(
-                                            "transition-transform group-hover:scale-110",
-                                            active ? "text-white" : "text-gray-400 group-hover:text-brand-red"
-                                        )}
-                                    />
-                                    <span className={cn("text-xs font-bold uppercase tracking-widest", active ? "opacity-100" : "opacity-80")}>
-                                        {item.name}
-                                    </span>
-                                </Link>
+                                    <div className="flex items-center gap-3">
+                                        <Icon
+                                            size={20}
+                                            className={cn(
+                                                "transition-transform group-hover:scale-110",
+                                                active ? "text-white" : "text-gray-400 group-hover:text-brand-red"
+                                            )}
+                                        />
+                                        <span className={cn("text-xs font-bold uppercase tracking-widest text-left", active ? "opacity-100" : "opacity-80")}>
+                                            {item.name}
+                                        </span>
+                                    </div>
+                                    {isThisItemPending && (
+                                        <Loader2 size={14} className="animate-spin text-white/80" />
+                                    )}
+                                </button>
                             );
                         })}
                     </nav>

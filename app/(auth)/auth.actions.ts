@@ -98,7 +98,6 @@ export async function login(formData: FormData) {
     }
 
     if (success) {
-        revalidatePath("/", "layout");
         if (redirectToAdmin) {
             redirect("/admin");
         } else {
